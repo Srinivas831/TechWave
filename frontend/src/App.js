@@ -10,7 +10,7 @@ function App() {
       <AllRoutes/>
       <Footer/>
     </div>
-  );
+  )
 }
 
 export default App;
