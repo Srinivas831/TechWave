@@ -1,0 +1,51 @@
+{
+    "testi" :[
+        {"id" : 1, 
+        "img" : "https://image.made-in-china.com/202f0j00QSREgyLUmbzT/Professional-Manufacturers-New-Model-Custom-Mens-Slim-Fit-Formal-Dress-Shirt.jpg",
+        "name" : "John Doe",
+        "post" : "I have been using Tech Wave for my online IT learning for the past few months and I have been very impressed with the quality of the courses and the support I have received."
+    }, 
+    {
+        "id" : 2,
+        "img" : "https://www.stitchfix.com/women/blog/wp-content/uploads/21-11-05_W_OF_V09_1649_2x3-scaled.jpeg",
+        "name" : "Kera Williamson",
+        "post" : "I have been using Tech Wave for my online IT learning and I am extremely pleased with the quality of the content. The courses are comprehensive and easy to understand, and the instructors are knowledgeable and helpful."
+    },
+    {
+        "id": 3,
+        "img": "https://www.stylevore.com/wp-content/uploads/2019/12/ddf63f1bea8ec8aed0589e000e8ada24.jpg",
+        "name": "Sarah",
+        "post": "I can't thank Tech Wave enough for the valuable IT courses. They've helped me advance in my career. The content is top-notch, and the platform is user-friendly."
+      },
+      {
+        "id": 4,
+        "img": "https://effortlessgent.com/wp-content/uploads/2015/12/image00.jpg",
+        "name": "Michael",
+        "post": "Tech Wave has been a game-changer for me. The courses are up-to-date, and the support is exceptional. I've gained practical skills that I use every day at work."
+      },
+      {
+        "id": 5,
+        "img": "https://cdn.shopify.com/s/files/1/2588/9738/products/Alexlightblue_frontwithtie_500x_crop_center.jpg?v=1658822624https://cdn.shopify.com/s/files/1/2588/9738/products/Alexlightblue_frontwithtie_500x_crop_center.jpg?v=1658822624",
+        "name": "Anna Smith",
+        "post": "I was a complete beginner in IT, but Tech Wave's courses made it easy for me to grasp complex concepts. The hands-on projects are a great learning tool."
+      },
+      {
+        "id": 6,
+        "img": "https://i.pinimg.com/736x/71/f9/5e/71f95e01f37517df5f04be662f1890a1.jpg",
+        "name": "David Johnson",
+        "post": "Tech Wave's courses helped me prepare for certifications. The practice tests and study materials are exceptional. I passed my exams with flying colors!"
+      },
+      {
+        "id": 7,
+        "img": "https://i.pinimg.com/474x/af/47/1f/af471fa1386c7ef231fe917e26431a61.jpg",
+        "name": "Sophia Martin",
+        "post": "I've tried other online learning platforms, but Tech Wave stands out. The instructors' expertise and the interactive quizzes make learning IT enjoyable."
+      },
+      {
+        "id": 8,
+        "img": "https://i.pinimg.com/originals/0a/94/a3/0a94a378a7dca608e2c8f8833b07c62e.jpg",
+        "name": "Benjamin Adams",
+        "post": "Tech Wave's courses are worth every penny. I've landed a job in the IT field after completing their training. The real-world examples are priceless."
+      }
+    ]
+}
