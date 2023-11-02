@@ -2,6 +2,7 @@ const express=require("express");
 const bcrypt=require('bcrypt');
 const { UserModel } = require("../model/users.model");
 const userRouter = express.Router();
+const jwt=require("jsonwebtoken");
 
 userRouter.post("/register",async(req,res)=>{
 try{
@@ -44,6 +45,8 @@ res.status(400).send({"message":"Error Regisetring User"});
 }
 })
 
+
+//login...........
 userRouter.post("/login",async(req,res)=>{
 try{
 const findIfTHisEmailIsNotReg=await UserModel.findOne({email:req.body.email});
@@ -53,7 +56,8 @@ if(!findIfTHisEmailIsNotReg){
 else{
     bcrypt.compare(req.body.password,findIfTHisEmailIsNotReg.password,(err,result)=>{
         if(result){
-            res.status(200).send({"message":"Logged Successfully"});
+            const token=jwt.sign({userName:req.body.userName,userId:req.body._id},"secretkey");
+            res.status(200).send({"message":"Logged Successfully",token:token});
         }
         else{
             res.status(400).send({"message":"Incorrect Password"});

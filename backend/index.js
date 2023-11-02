@@ -3,11 +3,13 @@ const app=express();
 const cors=require("cors");
 const { connection } = require("./db");
 const { userRouter } = require("./routes/users.routes");
+const { productRouter } = require("./routes/course.routes");
 
 //internal middlewares..................
 app.use(cors());
 app.use(express.json());
 app.use("/users",userRouter);
+app.use("/courses",productRouter);
 
 app.get("/",()=>{
     res.send("server is working");
