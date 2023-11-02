@@ -37,7 +37,7 @@
         },
         {
             "id": 2,
-            "image": "javascript-course.jpg",
+            "image": "https://i.ytimg.com/vi/oP571toXMqc/maxresdefault.jpg",
             "title": "Modern JavaScript Mastery",
             "description": "Become a JavaScript expert and learn the latest features and best practices.",
             "instructor": "Jane Smith",
@@ -72,7 +72,7 @@
         },
         {
             "id": 3,
-            "image": "angular-course.jpg",
+            "image": "https://www.venturelessons.com/wp-content/uploads/2020/03/angular-js-online-courses-scaled.jpg",
             "title": "Angular Web Development",
             "description": "Build modern web applications with Angular and TypeScript.",
             "instructor": "Maria Rodriguez",
@@ -107,7 +107,7 @@
         },
         {
             "id": 4,
-            "image": "html-css-course.jpg",
+            "image": "https://i.ytimg.com/vi/ts1DDgJyWTk/maxresdefault.jpg",
             "title": "HTML and CSS Essentials",
             "description": "Learn the foundations of HTML and CSS for web development.",
             "instructor": "Chris Johnson",
@@ -141,7 +141,7 @@
         },
         {
             "id": 5,
-            "image": "redux-course.jpg",
+            "image": "https://i.ytimg.com/vi/7ujSgXRnyig/maxresdefault.jpg",
             "title": "Mastering Redux Framework",
             "description": "Become an expert in managing state with Redux and React.",
             "instructor": "Michael Brown",
@@ -177,7 +177,7 @@
         },
         {
             "id": 6,
-            "image": "typescript-course.jpg",
+            "image": "https://i.ytimg.com/vi/j89BvWz8Eag/maxresdefault.jpg",
             "title": "TypeScript Fundamentals",
             "description": "Learn TypeScript and build scalable and maintainable JavaScript applications.",
             "instructor": "Sophia Clark",
@@ -212,7 +212,7 @@
         },
         {
             "id": 7,
-            "image": "asp-net-course.jpg",
+            "image": "https://justpaste.it/img/f93f7af262171137157878f53af6e0a9.jpg",
             "title": "ASP.NET Core Web Development",
             "description": "Build modern web applications with ASP.NET Core and C#.",
             "instructor": "David Wilson",
@@ -247,7 +247,7 @@
         },
         {
             "id": 8,
-            "image": "nodejs-course.jpg",
+            "image": "https://i.ytimg.com/vi/h6Wzj_Aqhf8/maxresdefault.jpg",
             "title": "Node.js for Beginners",
             "description": "Learn Node.js and build server-side applications with JavaScript.",
             "instructor": "Robert Taylor",
@@ -283,7 +283,7 @@
         },
         {
             "id": 9,
-            "image": "redux-advanced-course.jpg",
+            "image": "https://i.ytimg.com/vi/Lw1JkmNAFA4/maxresdefault.jpg",
             "title": "Advanced Redux Techniques",
             "description": "Master advanced state management with Redux and React.",
             "instructor": "Emily White",
@@ -319,7 +319,7 @@
         },
         {
             "id": 10,
-            "image": "html5-course.jpg",
+            "image": "https://i.ytimg.com/vi/j0tM7_icsnw/maxresdefault.jpg",
             "title": "HTML5 and CSS3 Masterclass",
             "description": "Explore the latest features and capabilities of HTML5 and CSS3.",
             "instructor": "Sophie Brown",
@@ -353,7 +353,7 @@
         },
         {
             "id": 11,
-            "image": "asp-net-mvc-course.jpg",
+            "image": "https://i.pinimg.com/originals/a5/76/6a/a5766a8964a2fe89cab314da029cff33.jpg",
             "title": "ASP.NET Core MVC Development",
             "description": "Build web applications with ASP.NET Core MVC and C#.",
             "instructor": "Peter Johnson",
@@ -388,7 +388,7 @@
         },
         {
             "id": 12,
-            "image": "nodejs-express-course.jpg",
+            "image": "https://i.ytimg.com/vi/H9M02of22z4/maxresdefault.jpg",
             "title": "Node.js and Express.js Masterclass",
             "description": "Become a Node.js and Express.js expert for server-side development.",
             "instructor": "Alex Turner",
@@ -424,7 +424,7 @@
         },
         {
             "id": 13,
-            "image": "angular-advanced-course.jpg",
+            "image": "https://i.ytimg.com/vi/IYI0em-xT28/maxresdefault.jpg",
             "title": "Advanced Angular Development",
             "description": "Master advanced concepts in Angular and build complex applications.",
             "instructor": "Lucas Martin",
@@ -460,7 +460,7 @@
         },
         {
             "id": 14,
-            "image": "javascript-es6-course.jpg",
+            "image": "https://i.ytimg.com/vi/lhNdUVh3qCc/maxresdefault.jpg",
             "title": "JavaScript ES6 and Beyond",
             "description": "Master ES6 and the latest features in JavaScript for modern web development.",
             "instructor": "Elena Davis",
@@ -495,7 +495,7 @@
         },
         {
             "id": 15,
-            "image": "typescript-react-course.jpg",
+            "image": "https://www.tangolearn.com/wp-content/uploads/2022/08/best-typ-script-courses-1.jpg",
             "title": "TypeScript for React Developers",
             "description": "Learn TypeScript and how to use it with React for scalable web applications.",
             "instructor": "Michaela Adams",
@@ -531,7 +531,7 @@
         },
         {
             "id": 16,
-            "image": "css-animations-course.jpg",
+            "image": "https://i.ytimg.com/vi/ywBg3YV2PJU/maxresdefault.jpg",
             "title": "CSS Animations and Transitions",
             "description": "Master CSS animations and transitions to create stunning web designs.",
             "instructor": "Olivia Green",
@@ -566,7 +566,7 @@
         },
         {
             "id": 17,
-            "image": "javascript-testing-course.jpg",
+            "image": "https://i.ytimg.com/vi/_Kdbs4iukcM/maxresdefault.jpg",
             "title": "JavaScript Testing and Debugging",
             "description": "Learn best practices for testing and debugging JavaScript applications.",
             "instructor": "Mark Johnson",
@@ -601,7 +601,7 @@
         },
         {
             "id": 18,
-            "image": "react-hooks-course.jpg",
+            "image": "https://i.ytimg.com/vi/QVk4KsJv7Ek/maxresdefault.jpg",
             "title": "React Hooks in Depth",
             "description": "Explore React hooks and create functional components with state and effects.",
             "instructor": "Ella Adams",
@@ -637,7 +637,7 @@
         },
         {
             "id": 19,
-            "image": "angular-material-course.jpg",
+            "image": "https://i.ytimg.com/vi/zRlEZ7L1xEM/maxresdefault.jpg",
             "title": "Angular Material Design",
             "description": "Create modern and responsive web designs with Angular Material.",
             "instructor": "Nina Patel",
@@ -673,7 +673,7 @@
         },
         {
             "id": 20,
-            "image": "nodejs-advanced-course.jpg",
+            "image": "https://i.ytimg.com/vi/BSO9C8Z-YV8/maxresdefault.jpg",
             "title": "Advanced Node.js Development",
             "description": "Master advanced Node.js concepts for building high-performance applications.",
             "instructor": "Sam Robinson",
@@ -709,7 +709,7 @@
         },
         {
             "id": 21,
-            "image": "react-native-course.jpg",
+            "image": "https://i.ytimg.com/vi/KQOtXYC0We8/maxresdefault.jpg",
             "title": "React Native Mobile Development",
             "description": "Build cross-platform mobile apps with React Native and JavaScript.",
             "instructor": "Daniel Turner",
@@ -745,7 +745,7 @@
         },
         {
             "id": 22,
-            "image": "graphql-course.jpg",
+            "image": "https://i.ytimg.com/vi/PlbupGCBV6w/maxresdefault.jpg",
             "title": "GraphQL Fundamentals",
             "description": "Learn the fundamentals of GraphQL for modern API development.",
             "instructor": "Liam Johnson",
@@ -780,7 +780,7 @@
         },
         {
             "id": 23,
-            "image": "angular-testing-course.jpg",
+            "image": "https://i.ytimg.com/vi/Cuh79sEvWqI/maxresdefault.jpg",
             "title": "Angular Testing and Debugging",
             "description": "Master testing and debugging techniques for Angular applications.",
             "instructor": "Natalie Adams",
@@ -816,7 +816,7 @@
         },
         {
             "id": 24,
-            "image": "html5-multimedia-course.jpg",
+            "image": "https://i.ytimg.com/vi/5p8e2ZkbOFU/maxresdefault.jpg",
             "title": "HTML5 Multimedia Development",
             "description": "Explore multimedia elements in HTML5 for interactive web content.",
             "instructor": "Sophie Turner",
@@ -851,7 +851,7 @@
         },
         {
             "id": 25,
-            "image": "express-mongodb-course.jpg",
+            "image": "https://i.ytimg.com/vi/h6Wzj_Aqhf8/maxresdefault.jpg",
             "title": "Building Express.js and MongoDB Apps",
             "description": "Create web applications with Express.js and MongoDB for data-driven projects.",
             "instructor": "Lucas Turner",
@@ -887,7 +887,7 @@
         },
         {
             "id": 26,
-            "image": "redux-saga-course.jpg",
+            "image": "https://i.ytimg.com/vi/MNbjIvfIMo4/maxresdefault.jpg",
             "title": "Redux Saga in Depth",
             "description": "Master asynchronous actions with Redux Saga for React applications.",
             "instructor": "William Foster",
@@ -923,7 +923,7 @@
         },
         {
             "id": 27,
-            "image": "javascript-design-patterns-course.jpg",
+            "image": "https://i.ytimg.com/vi/TndR89bQHbM/maxresdefault.jpg",
             "title": "JavaScript Design Patterns",
             "description": "Explore common design patterns in JavaScript for clean and maintainable code.",
             "instructor": "Emily Davis",
@@ -958,7 +958,7 @@
         },
         {
             "id": 28,
-            "image": "angular-i18n-course.jpg",
+            "image": "https://i.ytimg.com/vi/UxTTEIhJ8to/maxresdefault.jpg",
             "title": "Angular Internationalization (i18n)",
             "description": "Learn how to internationalize Angular applications for global audiences.",
             "instructor": "David Martin",
@@ -994,7 +994,7 @@
         },
         {
             "id": 29,
-            "image": "html5-games-course.jpg",
+            "image": "https://i.ytimg.com/vi/KJicab4AiZg/maxresdefault.jpg",
             "title": "HTML5 Game Development",
             "description": "Create interactive games using HTML5, CSS3, and JavaScript.",
             "instructor": "Sophia Turner",
@@ -1030,7 +1030,7 @@
         },
         {
             "id": 30,
-            "image": "rest-api-nodejs-course.jpg",
+            "image": "https://i.ytimg.com/vi/3f6SUL6uNwA/maxresdefault.jpg",
             "title": "Building RESTful APIs with Node.js",
             "description": "Create RESTful APIs with Node.js for modern web and mobile applications.",
             "instructor": "Lucas Johnson",
@@ -1066,7 +1066,7 @@
         },
         {
             "id": 31,
-            "image": "typescript-advanced-course.jpg",
+            "image": "https://www.venturelessons.com/wp-content/uploads/2020/03/best-typescript-courses-scaled.jpg",
             "title": "Advanced TypeScript Development",
             "description": "Master advanced TypeScript features for scalable web applications.",
             "instructor": "Michael Turner",
@@ -1102,7 +1102,7 @@
         },
         {
             "id": 32,
-            "image": "asp-net-core-mvc-course.jpg",
+            "image": "https://i.pinimg.com/736x/03/e7/ff/03e7ffb29cc4eb99d9d3c7d6329b3027.jpg",
             "title": "ASP.NET Core MVC Development",
             "description": "Build web applications with ASP.NET Core MVC for the modern web.",
             "instructor": "Jennifer Martinez",
@@ -1138,7 +1138,7 @@
         },
         {
             "id": 33,
-            "image": "react-native-redux-course.jpg",
+            "image": "https://external-preview.redd.it/kEPk417uFhfsbswFj2wB1gWXR4ZeaiejMKpNwbwkvX4.jpg?auto=webp&s=9b6d4e29bf5a8dbb584823661318e855a3b692bf",
             "title": "React Native with Redux",
             "description": "Build cross-platform mobile apps with React Native and Redux.",
             "instructor": "Daniel Foster",
@@ -1174,7 +1174,7 @@
         },
         {
             "id": 34,
-            "image": "full-stack-mern-course.jpg",
+            "image": "https://miro.medium.com/v2/resize:fit:1000/1*i6sXrk_guOE_K0UWHBTgLg.png",
             "title": "Full-Stack MERN Development",
             "description": "Become a full-stack developer with the MERN (MongoDB, Express, React, Node) stack.",
             "instructor": "Lucy Turner",
@@ -1209,7 +1209,7 @@
         },
         {
             "id": 35,
-            "image": "css-grid-course.jpg",
+            "image": "https://creativetricks24.com/wp-content/uploads/2022/02/HTML-for-Web-Development-Basics.png",
             "title": "Mastering CSS Grid Layout",
             "description": "Learn how to create complex, responsive layouts with CSS Grid.",
             "instructor": "Sophia Turner",
@@ -1244,7 +1244,7 @@
         },
         {
             "id": 36,
-            "image": "react-router-course.jpg",
+            "image": "https://www.venturelessons.com/wp-content/uploads/2020/03/best-react-courses-scaled.jpg",
             "title": "React Router and Navigation",
             "description": "Master routing and navigation in React applications with React Router.",
             "instructor": "Daniel Foster",
@@ -1280,7 +1280,7 @@
         },
         {
             "id": 37,
-            "image": "rxjs-course.jpg",
+            "image": "https://i.ytimg.com/vi/5JFrFM3pj5s/maxresdefault.jpg",
             "title": "Reactive Programming with RxJS",
             "description": "Learn reactive programming with RxJS for building responsive web applications.",
             "instructor": "Liam Johnson",
@@ -1315,7 +1315,7 @@
         },
         {
             "id": 38,
-            "image": "vuejs-course.jpg",
+            "image": "https://i.ytimg.com/vi/wwcJMrwu7Ps/maxresdefault.jpg",
             "title": "Vue.js Frontend Development",
             "description": "Master frontend development with Vue.js for building modern web apps.",
             "instructor": "Emily Davis",
@@ -1350,7 +1350,7 @@
         },
         {
             "id": 39,
-            "image": "ngrx-course.jpg",
+            "image": "https://external-preview.redd.it/NdOn4pvJxI2wHIPeCLbAS7eOoeFHocDm-IpGUWb0Nb4.jpg?auto=webp&s=c1fc7ea2562b08e6ebe5515b1a1f005ca18fbfab",
             "title": "State Management with NgRx",
             "description": "Learn state management with NgRx for Angular applications.",
             "instructor": "David Martin",
@@ -1386,7 +1386,7 @@
         },
         {
             "id": 40,
-            "image": "asp-net-core-api-course.jpg",
+            "image": "https://www.webtrainingroom.com/images/aspnet-mvc-course.png",
             "title": "Building APIs with ASP.NET Core",
             "description": "Create RESTful APIs with ASP.NET Core for modern web and mobile applications.",
             "instructor": "Jennifer Martinez",
@@ -1422,7 +1422,7 @@
         },
         {
             "id": 41,
-            "image": "next-js-course.jpg",
+            "image": "https://3.bp.blogspot.com/-49KZlsvQZhg/W5emZSjzzZI/AAAAAAAAAMQ/T-eQWNCnGaEA3FcCfiiIvesXZm_YW-vrwCLcBGAs/w1200-h630-p-k-no-nu/reactjs-main-Rlogical.jpg",
             "title": "Next.js - Server-side React",
             "description": "Learn Next.js for server-side rendering and building SEO-friendly React apps.",
             "instructor": "Michael Turner",
@@ -1458,7 +1458,7 @@
         },
         {
             "id": 42,
-            "image": "graphql-apollo-course.jpg",
+            "image": "https://i.ytimg.com/vi/6lzs7E7Ym0k/maxresdefault.jpg",
             "title": "GraphQL with Apollo Client",
             "description": "Master GraphQL and Apollo Client for efficient data management in web apps.",
             "instructor": "Natalie Adams",
@@ -1493,7 +1493,7 @@
         },
         {
             "id": 43,
-            "image": "docker-kubernetes-course.jpg",
+            "image": "https://www.aivanet.com/wp-content/uploads/2019/07/Know-About-the-Future-of-Node-JS-Development.jpg",
             "title": "Docker and Kubernetes Mastery",
             "description": "Learn containerization with Docker and orchestration with Kubernetes for scalable deployments.",
             "instructor": "William Foster",
