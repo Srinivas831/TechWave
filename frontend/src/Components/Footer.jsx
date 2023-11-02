@@ -2,13 +2,14 @@ import React from "react";
 import "../Css/utils.css";
 import Styled from "styled-components";
 import logo from "../Assets/logo_png.png";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 import {
   faFacebook,
   faLinkedin,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faLocationDot, faPhoneVolume } from "@fortawesome/free-solid-svg-icons";
 
 function Footer() {
   return (
@@ -35,11 +36,11 @@ function Footer() {
             <h3>Explore</h3>
           </div>
           <div className="part2-links">
-            <Link to ="#">Gallery</Link>
-            <Link to ="#">News & Articles</Link>
-            <Link to ="#">FAQ'S</Link>
-            <Link to ="#">Cooming Soon</Link>
-            <Link to ="#">Contacts</Link>
+            <Link to="#">Gallery</Link>
+            <Link to="#">News & Articles</Link>
+            <Link to="#">FAQ'S</Link>
+            <Link to="#">Cooming Soon</Link>
+            <Link to="#">Contacts</Link>
           </div>
         </div>
         <div className="footer-part3">
@@ -47,7 +48,10 @@ function Footer() {
             <h3>Links</h3>
           </div>
           <div className="part3-links">
-            
+            <Link to="/about">About</Link>
+            <Link to="/course">Course</Link>
+            <Link to="#">Instructor</Link>
+            <Link to="#">Events</Link>
           </div>
         </div>
 
@@ -55,7 +59,23 @@ function Footer() {
           <div className="part4-heading">
             <h3>Contact Us</h3>
           </div>
-          <div className="part4-links"></div>
+          <div className="part4-links">
+            <div>
+              <FontAwesomeIcon
+                icon={faLocationDot}
+                style={{ fontSize: "20px" }}
+              />
+              <p>Bangaluru 74 ave,sute <br/>Karnataka, 500055</p>
+            </div>
+            <div>
+            <FontAwesomeIcon icon={faEnvelope} style={{ fontSize: "20px" }}/>
+            <p>support@techwave.com</p>
+            </div>
+            <div>
+            <FontAwesomeIcon icon={faPhoneVolume} style={{ fontSize: "20px" }}/>
+            <p>+91 9900 0099</p>
+            </div>
+          </div>
         </div>
       </div>
     </DIV>
@@ -99,25 +119,25 @@ const DIV = Styled.div`
     .footer-part2 ,.footer-part3, .footer-part4{
         display : flex;
         flex-direction : column;
-        justify-content : space-evenly;
+        /* justify-content : space-between; */
         color : var(--secondary-color);
         /* align-items : center; */
-        gap: 1rem;
+        gap: 1.5rem;
         padding : 1rem 0;
     }
-    .part2-links{
+    .part2-links , .part3-links, .part4-links{
         display : flex;
         flex-direction : column;
-        gap : 0.5rem;
+        gap : 1rem;
     }
-    .part2-links a{
+    .part2-links a ,.part3-links a{
         display : inline;
         color : var(--secondary-color);
         text-decoration : none;
         position : relative;
         /* border : 1px solid red; */
     }
-    .part2-links a:before {
+    .part2-links a:before ,.part3-links a:before{
         content : "";
         position : absolute;
         bottom : -2px;
@@ -128,6 +148,26 @@ const DIV = Styled.div`
         transition : all 0.5s ease;
     }
     .part2-links a:hover:before {
-       width: 45%
+       width: 45%;
+    }
+    .part3-links a:hover:before{
+      width : 30%;
+    }
+    .part4-links div{
+      display: flex;
+      align-items : center;
+    }
+    .part4-links div p {
+      margin : 0 1rem;
+    }
+
+
+    /* -------- media quary ------ */
+
+
+    @media (max-width:780px) {
+      .footer-parent{
+        grid-template-columns : repeat(2,1fr);
+    }
     }
 `;

@@ -1,13 +1,28 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import Styled from "styled-components";
 import hero_img from "../Assets/hero-img.png";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../Css/utils.css";
-import { faCheck, faPlay } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCheck,
+  faPlay,
+  faQuoteLeft,
+  faQuoteRight,
+} from "@fortawesome/free-solid-svg-icons";
 import learning_img from "../Assets/learning-people-img.png";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import testi from "../testimonials.json";
+import TestiCard from "../Components/TestiCard";
 
 function Home() {
+  const data = testi;
+  // console.log(data.testi)
   return (
     <DIV>
       {/* ------- Hero section -------  */}
@@ -111,6 +126,53 @@ function Home() {
             <button className="extra_big_dark_button">Dicover More</button>
           </div>
         </div>
+      </div>
+
+      {/* -------- Testimonials ----- */}
+
+      <div className="testimonials-section">
+        <div>
+          <h1>Testimonials</h1>
+        </div>
+        <Swiper
+          spaceBetween={30}
+          centeredSlides={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          navigation={true}
+          modules={[Autoplay, Pagination, Navigation]}
+          className="mySwiper"
+        >
+          <SwiperSlide>
+            <TestiCard key={data.testi[0]?.id} img = {data.testi[0]?.img} post= {data.testi[0]?.post} name ={data.testi[0]?.name}/>
+          </SwiperSlide>
+          <SwiperSlide>
+            <TestiCard key={data.testi[1]?.id} img = {data.testi[1]?.img} post= {data.testi[1]?.post} name ={data.testi[1]?.name}/>
+          </SwiperSlide>
+          <SwiperSlide>
+            <TestiCard key={data.testi[2]?.id} img = {data.testi[2]?.img} post= {data.testi[2]?.post} name ={data.testi[2]?.name}/>
+          </SwiperSlide>
+          <SwiperSlide>
+            <TestiCard key={data.testi[3]?.id} img = {data.testi[3]?.img} post= {data.testi[3]?.post} name ={data.testi[3]?.name}/>
+          </SwiperSlide>
+          <SwiperSlide>
+            <TestiCard key={data.testi[4]?.id} img = {data.testi[4]?.img} post= {data.testi[4]?.post} name ={data.testi[4]?.name}/>
+          </SwiperSlide>
+          <SwiperSlide>
+            <TestiCard key={data.testi[5]?.id} img = {data.testi[5]?.img} post= {data.testi[5]?.post} name ={data.testi[5]?.name}/>
+          </SwiperSlide>
+          <SwiperSlide>
+            <TestiCard key={data.testi[6]?.id} img = {data.testi[6]?.img} post= {data.testi[6]?.post} name ={data.testi[6]?.name}/>
+          </SwiperSlide>
+          <SwiperSlide>
+            <TestiCard key={data.testi[7]?.id} img = {data.testi[7]?.img} post= {data.testi[7]?.post} name ={data.testi[7]?.name}/>
+          </SwiperSlide>
+        </Swiper>
       </div>
     </DIV>
   );
@@ -236,9 +298,57 @@ const DIV = Styled.div`
         background-color : #135e98;
     }
 
+    /*  --------- Testimonials ---- */
+    .testimonials-section{
+      width : 90%;
+      margin : auto;
+    }
+    .testimonials-section >div{
+      display : flex;
+      justify-content : center;
+      margin : 2rem 0;
+    }
+    .testimonials-section >div h1{
+      font-weight : 500;
+      position : relative;
+    }
+    .testimonials-section >div h1:before{
+      content : "";
+        position : absolute;
+        bottom : -15px;
+        height : 5px;
+        width : 100%;  
+        background: var(--primary-color);
+        border-radius : 50px;
+        transition : all 0.5s ease;
+
+    }
+    .swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+
+    /* Center slide text vertically */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+  
      /* @media (max-width:780px) { */
      @media (max-width:1080px) {
-
 
         /* -------- hero section ------- */
 
@@ -269,6 +379,10 @@ const DIV = Styled.div`
             gap: 2rem;
         }
 
-
+        /*  */
+        .testimonials-section{
+          width : 90%;
+          margin : auto;
+        }
      }
 `;
