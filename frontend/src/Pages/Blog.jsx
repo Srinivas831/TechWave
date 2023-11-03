@@ -81,7 +81,7 @@ padding: 0%;
     justify-content: space-around;
     align-items: center;
     margin-top: 3.5rem;
-
+    
     .image-div{
         width: 40%;
         img{
