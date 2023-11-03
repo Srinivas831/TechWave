@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Styled from "styled-components";
 import logo from "../Assets/logo_png.png";
 import "../Css/utils.css";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Navbar() {
   const [menu, setmenu] = useState(false);
@@ -10,6 +12,7 @@ function Navbar() {
   const handelMenu = () => {
     setmenu((prev) => !prev);
   };
+  const navigate = useNavigate()
 
   return (
     <DIV>
@@ -37,8 +40,10 @@ function Navbar() {
           </ul>
         </nav>
         <div className="login-signup">
-          <button className="light_button login">LogIn</button>
-          <button className="dark_button">SignUp</button>
+          {/* <button className="light_button login" onClick={()=>{ navigate("/login")}}>LogIn</button> */}
+          {/* <button className="dark_button" onClick={()=>{ navigate("/signup")}}>SignUp</button> */}
+          <div className="shoping-cart" onClick={()=>{ navigate("/cart")}}><FontAwesomeIcon icon={faCartShopping} style={{fontSize : "20px"}}/><div className="inside-shoping-cart"><p>1</p></div></div>
+          <button className="light_button login" onClick={()=>{ navigate("/logout")}}>LogOut</button>
         </div>
         <div className={`menu ${menu ? "active" : ""}`} onClick={handelMenu}>
           <span className="bar"></span>
@@ -68,6 +73,8 @@ const DIV = Styled.div`
     align-items: center;
     height: 80px;
     color: var(--dark-color);
+    z-index : 100;
+    
 }
 /* .logo{
     margin: 0 20px;
@@ -96,7 +103,22 @@ nav{
 .nav-links a{
     text-decoration: none;
     color: var(--dark-color);
+    position : relative;
 }
+.nav-links a:before{
+    content : "";
+    position : absolute;
+    bottom : -5px;
+    height : 3px;
+    width : 0;  
+    background: var(--primary-color);
+    border-radius : 50px;
+    transition : all 0.5s ease;
+}
+.nav-links a:hover:before{
+  width : 100%;
+}
+
 .login-signup{
     display: flex;
     justify-content: space-between; 
@@ -118,6 +140,33 @@ nav{
     margin: 5px 0;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;;
+}
+.shoping-cart{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin : 0 10px;
+  cursor: pointer;
+  position: relative;
+}
+.inside-shoping-cart{
+  position: absolute;
+  top : -2px;
+  right : -5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius : 50%;
+  /* border : 1px solid red; */
+  height : 20px;
+  width : 20px;
+  background-color : var(--primary-color);
+}
+.inside-shoping-cart p{
+  color : var(--secondary-color);
+  font-size : 14px;
+  font-weight : 600;
+  /* background-color : var(); */
 }
 
 @media (max-width:780px) {
@@ -143,6 +192,7 @@ nav{
         width: 100%;
         text-align: center;
         transition: 0.3s;
+        z-index : 100;
     }
     .nav-links:last-child{
         padding-bottom: 40px;
