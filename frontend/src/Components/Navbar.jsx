@@ -74,7 +74,8 @@ const DIV = Styled.div`
     height: 80px;
     color: var(--dark-color);
     z-index : 100;
-    
+    /* position:fixed; */
+    /* width:-webkit-fill-available */
 }
 /* .logo{
     margin: 0 20px;
