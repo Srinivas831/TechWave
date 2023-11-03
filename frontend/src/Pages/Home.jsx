@@ -7,8 +7,6 @@ import "../Css/utils.css";
 import {
   faCheck,
   faPlay,
-  faQuoteLeft,
-  faQuoteRight,
 } from "@fortawesome/free-solid-svg-icons";
 import learning_img from "../Assets/learning-people-img.png";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -379,7 +377,8 @@ const DIV = Styled.div`
             gap: 2rem;
         }
 
-        /*  */
+        /* ---------- Testimonials --------- */
+        
         .testimonials-section{
           width : 90%;
           margin : auto;

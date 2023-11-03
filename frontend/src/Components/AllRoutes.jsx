@@ -10,12 +10,13 @@ import { Blog } from "../Pages/Blog";
 function AllRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<Home/>}/>
+      <Route path="/" element={<Home />} />
       <Route path="/singlecourse" element={<SingleCoursePage />} />
-      <Route path="/checkout" element={<Checkout />}/>
+
+      <Route path="/checkout" element={<Checkout />} />
+      <Route path="/blogs" element={<Blog />} />
       <Route path="/signup" element={<Signup />}/>
       <Route path="/login" element={<Login />}/>
-      <Route path="/blogs" element={<Blog />}/>
     </Routes>
   );
 }
