@@ -106,14 +106,24 @@ function Checkout() {
                 </div>
               </div>
             </div> <hr />
+            {credit ? <><div className="credit-form">
+                <label>Name on Card</label>
+                <input type="text" placeholder="Name on Card"/>
+                <label>Card Number</label>
+                <input type="text" placeholder="1234 5678 9012 3456"/>
+                <label>Exprire Date</label>
+                <input type="text" placeholder="MM / YY"/>
+                <label>CVV / CVC</label>
+                <input type="text" placeholder="CVV"/>
+            </div><hr /></>:""}
             <div className="common-css">
                 <input type="checkbox" onChange={(e)=>{setPaytm(e.target.checked)}}/>
                 <div className="logo-and-common">
                   <SiPaytm style={{fontSize: "30px",color:"skyblue" }} />
                   <p>PayTM</p>
                 </div>
-                
-            </div><hr />{paytm ? <><p className="paytm-paragraph">In order to complete your transaction, we will transfer you over to Adyen's secure servers.</p><hr /></> : ""} 
+            </div><hr />
+            {paytm ? <><p className="paytm-paragraph">In order to complete your transaction, we will transfer you over to Adyen's secure servers.</p><hr /></> : ""} 
             <div className="common-css">
                 <input type="checkbox" onChange={(e)=>{setNetbanking(e.target.checked)}}/>
                 <div className="logo-and-common">
@@ -173,7 +183,6 @@ function Checkout() {
            </div>
         </div>
         </div>
-
         </div>
       <div className="rightside">
         <div className="content-width">
@@ -294,6 +303,21 @@ const MainDiv = styled.div`
         }
       }
       }
+      .credit-form{
+          width: 70%;
+            margin: auto;
+            label{
+            margin: .8rem .8rem;
+
+            }
+            input{
+            margin: .8rem;
+            width: 100%;
+            display: block;
+            padding: .7rem;
+          }
+        
+      }
       .common-css{
         display: flex;
         align-items: center;
@@ -371,8 +395,7 @@ const MainDiv = styled.div`
       }
     }
   }
-
-  @media screen and (max-width: 950px) {
+@media screen and (max-width: 950px) {
   display: flex;
   flex-direction: column;
   .leftside {
@@ -387,6 +410,9 @@ const MainDiv = styled.div`
     margin: auto;
     .content-width {
       width: 100%;
+      h2{
+        margin-top: 2rem;
+      }
       #termCondition{
         display: none;
       }
@@ -416,7 +442,7 @@ const MainDiv = styled.div`
   }
   .rightside {
     width: 90%;
-    margin: auto;
+    margin-top: 2rem;
     .content-width {
       width: 90%;
       margin: auto;

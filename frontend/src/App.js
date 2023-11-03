@@ -2,6 +2,8 @@
 import AllRoutes from './Components/AllRoutes';
 import Footer from './Components/Footer';
 import Navbar from './Components/Navbar';
+import { Checkout } from './Pages/Checkout';
+import { Blog } from './Pages/Blog';
 
 function App() {
   return (
@@ -10,6 +12,7 @@ function App() {
       <AllRoutes/>
       <Footer/>
       {/* <Checkout /> */}
+      {/* <Blog /> */}
     </div>
   )
 }
