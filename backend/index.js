@@ -11,7 +11,7 @@ app.use(express.json());
 app.use("/users",userRouter);
 app.use("/courses",productRouter);
 
-app.get("/",()=>{
+app.get("/",(req,res)=>{
     res.send("server is working");
 })
 
