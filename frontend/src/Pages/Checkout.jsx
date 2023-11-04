@@ -107,13 +107,13 @@ function Checkout() {
               </div>
             </div> <hr />
             {credit ? <><div className="credit-form">
-                <label>Name on Card</label>
+                <p>Name on Card</p>
                 <input type="text" placeholder="Name on Card"/>
-                <label>Card Number</label>
+                <p>Card Number</p>
                 <input type="text" placeholder="1234 5678 9012 3456"/>
-                <label>Exprire Date</label>
+                <p>Exprire Date</p>
                 <input type="text" placeholder="MM / YY"/>
-                <label>CVV / CVC</label>
+                <p>CVV / CVC</p>
                 <input type="text" placeholder="CVV"/>
             </div><hr /></>:""}
             <div className="common-css">
@@ -132,7 +132,8 @@ function Checkout() {
                 </div></div><hr />
                 {netbanking ? <>
                   <p className="netbanking-paragraph">In order to complete your transaction, we will transfer you over to Adyen's secure servers.</p>
-                  <select>
+                  <div className="select-bank">
+                    <select>
                     <option>Select your bank</option>
                     <option>Axix Bank</option>
                     <option>Bank of Baroda</option>
@@ -148,7 +149,9 @@ function Checkout() {
                     <option>UCO Bank</option>
                     <option>Union Bank of India</option>
                     <option>YES Bank</option>
-                  </select><hr />
+                    </select>
+                  </div>
+                  <hr />
                 </> : ""}
             <div className="common-css">
                 <input type="checkbox" onChange={(e)=>{setMobileWallet(e.target.checked)}}/>
@@ -158,7 +161,8 @@ function Checkout() {
                 </div></div>
                 {mobileWallet ? <><hr />
                   <p className="mobileWallet-paragraph">In order to complete your transaction, we will transfer you over to Adyen's secure servers.</p>
-                  <select>
+                  <div className="select-bank">
+                    <select>
                     <option>Select your bank</option>
                     <option>Airtel Money</option>
                     <option>Amazon Pay</option>
@@ -166,7 +170,8 @@ function Checkout() {
                     <option>FreeChange Wallet</option>
                     <option>PayTm Wallet</option>
                     <option>PhonePe Wallet</option>
-                  </select>
+                    </select>
+                  </div>
                 </> : ""}
         </div>
         <div className="order-detail">
@@ -306,15 +311,14 @@ const MainDiv = styled.div`
       .credit-form{
           width: 70%;
             margin: auto;
-            label{
-            margin: .8rem .8rem;
-
+            p{
+              margin: .5rem .2rem;
             }
             input{
-            margin: .8rem;
             width: 100%;
+            margin-bottom: .7rem;
             display: block;
-            padding: .7rem;
+            padding: .6rem;
           }
         
       }
@@ -335,6 +339,15 @@ const MainDiv = styled.div`
             font-size: 1.1rem;
             font-weight: bolder;
           }
+        }
+      }
+      .select-bank{
+        width: 70%;
+        margin : auto;
+        select{
+          width: 100%;
+          padding: .5rem;
+          margin-bottom: 1rem;
         }
       }
       .paytm-paragraph{

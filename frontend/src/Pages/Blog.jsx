@@ -54,6 +54,22 @@ function Blog() {
                 </div>
             </div>
         </div>
+        <div className='course-div2'>
+            <div className='java-content'>
+                <h1>HTML5 Learning Couse</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit dolorem asperiores dolores nobis excepturi non perspiciatis illo sequi aliquam! Ea error exercitationem nesciunt magni aut nulla vitae nam assumenda maiores ad laboriosam amet quos facere quo dolorum, inventore temporibus reprehenderit. Laborum officia excepturi veniam a nisi aspernatur sed veritatis eum  deserunt totam quas. <a href="">Read more...</a></p>
+                <div className='person-read'>
+                    <img src="https://i1.rgstatic.net/ii/profile.image/577690925502464-1514743657420_Q512/Hemali-Batra-Sharma.jpg" width={"50px"} alt="person-image" />
+                    <div>
+                        <b>Dipali Mukharji</b>
+                        <pre>A Few hours ago  10 min read</pre>
+                    </div>
+                </div>
+            </div>
+            <div className='image-div'>
+              <img src="https://64.media.tumblr.com/e705f0275d8b9dcc0b1cdfb812e5d3fe/a580d9a9aba95f2d-c6/s2048x3072_c8467,13600,52600,88000/6ae2059f4017e5f6078a63ef06766bd4850d66e4.png" alt="javascriptImage" />
+            </div>
+        </div>
 
     </MainDiv>
   )
@@ -74,15 +90,15 @@ padding: 0%;
        align-items: center;
        color: #fff;
        height: 50vh;
-       background-image: url("https://th.bing.com/th/id/R.6dc4b052b38f401012ff014de36ba9c6?rik=IsVLDwgr4503og&riu=http%3a%2f%2fjammupigments.com%2fimage%2fcontact_us.jpg&ehk=8V5EDvsYVjsYi3fqnIK%2fy8SmpSY9lFoitS41sHYtDhw%3d&risl=&pid=ImgRaw&r=0");
+       background-image: url("https://designtekgraphics.com/wp-content/uploads/2016/01/designtek-responsive-web-design.jpg");
     }
 }
 .course-div{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: 3.5rem;
-    
+    width: 90%;
+    margin: 3.5rem auto;
     .image-div{
         width: 40%;
         img{
@@ -118,7 +134,8 @@ padding: 0%;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: 3.5rem;
+    width: 90%;
+    margin: 3.5rem auto;
 
     .image-div{
         width: 40%;
