@@ -1,11 +1,7 @@
 const mongoose=require("mongoose");
 
 const userSchema=mongoose.Schema({
-    userName:{
-        type:String,
-        require:true,
-        unique:true
-    },
+    userName:String,
     email:{
         type:String,
         required:true,
@@ -19,5 +15,5 @@ const userSchema=mongoose.Schema({
     versionKey:false
 })
 
-const UserModel=mongoose.model("userDetailWhileRegister",userSchema);
+const UserModel=mongoose.model("registeredUsers",userSchema);
 module.exports={UserModel};

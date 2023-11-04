@@ -10,10 +10,15 @@ import node from "../previewVideos/node.js.mp4";
 import react from "../previewVideos/react.mp4";
 import redux from "../previewVideos/redux.mp4";
 import ts from "../previewVideos/typescript.mp4";
+import Cookies from 'js-cookie';
+import axios from "axios";
 
 const SingleCourseExt = ({id, title, category, course_includes, description, discounted_price, original_price, fullvideo, hours, image, instructor, language, learnings, rating, students, requirements}) => {
   let src=null;
  
+  const userId=Cookies.get("userId");
+  console.log(userId);
+
   const categoryToSrc = {
     "React": react,
     "Node.js": node,
@@ -26,6 +31,23 @@ const SingleCourseExt = ({id, title, category, course_includes, description, dis
   };
   if (category && categoryToSrc.hasOwnProperty(category)) {
     src = categoryToSrc[category];
+  }
+
+  const handleAddToCart=()=>{
+    const cartData={
+      productId:id,
+      userId:userId,
+      image:image,
+      title:title,
+      instructor:instructor,
+      rating:rating,
+      fullvideo:fullvideo,
+      original_price:original_price,
+      discounted_price:discounted_price,
+      hours:hours
+
+    }
+    axios.post("http://localhost:8080/courses/addtocart",cartData)
   }
   
   return (
@@ -44,7 +66,7 @@ const SingleCourseExt = ({id, title, category, course_includes, description, dis
           <Box m={"20px 0"} w={["85%","95%"]} className="description">  <p>{description}</p></Box>
         
     
-          <div  key={Math.random()+id}>
+          <div  key={id}>
             <Box className="box1" >
            
               <Heading textTransform={"capitalize"} mb={"20px"} color={"rgb(0,86,210)"}>What you'll learn</Heading>
@@ -117,7 +139,7 @@ const SingleCourseExt = ({id, title, category, course_includes, description, dis
             </div>
            
             <div className="price_adjustment"><h2>₹{discounted_price}</h2> <h3 className="strike_price">₹{original_price}</h3></div>
-            <Button className="extra_big_dark_button">Add to cart</Button>
+            <Button className="extra_big_dark_button" onClick={handleAddToCart}>Add to cart</Button>
           </div>
         </div>
       </div>
