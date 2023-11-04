@@ -13,6 +13,10 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from "axios";
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
+import {useNavigate} from "react-router-dom";
+import Cookies from 'js-cookie';
 
 function Signup() {
   const defaultTheme = createTheme();
@@ -22,6 +26,12 @@ function Signup() {
   const [lastName, setLastName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [alertMessage, setAlertMessage] = React.useState('');
+  const [alertSeverity, setAlertSeverity] = React.useState('success');
+  const [showAlert, setShowAlert] = React.useState(false); 
+    const nav=useNavigate();
+
+  // const isAuth=Cookies.get("token");
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -37,13 +47,37 @@ function Signup() {
         email:email,
         password:password
     }
-    axios.post("http://localhost:8080/users/register",newData)
-    .then((res)=>console.log(res))
-    .catch((err)=>console.log(err))
+    axios.post("http://localhost:8080/users/register", newData)
+    .then((res) => {
+      if (res.data.message === "Registered Successfully") {
+        setAlertSeverity('success');
+        setAlertMessage('Registered Successfully');
+      } 
+      else {
+        setAlertSeverity('error');
+        setAlertMessage(res.data.message);
+      }
+      setShowAlert(true);
+    })
+    .catch((err) => console.log(err));
   };
+  
+  React.useEffect(() => {
+    if (showAlert) {
+      const timer = setTimeout(() => {
+        setShowAlert(false);
+        if(alertSeverity==="success"){
+            nav("/login");
+        }
+      }, 2000)
+      return () => clearTimeout(timer);
+    }
+  }, [showAlert]);
 
   return (
+  
     <ThemeProvider theme={defaultTheme}>
+       
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -137,6 +171,22 @@ function Signup() {
           </Box>
         </Box>
       </Container>
+      {showAlert && (
+       <Stack
+       sx={{
+         width: ["50%", "30%"],
+         position: 'fixed',
+         top: ['10%'], 
+         left: '50%', 
+         transform: 'translate(-50%, -50%)',
+       }}
+       spacing={2}
+     >
+          <Alert variant="filled" severity={alertSeverity}>
+            {alertMessage}
+          </Alert>
+        </Stack>
+      )}
     </ThemeProvider>
   );
 }

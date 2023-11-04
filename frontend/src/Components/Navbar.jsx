@@ -5,14 +5,59 @@ import logo from "../Assets/logo_png.png";
 import "../Css/utils.css";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Cookies from "js-cookie";
+import axios from "axios";
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
 
 function Navbar() {
   const [menu, setmenu] = useState(false);
+
+  const [alertMessage, setAlertMessage] = React.useState('');
+  const [alertSeverity, setAlertSeverity] = React.useState('success');
+  const [showAlert, setShowAlert] = React.useState(false); 
 
   const handelMenu = () => {
     setmenu((prev) => !prev);
   };
   const navigate = useNavigate()
+ const isAuth=Cookies.get("token");
+
+ function handlLogout(){
+  axios.post("http://localhost:8080/users/logout",{
+    headers:{
+      Authorization:`Bearer ${isAuth}`
+    }
+  })
+  .then((res) => {
+    if (res.data.message === "Logged out Successfully") {
+      Cookies.remove("token");
+      Cookies.remove("user");
+      Cookies.remove("userId");
+      setAlertSeverity('success');
+      setAlertMessage('Logged out Successfully');
+    } 
+    else {
+      setAlertSeverity('error');
+      setAlertMessage(res.data.message);
+    }
+    setShowAlert(true);
+  })
+  .catch((err) => console.log(err));
+ }
+
+ React.useEffect(() => {
+  if (showAlert) {
+    const timer = setTimeout(() => {
+      setShowAlert(false);
+      if(alertSeverity==="success"){
+        navigate("/");
+      }
+    }, 2000)
+    return () => clearTimeout(timer);
+  }
+}, [showAlert]);
+
 
   return (
     <DIV>
@@ -43,13 +88,29 @@ function Navbar() {
           {/* <button className="light_button login" onClick={()=>{ navigate("/login")}}>LogIn</button> */}
           {/* <button className="dark_button" onClick={()=>{ navigate("/signup")}}>SignUp</button> */}
           <div className="shoping-cart" onClick={()=>{ navigate("/cart")}}><FontAwesomeIcon icon={faCartShopping} style={{fontSize : "20px"}}/><div className="inside-shoping-cart"><p>1</p></div></div>
-          <button className="light_button login" onClick={()=>{ navigate("/logout")}}>LogOut</button>
+          <button className="light_button login" onClick={handlLogout}>LogOut</button>
         </div>
         <div className={`menu ${menu ? "active" : ""}`} onClick={handelMenu}>
           <span className="bar"></span>
           <span className="bar"></span>
           <span className="bar"></span>
         </div>
+        {showAlert && (
+       <Stack
+       sx={{
+         width: ["50%", "30%"],
+         position: 'fixed',
+         top: ['10%'], 
+         left: '50%', 
+         transform: 'translate(-50%, -50%)',
+       }}
+       spacing={2}
+     >
+          <Alert variant="filled" severity={alertSeverity}>
+            {alertMessage}
+          </Alert>
+        </Stack>
+      )}
       </div>
     </DIV>
   );
