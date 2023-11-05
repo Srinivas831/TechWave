@@ -23,9 +23,13 @@ requirements:[""],
 
     // const postCourse = async(obj) => {
     //     try {
-    //         let res = await axios.post("https://techwave-test.onrender.com/courses/add",obj);
+    //         let res = await fetch("https://techwave-test.onrender.com/courses/add",{
+    //           method : "POST",
+    //           headers : {"Content-Type" : "application/json"},
+    //           body : JSON.stringify(obj)
+    //         });
     //     } catch (error) {
-            
+    //         console.log(error);
     //     }
     // }
     console.log(formDetail)
@@ -65,9 +69,10 @@ requirements:[""],
           setFormDetails({ ...formDetail, course_includes: updatedCourseIncludes });
         }
       };
+
   return (
-    <MainDiv>
-        <form>
+  <MainDiv>
+    <form>
             <input type="text" placeholder='Image' name='image' value={formDetail.image} onChange={handleChange}/>
             <input type="text" placeholder='Title' name='title' value={formDetail.title} onChange={handleChange}/>
             <input type="text" placeholder='Description' name='description' value={formDetail.description} onChange={handleChange}/>
@@ -81,89 +86,31 @@ requirements:[""],
             <input type="text" placeholder='Demovideo' name='demovideo' value={formDetail.demovideo} onChange={handleChange}/>
             <input type="text" placeholder='Language' name='language' value={formDetail.language} onChange={handleChange}/>
 
-            {formDetail.learnings.map((point, index) => (
-           <div key={index}>
-             <input
-        type="text"
-        name="learnings"
-        value={point}
-        onChange={(e) => handleChange(e, index, "learnings")}
-      />
-
-      <IoMdClose
-        onClick={() => removeInputField(index, "learnings")}
-      />
-    </div>
-  ))}
-  <button
-    type="button"
-    onClick={() => addInputField("learnings")}
-  >
-    Add More
-  </button>
-  <br />
-  {formDetail.course_includes.map((point, index) => (
-    <div key={index}>
-      <input
-        type="text"
-        name="course_includes"
-        value={point}
-        onChange={(e) => handleChange(e, index, "course_includes")}
-      />
-
-      <IoMdClose
-        onClick={() => removeInputField(index, "course_includes")}
-      />
-    </div>
-  ))}
-  <button
-    type="button"
-    onClick={() => addInputField("course_includes")}
-  >
-    Add More
-  </button>
-
-  {formDetail.requirements.map((point, index) => (
-    <div key={index}>
-      <input
-        type="text"
-        name="requirements"
-        value={point}
-        onChange={(e) => handleChange(e, index, "requirements")}
-      />
-
-      <IoMdClose
-        onClick={() => removeInputField(index, "requirements")}
-      />
-    </div>
-  ))}
-  <button
-    type="button"
-    onClick={() => addInputField("requirements")}
-  >
-    Add More
-  </button>
-        </form>
-    </MainDiv>
+      {formDetail.learnings.map((point, index) => (
+         <div key={index}>
+           <input type="text" name="learnings" value={point}
+             onChange={(e) => handleChange(e, index, "learnings")} />
+           <IoMdClose onClick={() => removeInputField(index, "learnings")} />
+        </div>))}
+        <button type="button" onClick={() => addInputField("learnings")}>Add More</button>
+      {formDetail.course_includes.map((point, index) => (
+        <div key={index}>
+           <input type="text" name="course_includes" value={point}
+             onChange={(e) => handleChange(e, index, "course_includes")} />
+           <IoMdClose onClick={() => removeInputField(index, "course_includes")} />
+        </div>))}
+        <button type="button" onClick={() => addInputField("course_includes")}>Add More</button>
+      {formDetail.requirements.map((point, index) => (
+        <div key={index}>
+           <input type="text" name="requirements" value={point}
+            onChange={(e) => handleChange(e, index, "requirements")} />
+          <IoMdClose onClick={() => removeInputField(index, "requirements")} />
+       </div>))}
+        <button type="button" onClick={() => addInputField("requirements")}>Add More</button>
+    </form>
+</MainDiv>
   )
 }
-// image
-// title
-// description
-// instructor
-// original_price
-// discounted_price
-// rating
-// category
-// students
-// hours
-// demovideo
-// language
-// learnings
-// course_includes
-// requirements
-
-
 const MainDiv = styled.div`
     form{
         border: 2px solid black;

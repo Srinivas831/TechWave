@@ -82,13 +82,16 @@ function Navbar() {
             <li className="nav-links">
               <Link to="/contact">Contact</Link>
             </li>
+            { isAuth ? <li className="nav-links">
+              <Link to="/mylearning">My Learning</Link>
+            </li> : null}
           </ul>
         </nav>
         <div className="login-signup">
-          {/* <button className="light_button login" onClick={()=>{ navigate("/login")}}>LogIn</button> */}
-          {/* <button className="dark_button" onClick={()=>{ navigate("/signup")}}>SignUp</button> */}
-          <div className="shoping-cart" onClick={()=>{ navigate("/cart")}}><FontAwesomeIcon icon={faCartShopping} style={{fontSize : "20px"}}/><div className="inside-shoping-cart"><p>1</p></div></div>
-          <button className="light_button login" onClick={handlLogout}>LogOut</button>
+          { !isAuth ? <button className="light_button login" onClick={()=>{ navigate("/login")}}>LogIn</button> : null}
+          { !isAuth ? <button className="dark_button" onClick={()=>{ navigate("/signup")}}>SignUp</button> : null}
+          {isAuth ? <div className="shoping-cart" onClick={()=>{ navigate("/cart")}}><FontAwesomeIcon icon={faCartShopping} style={{fontSize : "20px"}}/><div className="inside-shoping-cart"><p>1</p></div></div> : null}
+          {isAuth ? <button className="light_button login" onClick={handlLogout}>LogOut</button> : null}
         </div>
         <div className={`menu ${menu ? "active" : ""}`} onClick={handelMenu}>
           <span className="bar"></span>
