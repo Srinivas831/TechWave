@@ -7,12 +7,9 @@ import Signup from "../Pages/Signup";
 import Login from "../Pages/Login";
 import { Blog } from "../Pages/Blog";
 import Cart from "../Pages/Cart";
-
 import { Update } from "../Pages/Update";
 import { Admin } from "../Pages/Admin";
 import { AddCourses } from "../Pages/AddCourses";
-
-import Cart from "../Pages/Cart";
 import MyLearning from "../Pages/MyLearning";
 import { Courses } from "../Pages/Courses";
 
