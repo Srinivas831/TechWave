@@ -1,5 +1,6 @@
 const express=require("express");
 const { ProductModel } = require("../model/courses.model");
+const { AddToCartModel } = require("../model/addToCart.model");
 const productRouter=express.Router();
 
 productRouter.get("/getsinglecourse/:id",async(req,res)=>{
@@ -12,6 +13,7 @@ catch(err){
 res.status(400).send({"message":"error getting the course","course":"error getting the course"});
 }
 })
+
 
 productRouter.get("/", async (req, res) => {
     try {
@@ -59,5 +61,20 @@ productRouter.delete("/delete/:id", async (req, res) => {
       res.send(400).send({ msg: "Something Went Wrong" });
     }
 });
+productRouter.post("/addtocart",async(req,res)=>{
+    try{
+        let obj=req.body;
+        console.log(obj);
+        const findIfAlreadyPresnetInCart=await AddToCartModel.find();
+        if (findIfAlreadyPresnetInCart){
+            return res.status(200).send({"message":"Already in cart"});
+        }
+        const addedTocart=new AddToCartModel()
+        res.status(200).send("aa")
+    }
+    catch(err){
+        res.status(400).send({"message":"error adding to cart"});
+    }
+})
 
 module.exports={productRouter};

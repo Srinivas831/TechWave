@@ -6,22 +6,34 @@ import { Checkout } from "../Pages/Checkout";
 import Signup from "../Pages/Signup";
 import Login from "../Pages/Login";
 import { Blog } from "../Pages/Blog";
+
 import { Update } from "../Pages/Update";
 import { Admin } from "../Pages/Admin";
 import { AddCourses } from "../Pages/AddCourses";
+
+import Cart from "../Pages/Cart";
+import MyLearning from "../Pages/MyLearning";
+import { Courses } from "../Pages/Courses";
+
 
 function AllRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/courses" element={<Courses />}></Route>
       <Route path="/singlecourse" element={<SingleCoursePage />} />
       <Route path="/checkout" element={<Checkout />} />
       <Route path="/blogs" element={<Blog />} />
-      <Route path="/signup" element={<Signup />}/>
-      <Route path="/login" element={<Login />}/>
+
       <Route path="/update/:id" element={<Update />} />
       <Route path="/admin" element={<Admin />} />
       <Route path="/addCourses" element={<AddCourses />} />
+
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/cart" element={<Cart />} />
+      <Route path="/mylearning" element={<MyLearning />} />
+
     </Routes>
   );
 }
