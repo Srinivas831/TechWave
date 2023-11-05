@@ -8,12 +8,23 @@ import { RiVisaLine } from "react-icons/ri";
 import { GrPaypal } from "react-icons/gr";
 import {BsBank2} from "react-icons/bs"
 import {LiaWalletSolid} from "react-icons/lia"
+import { useSelector } from "react-redux";
 
 function Checkout() {
   const [credit,setCredit] = useState(false);
   const [paytm,setPaytm] = useState(false)
   const [netbanking,setNetbanking] = useState(false)
   const [mobileWallet,setMobileWallet] = useState(false);
+
+  const originalPrice=useSelector((store)=>store.originalPrice);
+  const discountPrice=useSelector((store)=>store.discountPrice);
+console.log(originalPrice);
+console.log(discountPrice,"sdssss");
+const discountPercentage = Math.round(((originalPrice - discountPrice) / originalPrice) * 100);
+
+const handleFinalCheckout=()=>{
+  
+}
 
 
   return (
@@ -193,14 +204,14 @@ function Checkout() {
         <div className="content-width">
           <h2>Summary</h2>
           <br />
-          <div className="price-div"><p>Original Price:</p><p>₹3,199</p></div>
-          <div className="price-div"><p>Discounts:</p><p>₹2,199</p></div>
+          <div className="price-div"><p>Original Price:</p><p>₹{originalPrice}</p></div>
+          <div className="price-div"><p>Discounts:</p><p>{discountPercentage}%</p></div>
           <hr /><br />
-          <div className="price-div"><h4>Total:</h4><h4>₹449</h4></div>
+          <div className="price-div"><h4>Total:</h4><h4>₹{discountPrice}</h4></div>
           <p id="termCondition">
             By completing your purchase you agree to these Terms of Service.
           </p>
-          <button className="checkout-btn">Complete Checkout</button>
+          <button className="checkout-btn" onClick={handleFinalCheckout}>Complete Checkout</button>
           <p className="guarantee-tag">30-Day Money-Back Guarantee</p>
         </div>
       </div>

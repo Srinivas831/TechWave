@@ -16,7 +16,6 @@ import axios from "axios";
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import {useNavigate} from "react-router-dom";
-import Cookies from 'js-cookie';
 
 function Signup() {
   const defaultTheme = createTheme();

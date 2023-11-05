@@ -12,8 +12,16 @@ import redux from "../previewVideos/redux.mp4";
 import ts from "../previewVideos/typescript.mp4";
 import Cookies from 'js-cookie';
 import axios from "axios";
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
+import * as React from 'react';
 
 const SingleCourseExt = ({id, title, category, course_includes, description, discounted_price, original_price, fullvideo, hours, image, instructor, language, learnings, rating, students, requirements}) => {
+ 
+  const [alertMessage, setAlertMessage] = React.useState('');
+  const [alertSeverity, setAlertSeverity] = React.useState('success');
+  const [showAlert, setShowAlert] = React.useState(false); 
+
   let src=null;
  
   const userId=Cookies.get("userId");
@@ -33,6 +41,11 @@ const SingleCourseExt = ({id, title, category, course_includes, description, dis
     src = categoryToSrc[category];
   }
 
+  function handleSubscription(){
+    setAlertSeverity('info');
+        setAlertMessage('Subscription will be updated soon');
+  }
+
   const handleAddToCart=()=>{
     const cartData={
       productId:id,
@@ -48,10 +61,47 @@ const SingleCourseExt = ({id, title, category, course_includes, description, dis
 
     }
     axios.post("http://localhost:8080/courses/addtocart",cartData)
+    .then((res) => {
+      if (res.data.message === "Already in cart") {
+        setAlertSeverity('warning');
+        setAlertMessage('Already in cart');
+      } else if (res.data.message === "Added to cart") {
+        setAlertSeverity('success');
+        setAlertMessage('Added to cart');
+      } else {
+        setAlertSeverity('error');
+        setAlertMessage(res.data.message);
+      }
+      setShowAlert(true);
+
+      // Clear the alert after 2 seconds
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 2000);
+    })
+    .catch((err) => console.log(err));
   }
-  
+
   return (
     <DIV>
+      {/* for alert message */}
+      {showAlert && (
+          <Stack
+          sx={{
+            width: ["50%", "20%"],
+            position: 'fixed',
+            top: ['10%'], 
+            left: '50%', 
+            transform: 'translate(-50%, -50%)',
+          }}
+          spacing={2}
+        >
+          <Alert variant="filled" severity={alertSeverity}>
+            {alertMessage}
+          </Alert>
+        </Stack>
+      )}
+
       <div className="Course_outerDiv">
         <div className="Course_innerDiv1">
           <h1 className="h1">{title}</h1>
@@ -133,7 +183,7 @@ const SingleCourseExt = ({id, title, category, course_includes, description, dis
             <div className="additional-content1">
             <h2 style={{lineHeight:"1.5"}}>Subscribe to TechWave's top courses</h2>
             <p style={{lineHeight:"1.5"}}>Get this course, plus 10,500+ of our top-rated courses, with Personal Plan. <a href="#">Learn more</a></p>
-            <Button className="extra_big_dark_button" style={{margin:"5px 0"}}>Start subscription</Button>
+            <Button className="extra_big_dark_button" style={{margin:"5px 0"}} onClick={handleSubscription}>Start subscription</Button>
             <p style={{lineHeight:"1.5"}}>Starting at ₹750 per month</p>
             <p style={{lineHeight:"1.5"}}>or</p>
             </div>
