@@ -6,6 +6,8 @@ import { Checkout } from './Pages/Checkout';
 import { Blog } from './Pages/Blog';
 import { Courses } from './Pages/Courses';
 import { Admin } from './Pages/Admin';
+import { AddCourses } from './Pages/AddCourses'
+
 
 function App() {
   return (
@@ -14,6 +16,7 @@ function App() {
       <AllRoutes/>
       <Footer/>
       {/* <Admin /> */}
+      {/* <AddCourses /> */}
       {/* <Courses /> */}
       {/* <Checkout /> */}
       {/* <Blog /> */}
