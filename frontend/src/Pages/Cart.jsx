@@ -1,3 +1,6 @@
+
+import axios from 'axios';
+import { setdiscountPrice, setoriginalPrice } from '../redux/checkoutprice/action';
 import React, { useState } from "react";
 import Styled from "styled-components";
 import "../Css/utils.css";
@@ -283,4 +286,9 @@ if (!data || data.length === 0) {
   return <div><h1>No items in your cart</h1></div>;
 }
 
- */
+
+
+   
+
+
+
