@@ -1,49 +1,89 @@
-export const CourseSidebar = () => {
-  return (
-    <div style={{ textAlign: "left" }}>
+import styled from "styled-components";
+import styles from "../Css/Courses.module.css";
+
+export const CourseSidebar = ({ handleFilters, handleSort }) => (
+  <div className={styles.sidebar_container}>
+    {/* Filter */}
+    <div className={styles.filter}>
       <h3>Filter By Category</h3>
       <div>
-        <input type="checkbox" value={"React"} />
+        <input
+          type="checkbox"
+          value={"React"}
+          onChange={() => handleFilters("React")}
+        />
         <label>React</label>
       </div>
       <div>
-        <input type="checkbox" value={"JavaScript"} />
+        <input
+          type="checkbox"
+          value={"JavaScript"}
+          onChange={() => handleFilters("JavaScript")}
+        />
         <label>JavaScript</label>
       </div>
       <div>
-        <input type="checkbox" value={"Angular"} />
+        <input
+          type="checkbox"
+          value={"Angular"}
+          onChange={() => handleFilters("Angular")}
+        />
         <label>Angular</label>
       </div>
       <div>
-        <input type="checkbox" value={"HTML/CSSs"} />
+        <input
+          type="checkbox"
+          value={"HTML/CSS"}
+          onChange={() => handleFilters("HTML/CSS")}
+        />
         <label>HTML/CSS</label>
       </div>
       <div>
-        <input type="checkbox" value={"Redux"} />
+        <input
+          type="checkbox"
+          value={"Redux"}
+          onChange={() => handleFilters("Redux")}
+        />
         <label>Redux</label>
       </div>
       <div>
-        <input type="checkbox" value={"TypeScript"} />
+        <input
+          type="checkbox"
+          value={"TypeScript"}
+          onChange={() => handleFilters("TypeScript")}
+        />
         <label>TypeScript</label>
       </div>
       <div>
-        <input type="checkbox" value={"ASP.NET Core"} />
+        <input
+          type="checkbox"
+          value={"ASP.NET Core"}
+          onChange={() => handleFilters("ASP.NET Core")}
+        />
         <label>ASP.NET Core</label>
       </div>
+    </div>
 
+    {/* sort */}
+    <div>
       <h3>Sort By Price</h3>
-      <div>
+      <div className={styles.sort} onChange={handleSort}>
         <div>
           <input type="radio" name="order" value={"asc"} />
           <label>Low to High</label>
-          <br />
+        </div>
+
+        <div>
           <input type="radio" name="order" value={"desc"} />
           <label>High to Low</label>
-          <br />
+        </div>
+
+        <div>
           <input type="radio" name="order" value={""} />
           <label>Reset</label>
         </div>
       </div>
     </div>
-  );
-};
+  </div>
+);
+

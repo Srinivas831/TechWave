@@ -1,0 +1,52 @@
+.course_page {
+  width: 90%;
+  margin: auto;
+}
+
+.searchbar {
+  margin: auto;
+  text-align: center;
+  background-color: lightgrey;
+
+  & input {
+    padding: 1.2em;
+    border-radius: 0.8em;
+    width: 50%;
+  }
+}
+
+.course_container {
+  display: flex;
+  gap: 2em;
+
+  & .sidebar {
+    flex: 2;
+    border-right: 1px solid gray;
+  }
+
+  & .course_list {
+    flex: 8;
+  }
+}
+
+.sidebar_container {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.filter {
+  & div {
+    padding: 0.2em;
+    display: flex;
+    gap: 0.5em;
+  }
+}
+
+.sort {
+  & div {
+    padding: 0.2em;
+    display: flex;
+    gap: 0.5em;
+  }
+}
