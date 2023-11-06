@@ -1,7 +1,7 @@
 
 import axios from 'axios';
 import { setdiscountPrice, setoriginalPrice } from '../redux/checkoutprice/action';
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Styled from "styled-components";
 import "../Css/utils.css";
 import { useNavigate } from "react-router-dom";
@@ -103,7 +103,7 @@ function Cart() {
         </div>
         <div className="main-child">
           <div className="child-left">
-            {data.map((ele) => {
+            {data?.map((ele) => {
               return (
                 <div className="cart-card" key={ele.id}>
                   <div className="cart-card-img">
@@ -137,8 +137,9 @@ function Cart() {
             <div>
               <h3>Total : </h3>
             </div>
-            <div>
-              <h1>$ {originalPrice}</h1>
+            <div className='price'>
+              <h3>$ {originalPrice}</h3>
+              <h1>$ {discountPrice}</h1>
             </div>
             <div>
               <button
@@ -212,7 +213,7 @@ const DIV = Styled.div`
         width : 100%;
     }
     .cart-card-price{
-        /* margin-left : 5px; */
+        margin-left : 5px;
         /* display: flex; */
         align-items : center;
     }
@@ -227,7 +228,28 @@ const DIV = Styled.div`
     .child-right{
         width: 30%;
     }
+    .price h3{
+      text-decoration: line-through;
+    }
 
+    @media (max-width:780px) {
+      .main-child{
+        flex-direction: column-reverse;
+        gap : 1.5rem;
+        justify-content: space-between;
+      }
+      .cart-card{
+        grid-template-columns : repeat(3,1fr);
+        gap : 1rem;
+      }
+      .child-left{
+        width : 100%;
+      }
+
+      .cart-card-price{
+        margin-left : 1rem;
+      }
+    }
 `;
 
 
