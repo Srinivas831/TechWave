@@ -4,16 +4,18 @@ const cors=require("cors");
 const { connection } = require("./db");
 const { userRouter } = require("./routes/users.routes");
 const { productRouter } = require("./routes/course.routes");
+const { coursRouter } = require("./routes/new.route");
 
 //internal middlewares..................
 app.use(cors());
 app.use(express.json());
 app.use("/users",userRouter);
 app.use("/courses",productRouter);
+// app.use("/cours",coursRouter);
 
-// app.get("/",(req,res)=>{
-//     res.send("server is working");
-// })
+app.get("/",(req,res)=>{
+    res.send("server is working");
+})
 
 app.listen(8080,async()=>{
     try{

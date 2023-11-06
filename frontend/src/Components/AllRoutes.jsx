@@ -18,10 +18,9 @@ function AllRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/courses" element={<Courses />}></Route>
       <Route path="/courses/:id" element={<SingleCoursePage />} />
       <Route path="/checkout" element={<Checkout />} />
-      <Route path="/blogs" element={<Blog />} />
-      <Route path="/courses" element={<Courses />}></Route>
       <Route path="/blogs" element={<Blog />} />
       <Route path="/update/:id" element={<Update />} />
       <Route path="/admin" element={<Admin />} />
@@ -30,7 +29,6 @@ function AllRoutes() {
       <Route path="/login" element={<Login />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/mylearning" element={<MyLearning />} />
-
     </Routes>
   );
 }

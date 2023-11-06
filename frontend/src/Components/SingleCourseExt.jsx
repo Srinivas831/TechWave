@@ -15,8 +15,9 @@ import axios from "axios";
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import * as React from 'react';
+import { useNavigate } from "react-router-dom";
 
-const SingleCourseExt = ({id, title, category, course_includes, description, discounted_price, original_price, fullvideo, hours, image, instructor, language, learnings, rating, students, requirements}) => {
+const SingleCourseExt = ({id,_id,title, category, course_includes, description, discounted_price, original_price, fullvideo, hours, image, instructor, language, learnings, rating, students, requirements}) => {
  
   const [alertMessage, setAlertMessage] = React.useState('');
   const [alertSeverity, setAlertSeverity] = React.useState('success');
@@ -45,10 +46,15 @@ const SingleCourseExt = ({id, title, category, course_includes, description, dis
     setAlertSeverity('info');
         setAlertMessage('Subscription will be updated soon');
   }
-
+const nav=useNavigate();
   const handleAddToCart=()=>{
+    if(!userId){
+      nav("/login");
+    }
+    else{
+
     const cartData={
-      productId:id,
+      productId:_id,
       userId:userId,
       image:image,
       title:title,
@@ -60,7 +66,7 @@ const SingleCourseExt = ({id, title, category, course_includes, description, dis
       hours:hours
 
     }
-    axios.post("http://localhost:8080/courses/addtocart",cartData)
+    axios.post("https://calm-gold-slug-toga.cyclic.app/courses/addtocart",cartData)
     .then((res) => {
       if (res.data.message === "Already in cart") {
         setAlertSeverity('warning');
@@ -80,6 +86,7 @@ const SingleCourseExt = ({id, title, category, course_includes, description, dis
       }, 2000);
     })
     .catch((err) => console.log(err));
+  }
   }
 
   return (

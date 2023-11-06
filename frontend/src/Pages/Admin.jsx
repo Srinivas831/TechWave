@@ -24,7 +24,7 @@ export function Admin() {
 
   const handleDelete = async(item) => {
     try {
-      let res = await fetch(`https://techwave-test.onrender.com/courses/delete/${item}`,{
+      let res = await fetch(`https://calm-gold-slug-toga.cyclic.app/courses/delete/${item}`,{
         method : "DELETE",
       })
     } catch (error) {

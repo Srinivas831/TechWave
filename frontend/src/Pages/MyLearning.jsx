@@ -1,148 +1,75 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Styled from "styled-components";
 import "../Css/utils.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import Cookies from "js-cookie";
 
 function MyLearning() {
-  const item = [
-    {
-      id: 1,
-      image:
-        "https://dev-to-uploads.s3.amazonaws.com/uploads/articles/dy3h07a5tygirigsiv3y.png",
-      title: "React JS- Complete Guide for Frontend Web Development",
-      description:
-        "Learn the fundamentals of React and build interactive user interfaces and Become an expert React JS Developer. Learn HTML, CSS, JavaScript, ES6, React JS and jQuery..",
-      instructor: "John Doe",
-      original_price: 2999,
-      discounted_price: 499,
-      rating: 4.8,
-      category: "React",
-      students: 25000,
-      hours: 20,
-      demovideo: "react-demo.mp4",
-      fullvideo:
-        "https://www.youtube.com/embed/u6gSSpfsoOQ?si=hUV1cc2nTWifMDrn",
-      language: "English",
-      learnings: [
-        "Understand the core concepts of React",
-        "Build reusable components for web applications",
-        "Manage state and props in React",
-        "Create a complete React application from scratch",
-        "Integrate with APIs and external data sources",
-      ],
-      course_includes: [
-        "20 hours on-demand video",
-        "10 coding exercises",
-        "30 articles",
-        "Access on mobile and TV",
-        "Certificate of completion",
-      ],
-      requirements: [
-        "Basic knowledge of HTML, CSS, and JavaScript",
-        "A code editor like Visual Studio Code",
-        "Access to the internet for resources and libraries",
-      ],
-    },
-    {
-      id: 2,
-      image: "https://i.ytimg.com/vi/oP571toXMqc/maxresdefault.jpg",
-      title: "Modern JavaScript Mastery",
-      description:
-        "Become a JavaScript expert and learn the latest features and best practices.",
-      instructor: "Jane Smith",
-      original_price: 179,
-      discounted_price: 39,
-      rating: 4.6,
-      category: "JavaScript",
-      students: 32000,
-      hours: 18,
-      demovideo: "js-demo.mp4",
-      fullvideo:
-        "https://www.youtube.com/embed/jS4aFq5-91M?si=LZCY-cAfgGFEfmxM",
-      language: "English",
-      learnings: [
-        "Master JavaScript's core concepts and features",
-        "ES6 and modern JavaScript syntax",
-        "Asynchronous programming with Promises and async/await",
-        "Working with DOM and handling events",
-        "Creating interactive web applications",
-      ],
-      course_includes: [
-        "18 hours on-demand video",
-        "15 coding exercises",
-        "25 articles",
-        "Access on mobile and TV",
-        "Certificate of completion",
-      ],
-      requirements: [
-        "Basic knowledge of HTML and CSS",
-        "A modern web browser",
-        "Access to a computer with an internet connection",
-      ],
-    },
-    {
-      id: 3,
-      image:
-        "https://www.venturelessons.com/wp-content/uploads/2020/03/angular-js-online-courses-scaled.jpg",
-      title: "Angular Web Development",
-      description: "Build modern web applications with Angular and TypeScript.",
-      instructor: "Maria Rodriguez",
-      original_price: 229,
-      discounted_price: 59,
-      rating: 4.7,
-      category: "Angular",
-      students: 18000,
-      hours: 24,
-      demovideo: "angular-demo.mp4",
-      fullvideo:
-        "https://www.youtube.com/embed/3qBXWUpoPHo?si=jaWO33YoH9mJ5IAj",
-      language: "English",
-      learnings: [
-        "Master Angular's components, services, and modules",
-        "Create reactive web applications with Angular",
-        "Routing and navigation in Angular",
-        "REST API integration and data retrieval",
-        "Deployment and testing of Angular apps",
-      ],
-      course_includes: [
-        "24 hours on-demand video",
-        "12 coding exercises",
-        "40 articles",
-        "Access on mobile and TV",
-        "Certificate of completion",
-      ],
-      requirements: [
-        "Basic knowledge of HTML, CSS, and JavaScript",
-        "A code editor like Visual Studio Code",
-        "Node.js and npm installed on your computer",
-      ],
-    },
-  ];
 
+const [item,setItem]=useState([]);
+const [idd,setProductIds]=useState([]);
+  const userId = Cookies.get("userId");
+  useEffect(()=>{
+axios.get(`https://calm-gold-slug-toga.cyclic.app/courses/getfrompurchased?userId=${userId}`)
+
+.then((res) => {
+  console.log("Response data:", res.data); // Add this line to check the response data
+  if (res.data && res.data.length > 0) {
+    const productIdArray = res.data[0]; // Access the first element of the response data
+    console.log("productIdArray:", productIdArray); // Add this line to check the productIdArray
+    setProductIds(productIdArray);
+
+    // Now productIdArray is an array of product IDs
+    // Use productIds to fetch course details for each product
+    Promise.all(
+      productIdArray.map((productId) =>
+        axios.get(`https://calm-gold-slug-toga.cyclic.app/courses/getpurchase?productId=${productId}`)
+      )
+    )
+      .then((responses) => {
+        // Combine the responses into a single array
+        console.log("resss",responses)
+        const courseDetails = responses.map((response) => response.data.product);
+        setItem(courseDetails);
+      })
+      .catch((err) => console.log("Error fetching course details", err));
+  } else {
+    console.log("No purchased courses found for this user.");
+  }
+})
+.catch((err) => console.log("lear",err));
+  },[])
+  if(item){
+    console.log("aaa",item);
+  }
   return (
     <DIV>
-      <div className="parent-mylearning">
-        <div className="parent-mylearning-top-heading">
-          <h1>My Learning</h1>
-        </div>
-        <div className="mylearning-course">
-          {item.map((ele) => {
-            return <Link to={`/mylearning/${ele.id}`} key={ele.id} className="link">
-            <div className="mylearning-course-card">
+    <div className="parent-mylearning">
+      <div className="parent-mylearning-top-heading">
+        <h1>My Learning</h1>
+      </div>
+      <div className="mylearning-course">
+        {item?.map((ele) => {
+          const courseDetails = ele[0]; // Access the course details
+          return (
+            <Link to={`/mylearning/${courseDetails.id}`} key={courseDetails.id} className="link">
+              <div className="mylearning-course-card">
                 <div className="mylearning-course-card-img">
-                    <img src={ele.image} alt="img" />
+                <iframe width="560" height="315" src={courseDetails.fullvideo} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
                 <div className="mylearning-course-card-title">
-                    <h2>{ele.title}</h2>
-                    <p>{ele.instructor}</p>
-                    <h6>Reating : {ele.rating}</h6>
+                  <h2>{courseDetails.title}</h2>
+                  <p>{courseDetails.instructor}</p>
+                  <h6>Rating: {courseDetails.rating}</h6>
                 </div>
-            </div>
+              </div>
             </Link>
-          })}
-        </div>
+          );
+        })}
       </div>
-    </DIV>
+    </div>
+  </DIV>
   );
 }
 
@@ -191,4 +118,5 @@ const DIV = Styled.div`
     .mylearning-course-card-title p , .mylearning-course-card-title h6{
         color : var(--dark-color);
     }
-`;
+// `;
+

@@ -24,7 +24,7 @@ function Navbar() {
  const isAuth=Cookies.get("token");
 
  function handlLogout(){
-  axios.post("http://localhost:8080/users/logout",{
+  axios.post("https://calm-gold-slug-toga.cyclic.app/users/logout",{
     headers:{
       Authorization:`Bearer ${isAuth}`
     }
