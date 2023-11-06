@@ -51,7 +51,7 @@ export default function Login() {
         email,
         password
     }
-    axios.post("https://calm-gold-slug-toga.cyclic.app/users/login",data)
+    axios.post("http://localhost:8080/users/login",data)
     .then((res) => {
       console.log(res)
       if (res.data.message === "Logged Successfully") {

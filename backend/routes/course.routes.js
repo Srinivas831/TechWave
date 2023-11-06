@@ -169,35 +169,61 @@ productRouter.delete("/deletefromcart",async(req,res)=>{
         res.status(200).send({"message":"removed from cart"});
     }
     catch(err){
-        res.status(400).send({"message":"cerror deleting from cart"});
+        res.status(400).send({"message":"error deleting from cart"});
     }
 })
 
 productRouter.post("/addtopurchased",async(req,res)=>{
-    const {userId,productId}=req.body;
-    try{
-        // const purchased=new PurchasedModel({userId,productId});
-        // await purchased.save();
-        // res.status(200).send({"message":"purchased successfully"});
 
-        // Search for an existing document with the same userId
-        const existingPurchase = await PurchasedModel.findOne({ userId });
 
-        if (existingPurchase) {
-            // If a document already exists for this user, add the new productId to the array
-            existingPurchase.productId.push(productId);
-            await existingPurchase.save();
-            res.status(200).send({ message: "Product added to purchased successfully" });
-        } else {
-            // If no document exists for this user, create a new one
-            const purchased = new PurchasedModel({ userId, productId:[productId] });
-            await purchased.save();
-            res.status(200).send({ message: "Product added to purchased successfully" });
-        }
+    const { userId, productId } = req.body;
+
+    try {
+      // Find or create a document for the user
+      let purchasedCourse = await PurchasedModel.findOne({ userId });
+  
+      if (!purchasedCourse) {
+        purchasedCourse = new PurchasedModel({
+          userId,
+          productId,
+        });
+      } else {
+        purchasedCourse.productId = [...new Set([...purchasedCourse.productId, ...productId])];
+      }
+  
+      await purchasedCourse.save();
+  
+      // Fetch course details for the purchased productIds
+      const courses = await ProductModel.find({ _id: { $in: purchasedCourse.productId } });
+  
+      res.status(200).json({ message: 'Purchased courses stored successfully.', courses });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: error.message });
     }
-    catch(err){
-        res.status(400).send({"message":"error adding to purchased"})
-    }
+  
+
+
+
+    // try{
+
+        // const existingPurchase = await PurchasedModel.findOne({ userId });
+
+        // if (existingPurchase) {
+        //     // If a document already exists for this user, add the new productId to the array
+        //     existingPurchase.productId.push([...existingPurchase.productId,...productId]);
+        //     await existingPurchase.save();
+        //     res.status(200).send({ message: "Product added to purchased successfully",});
+        // } else {
+        //     // If no document exists for this user, create a new one
+        //     const purchased = new PurchasedModel({ userId, productId:[...productId] });
+        //     await purchased.save();
+        //     res.status(200).send({ message: "Product added to purchased successfully" });
+        // }
+    // }
+    // catch(err){
+    //     res.status(400).send({"message":"error adding to purchased"})
+    // }
 })
 
 

@@ -16,7 +16,7 @@ import axios from "axios";
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import {useNavigate} from "react-router-dom";
-
+// https://calm-gold-slug-toga.cyclic.app/
 function Signup() {
   const defaultTheme = createTheme();
 
@@ -46,7 +46,7 @@ function Signup() {
         email:email,
         password:password
     }
-    axios.post("https://calm-gold-slug-toga.cyclic.app/users/register", newData)
+    axios.post("http://localhost:8080/users/register", newData)
     .then((res) => {
       if (res.data.message === "Registered Successfully") {
         setAlertSeverity('success');

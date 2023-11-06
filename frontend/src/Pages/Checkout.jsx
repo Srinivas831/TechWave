@@ -8,10 +8,12 @@ import { RiVisaLine } from "react-icons/ri";
 import { GrPaypal } from "react-icons/gr";
 import {BsBank2} from "react-icons/bs"
 import {LiaWalletSolid} from "react-icons/lia"
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import Cookies from "js-cookie";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { addMyLearning } from "../redux/mylearning/action";
 
 function Checkout() {
   const [credit,setCredit] = useState(false);
@@ -19,45 +21,28 @@ function Checkout() {
   const [netbanking,setNetbanking] = useState(false)
   const [mobileWallet,setMobileWallet] = useState(false);
 
-  const originalPrice=useSelector((store)=>store.originalPrice);
-  const discountPrice=useSelector((store)=>store.discountPrice);
-  const productIds = useSelector((store) => store.productId);
+  const originalPrice=useSelector((store)=>store.cartReducer.originalPrice);
+  const discountPrice=useSelector((store)=>store.cartReducer.discountPrice);
+  const productIds = useSelector((store) => store.cartReducer.productId);
   const userId = Cookies.get("userId");
-console.log(originalPrice);
-console.log(discountPrice,"sdssss");
-const discountPercentage = Math.round(((originalPrice - discountPrice) / originalPrice) * 100);
-if( productIds){
-  console.log(productIds);
-}
-useEffect(()=>{
+  const nav=useNavigate();
+  const dispatch=useDispatch();
 
-},[productIds])
-const handleFinalCheckout=async()=>{
+const discountPercentage = Math.round(((originalPrice - discountPrice) / originalPrice) * 100);
+
+console.log(productIds,"idss");
+
+const handleFinalCheckout=()=>{
   let checkoutData={
     userId,
     productId:productIds
   }
-  // axios.post("http://localhost:8080/courses/addtopurchased",checkoutData)
-
-  // .then((res)=>console.log("purchased",res))
-  // .catch((err)=>console.log("purchased",err))
-
-
-  try {
-    // Remove each product from the cart collection
-    for (const productId of productIds) {
-      await axios.delete(`https://calm-gold-slug-toga.cyclic.app/courses/deletefromcart?userId=${userId}&productId=${productId}`);
-      console.log(`Product with ID ${productId} removed from cart`);
-    }
-
-    // Now, add the purchased products to the "purchased" collection
-    await axios.post("https://calm-gold-slug-toga.cyclic.app/courses/addtopurchased", checkoutData)
-    .then((res)=>console.log("purchased",res))
-  .catch((err)=>console.log("purchased",err))
-  } catch (err) {
-    console.log("Error during checkout:", err);
-  }
+  dispatch(addMyLearning(checkoutData))
 }
+
+useEffect(()=>{
+handleFinalCheckout()
+},[productIds])
 
 
   return (
@@ -218,19 +203,6 @@ const handleFinalCheckout=async()=>{
                   </div>
                 </> : ""}
         </div>
-        {/* <div className="order-detail">
-          <h2>Order Details</h2>
-           <div className="show-order-inline">
-              <div className="div-left">
-                <img src="https://www.pixelstalk.net/wp-content/uploads/2016/07/Wallpapers-pexels-photo.jpg" width={"30px"} height={"30px"} alt="" />
-                <h4>The Complete 2023 Web Development Bootcamp</h4>
-              </div>
-            <div className="price">
-              <b>₹449</b>
-              <p className="line-throw">₹3,199</p>
-            </div>
-           </div>
-        </div> */}
         </div>
         </div>
       <div className="rightside">
@@ -246,11 +218,7 @@ const handleFinalCheckout=async()=>{
           </p>
           <button className="checkout-btn" onClick={handleFinalCheckout}>Complete Checkout</button>
           <p className="guarantee-tag">30-Day Money-Back Guarantee</p>
-          {/* {
-           productIds && productIds.map((e)=>{
-              return <p>{e}</p>
-            })
-          } */}
+
         </div>
       </div>
     </MainDiv>

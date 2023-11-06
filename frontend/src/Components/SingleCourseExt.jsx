@@ -68,7 +68,7 @@ const nav=useNavigate();
       hours:hours
 
     }
-    axios.post("https://calm-gold-slug-toga.cyclic.app/courses/addtocart",cartData)
+    axios.post("http://localhost:8080/courses/addtocart",cartData)
     .then((res) => {
       if (res.data.message === "Already in cart") {
         setAlertSeverity('warning');
@@ -190,7 +190,7 @@ const nav=useNavigate();
           </div>
           <div className="additional-content">
             <div className="additional-content1">
-            {/* <h2 style={{lineHeight:"1.5"}}>Subscribe to TechWave's top courses</h2> */}
+            <h2 style={{lineHeight:"1.5"}}>Subscribe to TechWave's top courses</h2>
             <p style={{lineHeight:"1.5"}}>Get this course, plus 10,500+ of our top-rated courses, with Personal Plan. <a href="#">Learn more</a></p>
             <Button className="extra_big_dark_button" style={{margin:"5px 0"}} onClick={handleSubscription}>Start subscription</Button>
             <p style={{lineHeight:"1.5"}}>Starting at ₹750 per month</p>
@@ -228,7 +228,7 @@ font-family: var(--primary-font-family);
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
     padding: 10px;
     width: 35%;
-    height: 90vh;
+    height: 95vh;
     /* border: 2px solid black; */
     margin: auto;
     margin-top: 0px;
