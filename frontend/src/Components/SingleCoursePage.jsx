@@ -10,12 +10,15 @@ const SingleCoursePage = () => {
 
     const fetchData = async () => {
         try {
+
             setLoading(true);
             const res = await axios.get(`https://calm-gold-slug-toga.cyclic.app/courses/${id}`)
            .then((res)=>{
             setLoading(false)
             setData(res.data.course)
         })
+
+
         }
         catch (err) {
             console.log(err);

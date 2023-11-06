@@ -15,9 +15,11 @@ import axios from "axios";
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import * as React from 'react';
-import { useNavigate } from "react-router-dom";
 
+import { useNavigate } from "react-router-dom";
+import "../Css/utils.css";
 const SingleCourseExt = ({id,_id,title, category, course_includes, description, discounted_price, original_price, fullvideo, hours, image, instructor, language, learnings, rating, students, requirements}) => {
+
  
   const [alertMessage, setAlertMessage] = React.useState('');
   const [alertSeverity, setAlertSeverity] = React.useState('success');
@@ -207,6 +209,7 @@ const nav=useNavigate();
 export default SingleCourseExt;
 
 const DIV = styled.div`
+font-family: var(--primary-font-family);
 
   .Course_outerDiv {
     width: 90%;

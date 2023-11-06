@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Styled from "styled-components";
 import logo from "../Assets/logo_png.png";
@@ -7,21 +7,30 @@ import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Cookies from "js-cookie";
 import axios from "axios";
-import Alert from '@mui/material/Alert';
-import Stack from '@mui/material/Stack';
+import Alert from "@mui/material/Alert";
+import Stack from "@mui/material/Stack";
 
 function Navbar() {
   const [menu, setmenu] = useState(false);
 
-  const [alertMessage, setAlertMessage] = React.useState('');
-  const [alertSeverity, setAlertSeverity] = React.useState('success');
-  const [showAlert, setShowAlert] = React.useState(false); 
+  const [alertMessage, setAlertMessage] = React.useState("");
+  const [alertSeverity, setAlertSeverity] = React.useState("success");
+  const [showAlert, setShowAlert] = React.useState(false);
+  const [data, setData] = useState([]);
+  // const { originalPrice } = useSelector((store) => {
+  //   return {
+  //     originalPrice: store.cartReducer.originalPrice,
+  //   };
+  // },shallowEqual);
 
   const handelMenu = () => {
     setmenu((prev) => !prev);
   };
-  const navigate = useNavigate()
- const isAuth=Cookies.get("token");
+  const navigate = useNavigate();
+  const isAuth = Cookies.get("token");
+  const isUser = Cookies.get("userId");
+  let userId = isUser;
+  
 
  function handlLogout(){
   axios.post("https://calm-gold-slug-toga.cyclic.app/users/logout",{
@@ -40,24 +49,30 @@ function Navbar() {
     else {
       setAlertSeverity('error');
       setAlertMessage(res.data.message);
+
+  React.useEffect(() => {
+    if (showAlert) {
+      const timer = setTimeout(() => {
+        setShowAlert(false);
+        if (alertSeverity === "success") {
+          navigate("/");
+        }
+      }, 2000);
+      return () => clearTimeout(timer);
+
     }
-    setShowAlert(true);
-  })
-  .catch((err) => console.log(err));
- }
+    axios
+      .get(`http://localhost:8080/courses/getfromcart?userId=${userId}`)
+      .then((res) => {
+        console.log(res.data);
+        setData(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, [showAlert]);
 
- React.useEffect(() => {
-  if (showAlert) {
-    const timer = setTimeout(() => {
-      setShowAlert(false);
-      if(alertSeverity==="success"){
-        navigate("/");
-      }
-    }, 2000)
-    return () => clearTimeout(timer);
-  }
-}, [showAlert]);
-
+  console.log(data);
 
   return (
     <DIV>
@@ -82,16 +97,55 @@ function Navbar() {
             <li className="nav-links">
               <Link to="/contact">Contact</Link>
             </li>
-            { isAuth ? <li className="nav-links">
-              <Link to="/mylearning">My Learning</Link>
-            </li> : null}
+            {isAuth ? (
+              <li className="nav-links">
+                <Link to="/mylearning">My Learning</Link>
+              </li>
+            ) : null}
           </ul>
         </nav>
         <div className="login-signup">
-          { !isAuth ? <button className="light_button login" onClick={()=>{ navigate("/login")}}>LogIn</button> : null}
-          { !isAuth ? <button className="dark_button" onClick={()=>{ navigate("/signup")}}>SignUp</button> : null}
-          {isAuth ? <div className="shoping-cart" onClick={()=>{ navigate("/cart")}}><FontAwesomeIcon icon={faCartShopping} style={{fontSize : "20px"}}/><div className="inside-shoping-cart"><p>1</p></div></div> : null}
-          {isAuth ? <button className="light_button login" onClick={handlLogout}>LogOut</button> : null}
+          {!isAuth ? (
+            <button
+              className="light_button login"
+              onClick={() => {
+                navigate("/login");
+              }}
+            >
+              LogIn
+            </button>
+          ) : null}
+          {!isAuth ? (
+            <button
+              className="dark_button"
+              onClick={() => {
+                navigate("/signup");
+              }}
+            >
+              SignUp
+            </button>
+          ) : null}
+          {isAuth ? (
+            <div
+              className="shoping-cart"
+              onClick={() => {
+                navigate("/cart");
+              }}
+            >
+              <FontAwesomeIcon
+                icon={faCartShopping}
+                style={{ fontSize: "20px" }}
+              />
+              <div className="inside-shoping-cart">
+                <p>{data ? data.length.toString() : 0}</p>
+              </div>
+            </div>
+          ) : null}
+          {isAuth ? (
+            <button className="light_button login" onClick={handlLogout}>
+              LogOut
+            </button>
+          ) : null}
         </div>
         <div className={`menu ${menu ? "active" : ""}`} onClick={handelMenu}>
           <span className="bar"></span>
@@ -99,21 +153,21 @@ function Navbar() {
           <span className="bar"></span>
         </div>
         {showAlert && (
-       <Stack
-       sx={{
-         width: ["50%", "30%"],
-         position: 'fixed',
-         top: ['10%'], 
-         left: '50%', 
-         transform: 'translate(-50%, -50%)',
-       }}
-       spacing={2}
-     >
-          <Alert variant="filled" severity={alertSeverity}>
-            {alertMessage}
-          </Alert>
-        </Stack>
-      )}
+          <Stack
+            sx={{
+              width: ["50%", "30%"],
+              position: "fixed",
+              top: ["10%"],
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+            }}
+            spacing={2}
+          >
+            <Alert variant="filled" severity={alertSeverity}>
+              {alertMessage}
+            </Alert>
+          </Stack>
+        )}
       </div>
     </DIV>
   );

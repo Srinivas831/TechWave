@@ -5,13 +5,21 @@
 
 .searchbar {
   margin: auto;
+  margin-bottom: 2em;
   text-align: center;
-  background-color: lightgrey;
 
   & input {
-    padding: 1.2em;
+    padding: 0.6em;
     border-radius: 0.8em;
     width: 50%;
+
+    border: 1px solid #0056d2;
+  }
+
+  @media screen and (max-width: 450px) {
+    & input {
+        width: 100%;
+      }
   }
 }
 
@@ -22,10 +30,22 @@
   & .sidebar {
     flex: 2;
     border-right: 1px solid gray;
+
+    @media screen and (max-width: 968px) {
+      border: none;
+    }
   }
 
   & .course_list {
     flex: 8;
+  }
+
+  @media screen and (min-width: 751px) and (max-width: 968px) {
+    flex-direction: column;
+  }
+
+  @media screen and (max-width: 750px) {
+    flex-direction: column;
   }
 }
 
@@ -33,6 +53,10 @@
   display: flex;
   flex-direction: column;
   gap: 2em;
+
+  @media screen and (max-width: 968px) {
+    flex-direction: row;
+  }
 }
 
 .filter {
@@ -49,4 +73,91 @@
     display: flex;
     gap: 0.5em;
   }
+}
+
+.slider {
+  & img {
+    width: 100%;
+  }
+
+  .disc {
+    font-size: medium;
+  }
+
+  & h4 {
+    text-decoration: line-through;
+    color: gray;
+    font-weight: 400;
+  }
+}
+
+.pagelist {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  gap: 1em;
+  margin-bottom: 2em;
+
+  & button {
+    all: unset;
+    padding: 0.8em;
+    cursor: pointer;
+  }
+
+  @media screen and (max-width: 750px) {
+    width: 70%;
+    margin: auto;
+    margin-bottom: 2em;
+    flex-wrap: wrap;
+
+    
+  & button {
+    padding: 0.4em;
+  }
+  }
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 10px solid #fff;
+  border-radius: 50%;
+  position: relative;
+  transform: rotate(45deg);
+  box-sizing: border-box;
+}
+.loader::before {
+  content: "";
+  position: absolute;
+  box-sizing: border-box;
+  inset: -10px;
+  border-radius: 50%;
+  border: 10px solid #0056d2;
+  animation: prixClipFix 2s infinite linear;
+}
+
+@keyframes prixClipFix {
+  0% {
+    clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0);
+  }
+  25% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0);
+  }
+  50% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
+  }
+  75% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%);
+  }
+  100% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
+  }
+}
+
+
+.loaderdiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
 }
