@@ -21,8 +21,7 @@ function AllRoutes() {
       <Route path="/courses/:id" element={<SingleCoursePage />} />
       <Route path="/checkout" element={<Checkout />} />
       <Route path="/blogs" element={<Blog />} />
-      <Route path="/courses" element={<Courses />}></Route>
-      <Route path="/blogs" element={<Blog />} />
+      <Route path="/courses" element={<Courses />}/>
       <Route path="/update/:id" element={<Update />} />
       <Route path="/admin" element={<Admin />} />
       <Route path="/addCourses" element={<AddCourses />} />

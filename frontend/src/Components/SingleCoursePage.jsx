@@ -4,12 +4,12 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
 const SingleCoursePage = () => {
-    const { productId } = useParams();
+    const { id } = useParams();
     const [data, setData] = useState({});
 
     const fetchData = async () => {
         try {
-            const res = await axios.get(`http://localhost:8080/courses/${productId}`)
+            const res = await axios.get(`http://localhost:8080/courses/${id}`)
            .then((res)=>setData(res.data.course))
         }
         catch (err) {
