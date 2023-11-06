@@ -22,7 +22,7 @@ function Cart() {
   console.log(userId);
   useEffect(() => {
     axios
-      .get(`https://calm-gold-slug-toga.cyclic.app/courses/getfromcart?userId=${userId}`)
+      .get(`http://localhost:8080/courses/getfromcart?userId=${userId}`)
       .then((res) => {
         console.log(res.data);
         setLoading(false);
@@ -51,10 +51,9 @@ function Cart() {
   const handlRemoveFromCart = (userId, productId) => {
     axios
       .delete(
-        `https://calm-gold-slug-toga.cyclic.app/courses/deletefromcart?userId=${userId}&productId=${productId}`
+        `http://localhost:8080/courses/deletefromcart?userId=${userId}&productId=${productId}`
       )
       .then((res) => {
-        // alert("removed");
         setOriginalPrice(
           originalPrice -
             data.find((item) => item.productId === productId).original_price
@@ -67,7 +66,7 @@ function Cart() {
           prevData.filter((item) => item.productId != productId)
         );
       })
-      .catch((err) => alert("error removing from cart"));
+      .catch((err) => console.log("error removing from cart",err));
   };
 
   const handleCheckout = () => {

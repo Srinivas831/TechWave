@@ -1,48 +1,26 @@
 import React, { useEffect, useState } from "react";
 import Styled from "styled-components";
 import "../Css/utils.css";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import { Link} from "react-router-dom";
 import Cookies from "js-cookie";
+import { useSelector } from "react-redux";
 
 function MyLearning() {
-
 const [item,setItem]=useState([]);
 const [idd,setProductIds]=useState([]);
   const userId = Cookies.get("userId");
-  useEffect(()=>{
-axios.get(`https://calm-gold-slug-toga.cyclic.app/courses/getfrompurchased?userId=${userId}`)
 
-.then((res) => {
-  console.log("Response data:", res.data); // Add this line to check the response data
-  if (res.data && res.data.length > 0) {
-    const productIdArray = res.data[0]; // Access the first element of the response data
-    console.log("productIdArray:", productIdArray); // Add this line to check the productIdArray
-    setProductIds(productIdArray);
+  const {courseArray,loading,isError}=useSelector((store)=>{
+    return {
+      courseArray: store.reducer.courseArray,
+      loading: store.reducer.loading,
+      isError: store.reducer.isError
+    }
+  })
+  
+  console.log("q",courseArray,loading);
 
-    // Now productIdArray is an array of product IDs
-    // Use productIds to fetch course details for each product
-    Promise.all(
-      productIdArray.map((productId) =>
-        axios.get(`https://calm-gold-slug-toga.cyclic.app/courses/getpurchase?productId=${productId}`)
-      )
-    )
-      .then((responses) => {
-        // Combine the responses into a single array
-        console.log("resss",responses)
-        const courseDetails = responses.map((response) => response.data.product);
-        setItem(courseDetails);
-      })
-      .catch((err) => console.log("Error fetching course details", err));
-  } else {
-    console.log("No purchased courses found for this user.");
-  }
-})
-.catch((err) => console.log("lear",err));
-  },[])
-  if(item){
-    console.log("aaa",item);
-  }
+
   return (
     <DIV>
     <div className="parent-mylearning">
@@ -50,18 +28,18 @@ axios.get(`https://calm-gold-slug-toga.cyclic.app/courses/getfrompurchased?userI
         <h1>My Learning</h1>
       </div>
       <div className="mylearning-course">
-        {item?.map((ele) => {
-          const courseDetails = ele[0]; // Access the course details
+        {courseArray?.map((ele) => {
+   
           return (
-            <Link to={`/mylearning/${courseDetails.id}`} key={courseDetails.id} className="link">
+            <Link to={`/mylearning/${ele._id}`} key={ele.id} className="link">
               <div className="mylearning-course-card">
                 <div className="mylearning-course-card-img">
-                <iframe width="560" height="315" src={courseDetails.fullvideo} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <iframe width="400" height="315" src={ele.fullvideo} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
                 <div className="mylearning-course-card-title">
-                  <h2>{courseDetails.title}</h2>
-                  <p>{courseDetails.instructor}</p>
-                  <h6>Rating: {courseDetails.rating}</h6>
+                  <h2>{ele.title}</h2>
+                  <p>{ele.instructor}</p>
+                  <h6>Rating: {ele.rating}</h6>
                 </div>
               </div>
             </Link>

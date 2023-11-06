@@ -12,7 +12,7 @@ const SingleCoursePage = () => {
         try {
 
             setLoading(true);
-            const res = await axios.get(`https://calm-gold-slug-toga.cyclic.app/courses/${id}`)
+            const res = await axios.get(`http://localhost:8080/courses/${id}`)
            .then((res)=>{
             setLoading(false)
             setData(res.data.course)
