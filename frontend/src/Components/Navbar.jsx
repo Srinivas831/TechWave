@@ -31,28 +31,24 @@ function Navbar() {
   const isUser = Cookies.get("userId");
   let userId = isUser;
   
-  function handlLogout() {
-    axios
-      .post("http://localhost:8080/users/logout", {
-        headers: {
-          Authorization: `Bearer ${isAuth}`,
-        },
-      })
-      .then((res) => {
-        if (res.data.message === "Logged out Successfully") {
-          Cookies.remove("token");
-          Cookies.remove("user");
-          Cookies.remove("userId");
-          setAlertSeverity("success");
-          setAlertMessage("Logged out Successfully");
-        } else {
-          setAlertSeverity("error");
-          setAlertMessage(res.data.message);
-        }
-        setShowAlert(true);
-      })
-      .catch((err) => console.log(err));
-  }
+
+ function handlLogout(){
+  axios.post("https://calm-gold-slug-toga.cyclic.app/users/logout",{
+    headers:{
+      Authorization:`Bearer ${isAuth}`
+    }
+  })
+  .then((res) => {
+    if (res.data.message === "Logged out Successfully") {
+      Cookies.remove("token");
+      Cookies.remove("user");
+      Cookies.remove("userId");
+      setAlertSeverity('success');
+      setAlertMessage('Logged out Successfully');
+    } 
+    else {
+      setAlertSeverity('error');
+      setAlertMessage(res.data.message);
 
   React.useEffect(() => {
     if (showAlert) {
@@ -63,6 +59,7 @@ function Navbar() {
         }
       }, 2000);
       return () => clearTimeout(timer);
+
     }
     axios
       .get(`http://localhost:8080/courses/getfromcart?userId=${userId}`)

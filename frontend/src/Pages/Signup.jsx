@@ -46,7 +46,7 @@ function Signup() {
         email:email,
         password:password
     }
-    axios.post("http://localhost:8080/users/register", newData)
+    axios.post("https://calm-gold-slug-toga.cyclic.app/users/register", newData)
     .then((res) => {
       if (res.data.message === "Registered Successfully") {
         setAlertSeverity('success');

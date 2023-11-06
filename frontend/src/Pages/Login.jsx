@@ -16,6 +16,7 @@ import axios from 'axios';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
 
 
 function Copyright(props) {
@@ -50,7 +51,7 @@ export default function Login() {
         email,
         password
     }
-    axios.post("http://localhost:8080/users/login",data)
+    axios.post("https://calm-gold-slug-toga.cyclic.app/users/login",data)
     .then((res) => {
       console.log(res)
       if (res.data.message === "Logged Successfully") {
@@ -68,13 +69,13 @@ export default function Login() {
     })
     .catch((err) => console.log(err));
   };
- 
+ const nav=useNavigate();
   React.useEffect(() => {
     if (showAlert) {
       const timer = setTimeout(() => {
         setShowAlert(false);
         if(alertSeverity==="success"){
-          // nav("/");   // give -2
+          nav(-1);
       }
       }, 2000)
       return () => clearTimeout(timer);

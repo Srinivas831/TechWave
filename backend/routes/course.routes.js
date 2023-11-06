@@ -1,7 +1,10 @@
 const express=require("express");
 const { ProductModel } = require("../model/courses.model");
 const { AddToCartModel } = require("../model/addToCart.model");
+const { PurchasedModel } = require("../model/purchased.model");
 const productRouter=express.Router();
+
+
 
 
 productRouter.get("/", async (req, res) => {
@@ -29,8 +32,8 @@ productRouter.get("/", async (req, res) => {
 
         console.log(query,sortQuery)
 
-        const courses = await CourseModel.find(query).sort(sortQuery).skip(skip).limit(limitNumber);
-        const totalCourses = await CourseModel.countDocuments(query);
+        const courses = await ProductModel.find(query).sort(sortQuery).skip(skip).limit(limitNumber);
+        const totalCourses = await ProductModel.countDocuments(query);
         const totalPages = Math.ceil(totalCourses / limitNumber);
         res.status(200).send({ courses, totalPages, currentPage: pageNumber });
     } catch (err) {
@@ -38,6 +41,34 @@ productRouter.get("/", async (req, res) => {
         res.status(400).send({ error: err.message });
     }
 });
+
+productRouter.get("/getpurchase", async (req, res) => {
+    const productId=req.query.productId;
+    try {
+        const product = await ProductModel.find({_id:productId});
+    res.status(200).send({"msg":"got last",product});
+    } catch (error) {
+        res.send({"error":error})
+    }
+});
+
+productRouter.get("/getfrompurchased",async(req,res)=>{
+    let userId=req.query.userId;
+    try{
+        const userData = await PurchasedModel.findOne({ userId });
+        if (userData) {
+          const productIdArray = userData.productId;
+          res.status(200).send(productIdArray);
+        }
+         else {
+          res.status(200).send([]); // Return an empty array if no data is found
+        }
+    }
+    catch(err){
+        res.status(400).send(err);
+    }
+})
+
 
 
 productRouter.get("/:id",async(req,res)=>{
@@ -47,19 +78,11 @@ try{
     res.status(200).send({"message":"Got the product","course":findTheCourse});
 }
 catch(err){
-res.status(400).send({"message":"error getting the course"});
+res.status(400).send({"message":err.message});
 }
 })
 
 
-productRouter.get("/", async (req, res) => {
-    try {
-        const product = await ProductModel.find();
-    res.send(product);
-    } catch (error) {
-        res.send({"error":error})
-    }
-});
 
 productRouter.post("/addCourses", async (req, res) => {
     const payload = req.body;
@@ -101,7 +124,7 @@ productRouter.delete("/delete/:id", async (req, res) => {
 productRouter.post("/addtocart",async(req,res)=>{
     try{
         let obj=req.body;
-        console.log(obj);
+        // console.log(obj);
         const findIfAlreadyPresnetInCart=await AddToCartModel.find({
             productId:obj.productId,
             userId:obj.userId
@@ -119,13 +142,12 @@ productRouter.post("/addtocart",async(req,res)=>{
     }
 })
 
-
 productRouter.get("/getfromcart",async(req,res)=>{
     try{
         let userId=req.query.userId;
-        // console.log("obj",obj)
+        console.log("obj",userId);
         let getFromCart=await AddToCartModel.find({userId});
-        // console.log("iddd",getFromCart);
+        console.log("iddd",getFromCart);
         if(getFromCart.length==0){
             return res.status(200).send({"message":"No items present"});
         }
@@ -134,7 +156,7 @@ productRouter.get("/getfromcart",async(req,res)=>{
         }
     }
     catch(err){
-        res.status(400).send({message:"error getting from cart"})
+        res.status(400).send({message:"error getting"})
     }
 })
 
@@ -149,5 +171,34 @@ productRouter.delete("/deletefromcart",async(req,res)=>{
         res.status(400).send({"message":"cerror deleting from cart"});
     }
 })
+
+productRouter.post("/addtopurchased",async(req,res)=>{
+    const {userId,productId}=req.body;
+    try{
+        // const purchased=new PurchasedModel({userId,productId});
+        // await purchased.save();
+        // res.status(200).send({"message":"purchased successfully"});
+
+        // Search for an existing document with the same userId
+        const existingPurchase = await PurchasedModel.findOne({ userId });
+
+        if (existingPurchase) {
+            // If a document already exists for this user, add the new productId to the array
+            existingPurchase.productId.push(productId);
+            await existingPurchase.save();
+            res.status(200).send({ message: "Product added to purchased successfully" });
+        } else {
+            // If no document exists for this user, create a new one
+            const purchased = new PurchasedModel({ userId, productId:[productId] });
+            await purchased.save();
+            res.status(200).send({ message: "Product added to purchased successfully" });
+        }
+    }
+    catch(err){
+        res.status(400).send({"message":"error adding to purchased"})
+    }
+})
+
+
 
 module.exports={productRouter};

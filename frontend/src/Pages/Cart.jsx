@@ -1,6 +1,6 @@
 
 import axios from 'axios';
-import { setdiscountPrice, setoriginalPrice } from '../redux/checkoutprice/action';
+import { checkoutStore, setdiscountPrice,setoriginalPriceaction } from '../redux/checkoutprice/action';
 import React, { useEffect, useState } from "react";
 import Styled from "styled-components";
 import "../Css/utils.css";
@@ -8,26 +8,21 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Cookies from "js-cookie";
 
-// -------------
 
 function Cart() {
-  // const navigate = useNavigate()
 
-  // item file is used for dummy perpuses
   const [data, setData] = useState([]);
   const [originalPrice, setOriginalPrice] = useState(0);
   const [discountPrice, setDiscountPrice] = useState(0);
   const [loading, setLoading] = useState(true);
-
   const isAuth = Cookies.get("userId");
-  // impo
   let userId = isAuth;
   const nav = useNavigate();
   const dispatch = useDispatch();
   console.log(userId);
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/courses/getfromcart?userId=${userId}`)
+      .get(`https://calm-gold-slug-toga.cyclic.app/courses/getfromcart?userId=${userId}`)
       .then((res) => {
         console.log(res.data);
         setLoading(false);
@@ -43,20 +38,20 @@ function Cart() {
         );
         setOriginalPrice(originalPrice);
         setDiscountPrice(discountPrice);
-        dispatch(setOriginalPrice(originalPrice));
+        dispatch(setoriginalPriceaction(originalPrice));
         dispatch(setdiscountPrice(discountPrice));
       })
       .catch((err) => {
         setLoading(false);
-        console.log("error");
+        console.log("qqq",err);
       });
   }, [dispatch]);
-  // console.log(data.data);
+  console.log("dataaa",data);
 
   const handlRemoveFromCart = (userId, productId) => {
     axios
       .delete(
-        `http://localhost:8080/courses/deletefromcart?userId=${userId}&productId=${productId}`
+        `https://calm-gold-slug-toga.cyclic.app/courses/deletefromcart?userId=${userId}&productId=${productId}`
       )
       .then((res) => {
         // alert("removed");
@@ -79,6 +74,8 @@ function Cart() {
     if (!isAuth) {
       nav("/login");
     } else {
+      const allProductId=data?.map((el)=>el.productId);
+      dispatch(checkoutStore(allProductId))
       nav("/checkout");
     }
   };
@@ -103,7 +100,9 @@ function Cart() {
         </div>
         <div className="main-child">
           <div className="child-left">
-            {data?.map((ele) => {
+
+            { data?.map((ele) => {
+
               return (
                 <div className="cart-card" key={ele.id}>
                   <div className="cart-card-img">
