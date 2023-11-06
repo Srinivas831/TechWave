@@ -4,6 +4,24 @@ const { AddToCartModel } = require("../model/addToCart.model");
 const { PurchasedModel } = require("../model/purchased.model");
 const productRouter=express.Router();
 
+productRouter.get("/getfromcart",async(req,res)=>{
+    try{
+        let userId=req.query.userId;
+        console.log("obj",userId);
+        let getFromCart=await AddToCartModel.find({userId});
+        console.log("iddd",getFromCart);
+        if(getFromCart.length==0){
+            return res.status(200).send({"message":"No items present"});
+        }
+        else{
+            res.status(200).send({"message":"got from cart",data:getFromCart});
+        }
+    }
+    catch(err){
+        res.status(400).send({message:"error getting"})
+    }
+})
+
 
 productRouter.get("/", async (req, res) => {
     try {
@@ -141,23 +159,7 @@ productRouter.post("/addtocart",async(req,res)=>{
     }
 })
 
-productRouter.get("/getfromcart",async(req,res)=>{
-    try{
-        let userId=req.query.userId;
-        console.log("obj",userId);
-        let getFromCart=await AddToCartModel.find({userId});
-        console.log("iddd",getFromCart);
-        if(getFromCart.length==0){
-            return res.status(200).send({"message":"No items present"});
-        }
-        else{
-            res.status(200).send({"message":"got from cart",data:getFromCart});
-        }
-    }
-    catch(err){
-        res.status(400).send({message:"error getting"})
-    }
-})
+
 
 productRouter.delete("/deletefromcart",async(req,res)=>{
     const userId=req.query.userId;

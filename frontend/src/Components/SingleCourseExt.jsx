@@ -190,7 +190,7 @@ const nav=useNavigate();
           </div>
           <div className="additional-content">
             <div className="additional-content1">
-            <h2 style={{lineHeight:"1.5"}}>Subscribe to TechWave's top courses</h2>
+            {/* <h2 style={{lineHeight:"1.5"}}>Subscribe to TechWave's top courses</h2> */}
             <p style={{lineHeight:"1.5"}}>Get this course, plus 10,500+ of our top-rated courses, with Personal Plan. <a href="#">Learn more</a></p>
             <Button className="extra_big_dark_button" style={{margin:"5px 0"}} onClick={handleSubscription}>Start subscription</Button>
             <p style={{lineHeight:"1.5"}}>Starting at ₹750 per month</p>
@@ -269,7 +269,7 @@ font-family: var(--primary-font-family);
     padding: 10px;
   }
   .extra_big_dark_button{
-    line-height: 1.5;
+    /* line-height: 1.5; */
     padding: 10px;
   }
   .additional-content {
