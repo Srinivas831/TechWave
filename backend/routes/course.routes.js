@@ -5,8 +5,6 @@ const { PurchasedModel } = require("../model/purchased.model");
 const productRouter=express.Router();
 
 
-
-
 productRouter.get("/", async (req, res) => {
     try {
         const { search, sort, filters, page, limit } = req.query;
@@ -121,6 +119,7 @@ productRouter.delete("/delete/:id", async (req, res) => {
       res.send(400).send({ msg: "Something Went Wrong" });
     }
 });
+
 productRouter.post("/addtocart",async(req,res)=>{
     try{
         let obj=req.body;

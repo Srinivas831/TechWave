@@ -49,7 +49,9 @@ function Navbar() {
     else {
       setAlertSeverity('error');
       setAlertMessage(res.data.message);
-
+    }
+  })
+}
   React.useEffect(() => {
     if (showAlert) {
       const timer = setTimeout(() => {
@@ -172,7 +174,7 @@ function Navbar() {
     </DIV>
   );
 }
-
+  
 export default Navbar;
 
 const DIV = Styled.div`
@@ -320,4 +322,4 @@ nav{
         left: 0;
     }
 }
-`;
+`

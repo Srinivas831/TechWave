@@ -64,6 +64,6 @@ const productSchema=mongoose.Schema({
     versionKey:false
 })
 
-const ProductModel=mongoose.model("AllCourse",productSchema);
+const ProductModel=mongoose.model("allcourse",productSchema);
 
 module.exports={ProductModel};
