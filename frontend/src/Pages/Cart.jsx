@@ -1,7 +1,7 @@
 
 import axios from 'axios';
 import { setdiscountPrice, setoriginalPrice } from '../redux/checkoutprice/action';
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Styled from "styled-components";
 import "../Css/utils.css";
 import { useNavigate } from "react-router-dom";
@@ -145,7 +145,7 @@ function Cart() {
                 className="extra_big_dark_button"
                 onClick={() => {
                   // navigate("/checkout")
-                  handleCheckout;
+                  handleCheckout();
                 }}
               >
                 Checkout

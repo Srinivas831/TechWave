@@ -11,7 +11,7 @@ export const CourseCard = ({ course }) => {
 
       <CourseMid>
         <h3>{course.title}</h3>
-        <p>{course.description}</p>
+        <p className="descp">{course.description}</p>
         <p style={{ color: "gray" }}>{course.instructor}</p>
         <p>Ratings: {course.rating}</p>
       </CourseMid>
@@ -21,11 +21,9 @@ export const CourseCard = ({ course }) => {
           Rs.{course.original_price}
         </p>
         <p style={{ fontSize: "24px" }}>Rs.{course.discounted_price}</p>
-        <button>
-          <Link to={`/courses/${course._id}`} className="explore_link">
-            Explore
-          </Link>
-        </button>
+        <a href={`/courses/${course._id}`} className="explore_link">
+          Explore
+        </a>
       </CourseRight>
     </CourseWrapper>
   );
@@ -36,6 +34,10 @@ const CourseWrapper = styled.div`
   margin-bottom: 20px;
   border-bottom: 2px solid lightgrey;
   padding-bottom: 0.7em;
+
+  @media screen and (max-width: 450px) {
+    flex-direction: column;
+  }
 `;
 
 const CourseLeft = styled.div`
@@ -43,7 +45,11 @@ const CourseLeft = styled.div`
   margin-right: 20px;
 
   img {
-    width: 300px;
+    width: 100%;
+  }
+
+  @media screen and (max-width: 750px) {
+    flex: 1.5;
   }
 `;
 
@@ -53,7 +59,13 @@ const CourseMid = styled.div`
   flex: 5;
   text-align: left;
   margin: 0;
-  gap: 0.2em;
+  gap: 0.3em;
+
+  @media screen and (max-width: 750px) {
+    .descp {
+      display: none;
+    }
+  }
 `;
 
 const CourseRight = styled.div`
@@ -65,27 +77,30 @@ const CourseRight = styled.div`
   align-items: center;
   gap: 0.3em;
 
-  button {
-    border: #0056d2;
+  .explore_link {
+    border: 1px solid #0056d2;
     border-radius: 0.6em;
     background-color: #0056d2;
     text-decoration: none;
     padding: 1em 2em;
-    cursor: pointer;
-
-    .explore_link {
-      text-decoration: none;
-      color: white;
-
-      &:hover {
-        color: #0056d2;
-      }
-    }
+    color: white;
 
     &:hover {
       background-color: white;
-      border: 1px solid #0056d2;
-      color: #0056d2 !important;
+      color: #0056d2;
     }
+  }
+
+  @media screen and (max-width: 750px) {
+    flex: 1.5;
+
+    button {
+      padding: 0.5em 1em;
+    }
+  }
+
+  @media screen and (max-width: 450px) {
+    margin-top: 1.2em;
+    align-items: flex-start;
   }
 `;
