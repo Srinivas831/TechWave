@@ -146,7 +146,7 @@ function Cart() {
                 className="extra_big_dark_button"
                 onClick={() => {
                   // navigate("/checkout")
-                  handleCheckout;
+                  handleCheckout();
                 }}
               >
                 Checkout

@@ -4,6 +4,13 @@ import { useEffect, useState } from "react";
 import { CourseSidebar } from "../Components/CourseSidebar";
 import { CourseCard } from "../Components/CourseCard";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { Autoplay } from "swiper/modules";
+import { slider } from "../SliderData/slider";
+
 export const Courses = () => {
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("");
@@ -38,7 +45,8 @@ export const Courses = () => {
   const fetchData = async () => {
     try {
       setIsLoading(true);
-      let url = "http://localhost:8080/courses";
+      let url = "https://calm-gold-slug-toga.cyclic.app/courses";
+     // let url = "https://techwave-test.onrender.com/courses";
       const params = { page: currentPage, limit: 10 };
 
       if (sort) {
@@ -54,9 +62,9 @@ export const Courses = () => {
       }
 
       const response = await axios.get(url, { params });
-      //console.log(response)
-      console.log(response.data.courses);
-      // setCourses(response.data);
+      console.log(response);
+      //console.log(response.data.courses);
+      //setCourses(response.data);
       setCourses(response.data.courses);
       setTotalPages(response.data.totalPages);
       setIsLoading(false);
@@ -82,6 +90,59 @@ export const Courses = () => {
         />
       </div>
 
+      {/* Slider */}
+      <div>
+        <h2 style={{ marginBottom: "1.5em" }}>Recommended Courses For You</h2>
+        <Swiper
+          modules={[Autoplay]}
+          slidesPerView={4}
+          className="mySwiper"
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          loop={true}
+          spaceBetween={20}
+          breakpoints={{
+            320: {
+              slidesPerView: 1,
+            },
+            480: {
+              slidesPerView: 2,
+            },
+            760: {
+              slidesPerView: 3,
+            },
+          }}
+        >
+          {slider?.map((item) => {
+            return (
+              <SwiperSlide key={item.id} className={styles.slider}>
+                <img src={item.image} />
+                <p style={{ fontWeight: "bolder" }}>{item.title}</p>
+                <p>{item.description.slice(0, 70)}...</p>
+                <h4>₹{item.original_price}</h4>
+                <h3>₹{item.discounted_price}</h3>
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      </div>
+
+      <br />
+      <br />
+
+      <h2
+        id="results"
+        style={{
+          textAlign: "center",
+          marginBottom: "1.5em",
+          fontSize: "1.8em",
+        }}
+      >
+        Available Courses
+      </h2>
+
       {/* Sidebar */}
       <div className={styles.course_container}>
         <div className={styles.sidebar}>
@@ -94,7 +155,9 @@ export const Courses = () => {
         {/* Course-List */}
         <div className={styles.course_list}>
           {isLoading ? (
-            <div>Loading...</div>
+            <div className={styles.loaderdiv}>
+              <span className={styles.loader}></span>
+            </div>
           ) : (
             courses.length > 0 &&
             courses.map((course) => (
@@ -105,12 +168,21 @@ export const Courses = () => {
       </div>
 
       {/* PAGINATION */}
-      <div>
+      <div className={styles.pagelist}>
         {Array.from({ length: totalPages }, (_, index) => (
           <button
             key={index + 1}
-            onClick={() => handlePageChange(index + 1)}
+            onClick={() => {
+              handlePageChange(index + 1);
+              window.location.href = "#results";
+            }}
             disabled={currentPage === index + 1}
+            style={{
+              fontWeight: currentPage === index + 1 && "bolder",
+              borderBottom:
+                currentPage === index + 1 ? "2px solid #0056d2" : "none",
+              color: currentPage === index + 1 ? "#0056d2" : "black",
+            }}
           >
             {index + 1}
           </button>
