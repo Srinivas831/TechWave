@@ -46,7 +46,7 @@ export const Courses = () => {
     try {
       setIsLoading(true);
       let url = "https://calm-gold-slug-toga.cyclic.app/courses";
-     // let url = "https://techwave-test.onrender.com/courses";
+     //let url = "https://techwave-test.onrender.com/courses";
       const params = { page: currentPage, limit: 10 };
 
       if (sort) {
