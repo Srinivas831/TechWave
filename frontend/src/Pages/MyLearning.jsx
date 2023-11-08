@@ -3,13 +3,14 @@ import Styled from "styled-components";
 import "../Css/utils.css";
 import { Link} from "react-router-dom";
 import Cookies from "js-cookie";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getMyLearning } from "../redux/mylearning/action";
 
 function MyLearning() {
-const [item,setItem]=useState([]);
-const [idd,setProductIds]=useState([]);
+  
+const dispatch=useDispatch();
   const userId = Cookies.get("userId");
-
+console.log("userr",userId)
   const {courseArray,loading,isError}=useSelector((store)=>{
     return {
       courseArray: store.reducer.courseArray,
@@ -18,8 +19,11 @@ const [idd,setProductIds]=useState([]);
     }
   })
   
-  console.log("q",courseArray,loading);
+  console.log("q",courseArray);
 
+useEffect(()=>{
+  dispatch(getMyLearning(userId))
+},[])
 
   return (
     <DIV>

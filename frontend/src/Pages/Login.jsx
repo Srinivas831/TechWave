@@ -75,7 +75,7 @@ export default function Login() {
       const timer = setTimeout(() => {
         setShowAlert(false);
         if(alertSeverity==="success"){
-          nav(-1);
+          nav(-2);
       }
       }, 2000)
       return () => clearTimeout(timer);

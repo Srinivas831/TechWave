@@ -4,6 +4,25 @@ const { AddToCartModel } = require("../model/addToCart.model");
 const { PurchasedModel } = require("../model/purchased.model");
 const productRouter=express.Router();
 
+
+productRouter.get("/getcoursesformylearning",async(req,res)=>{
+    const {userId}=req.query;
+    // console.log("zz",req.query);
+    // console.log("z",userId);
+    try{
+        let purchasedCourse = await PurchasedModel.findOne({ userId });
+        // console.log("zzz",purchasedCourse)
+          const courses = await ProductModel.find({ _id: { $in: purchasedCourse.productId } });
+          console.log("courses",courses);
+          res.status(200).send(courses);
+    }
+    catch(err){
+        res.status(400).send(err.message);
+    }
+})
+
+
+
 productRouter.get("/getfromcart",async(req,res)=>{
     try{
         let userId=req.query.userId;
@@ -160,7 +179,6 @@ productRouter.post("/addtocart",async(req,res)=>{
 })
 
 
-
 productRouter.delete("/deletefromcart",async(req,res)=>{
     const userId=req.query.userId;
     const productId=req.query.productId;
@@ -173,9 +191,9 @@ productRouter.delete("/deletefromcart",async(req,res)=>{
     }
 })
 
+
+
 productRouter.post("/addtopurchased",async(req,res)=>{
-
-
     const { userId, productId } = req.body;
 
     try {
@@ -187,43 +205,20 @@ productRouter.post("/addtopurchased",async(req,res)=>{
           userId,
           productId,
         });
-      } else {
+      }
+       else {
         purchasedCourse.productId = [...new Set([...purchasedCourse.productId, ...productId])];
       }
-  
       await purchasedCourse.save();
   
       // Fetch course details for the purchased productIds
-      const courses = await ProductModel.find({ _id: { $in: purchasedCourse.productId } });
-  
-      res.status(200).json({ message: 'Purchased courses stored successfully.', courses });
-    } catch (error) {
+    //   const courses = await ProductModel.find({ _id: { $in: purchasedCourse.productId } });
+      res.status(200).json({ message: 'Purchased courses stored successfully.' });
+    } 
+    catch (error) {
       console.error(error);
       res.status(500).json({ message: error.message });
     }
-  
-
-
-
-    // try{
-
-        // const existingPurchase = await PurchasedModel.findOne({ userId });
-
-        // if (existingPurchase) {
-        //     // If a document already exists for this user, add the new productId to the array
-        //     existingPurchase.productId.push([...existingPurchase.productId,...productId]);
-        //     await existingPurchase.save();
-        //     res.status(200).send({ message: "Product added to purchased successfully",});
-        // } else {
-        //     // If no document exists for this user, create a new one
-        //     const purchased = new PurchasedModel({ userId, productId:[...productId] });
-        //     await purchased.save();
-        //     res.status(200).send({ message: "Product added to purchased successfully" });
-        // }
-    // }
-    // catch(err){
-    //     res.status(400).send({"message":"error adding to purchased"})
-    // }
 })
 
 

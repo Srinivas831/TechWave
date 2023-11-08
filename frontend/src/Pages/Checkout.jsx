@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import { BiChevronDown } from "react-icons/bi";
 import { SiPaytm } from "react-icons/si";
@@ -9,9 +9,7 @@ import { GrPaypal } from "react-icons/gr";
 import {BsBank2} from "react-icons/bs"
 import {LiaWalletSolid} from "react-icons/lia"
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
 import Cookies from "js-cookie";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { addMyLearning } from "../redux/mylearning/action";
 
@@ -20,16 +18,17 @@ function Checkout() {
   const [paytm,setPaytm] = useState(false)
   const [netbanking,setNetbanking] = useState(false)
   const [mobileWallet,setMobileWallet] = useState(false);
+  const [count,setCount]=useState(0);
 
   const originalPrice=useSelector((store)=>store.cartReducer.originalPrice);
   const discountPrice=useSelector((store)=>store.cartReducer.discountPrice);
   const productIds = useSelector((store) => store.cartReducer.productId);
+  const flag=useSelector((store)=>store.reducer.flag);
   const userId = Cookies.get("userId");
   const nav=useNavigate();
   const dispatch=useDispatch();
 
 const discountPercentage = Math.round(((originalPrice - discountPrice) / originalPrice) * 100);
-
 console.log(productIds,"idss");
 
 const handleFinalCheckout=()=>{
@@ -38,12 +37,16 @@ const handleFinalCheckout=()=>{
     productId:productIds
   }
   dispatch(addMyLearning(checkoutData))
+  setCount(count+1);
 }
 
-useEffect(()=>{
-handleFinalCheckout()
-},[productIds])
-
+console.log("flag",flag);
+// useEffect(()=>{
+ 
+// },[count]);
+if(flag){
+  alert("purchased");
+}
 
   return (
     <MainDiv>
