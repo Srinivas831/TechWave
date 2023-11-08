@@ -106,11 +106,11 @@ function Signup() {
                   autoFocus
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
+                  
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
-                  required
                   fullWidth
                   id="lastName"
                   label="Last Name"

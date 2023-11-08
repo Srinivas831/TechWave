@@ -12,6 +12,7 @@ import { Admin } from "../Pages/Admin";
 import { AddCourses } from "../Pages/AddCourses";
 import MyLearning from "../Pages/MyLearning";
 import { Courses } from "../Pages/Courses";
+import PrivateRoutes from "./PrivateRoutes";
 
 
 function AllRoutes() {
@@ -20,15 +21,25 @@ function AllRoutes() {
       <Route path="/" element={<Home />} />
       <Route path="/courses" element={<Courses />}></Route>
       <Route path="/courses/:id" element={<SingleCoursePage />} />
-      <Route path="/checkout" element={<Checkout />} />
+      <Route path="/checkout" element={
+      <PrivateRoutes>
+      <Checkout />
+      </PrivateRoutes>} />
       <Route path="/blogs" element={<Blog />} />
       <Route path="/update/:id" element={<Update />} />
       <Route path="/admin" element={<Admin />} />
       <Route path="/addCourses" element={<AddCourses />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/cart" element={<Cart />} />
-      <Route path="/mylearning" element={<MyLearning />} />
+      <Route path="/cart" element={
+      <PrivateRoutes>
+          <Cart />
+        </PrivateRoutes>} />
+      <Route path="/mylearning" element={
+      <PrivateRoutes>
+      <MyLearning />
+      </PrivateRoutes>
+      } />
     </Routes>
   );
 }

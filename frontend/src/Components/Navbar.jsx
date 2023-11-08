@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Styled from "styled-components";
 import logo from "../Assets/logo_png.png";
@@ -17,11 +17,7 @@ function Navbar() {
   const [alertSeverity, setAlertSeverity] = React.useState("success");
   const [showAlert, setShowAlert] = React.useState(false);
   const [data, setData] = useState([]);
-  // const { originalPrice } = useSelector((store) => {
-  //   return {
-  //     originalPrice: store.cartReducer.originalPrice,
-  //   };
-  // },shallowEqual);
+ 
 
   const handelMenu = () => {
     setmenu((prev) => !prev);
@@ -45,6 +41,7 @@ function Navbar() {
       Cookies.remove("userId");
       setAlertSeverity('success');
       setAlertMessage('Logged out Successfully');
+      navigate("/")
     } 
     else {
       setAlertSeverity('error');
@@ -56,9 +53,9 @@ function Navbar() {
     if (showAlert) {
       const timer = setTimeout(() => {
         setShowAlert(false);
-        if (alertSeverity === "success") {
-          navigate("/");
-        }
+        // if (alertSeverity === "success") {
+          // navigate("/");
+        // }
       }, 2000);
       return () => clearTimeout(timer);
 
@@ -138,9 +135,9 @@ function Navbar() {
                 icon={faCartShopping}
                 style={{ fontSize: "20px" }}
               />
-              <div className="inside-shoping-cart">
+              {/* <div className="inside-shoping-cart">
                 <p>{data ? data.length.toString() : 0}</p>
-              </div>
+              </div> */}
             </div>
           ) : null}
           {isAuth ? (
