@@ -43,7 +43,11 @@ const productSchema=mongoose.Schema({
     },
     demovideo:{
         type:String,
-        fullvideo:String
+        require :true
+    },
+    fullvideo:{
+        type:String,
+        require:true
     },
     language:{
         type:String,

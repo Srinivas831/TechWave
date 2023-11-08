@@ -5,6 +5,17 @@ const userRouter = express.Router();
 const jwt=require("jsonwebtoken");
 const { BlackListModel } = require("../model/blacklist.model");
 
+
+
+userRouter.get("/",async(req,res)=>{
+    try {
+        let user = await UserModel.find()
+        res.send(user)
+    } catch (error) {
+        res.send({"msg":"User not found"})
+    }
+})
+
 userRouter.post("/register",async(req,res)=>{
 try{
     let obj=req.body;

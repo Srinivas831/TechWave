@@ -157,6 +157,17 @@ productRouter.delete("/delete/:id", async (req, res) => {
     }
 });
 
+productRouter.get("/updateData/:id", async (req, res) => {
+    const id = req.params.id;
+    try {
+      const product = await ProductModel.findOne({_id:id});
+      res.status(200).json(product);
+    } catch (err) {
+      res.status(500).send(err.message);
+    }
+});
+
+
 productRouter.post("/addtocart",async(req,res)=>{
     try{
         let obj=req.body;

@@ -1,104 +1,85 @@
-
 import React, { useState,useEffect } from 'react'
 import styled from 'styled-components'
 import {FaRegUserCircle} from "react-icons/fa"
 import{SiCoursera} from "react-icons/si"
 import {BiAddToQueue} from "react-icons/bi"
-import {Update} from "./Update"
-import { Link, useNavigate} from "react-router-dom"
-import {AiOutlineEdit} from "react-icons/ai"
-import {MdDeleteOutline} from "react-icons/md"
+import { Link } from "react-router-dom"
+import axios from "axios"
+import { Dashboard } from './Dashboard'
+import { RegisterUser } from './RegisterUser'
+import { PurchaseCourses } from './PurchaseCourses'
 
-export function Admin() {
+export const Admin = () => {
   const [data,setData] = useState([])
-  const navigate = useNavigate()
-  useEffect(() => {
-    fetch("https://techwave-test.onrender.com/courses")
-      .then((res) => res.json())
-      .then((res) => {
-        setData(res);
-      })
-      .catch((error) => console.log(error));
-  }, []);
-  console.log(data)
+  const [usersData,setUsersData] = useState([])
+  const [selectTed , setSelectTed] = useState("dashboard")
 
-  const handleDelete = async(item) => {
+  const handleClick = (tab) => {
+    setSelectTed(tab)
+  }
+  const getUsers = async() => {
     try {
-      let res = await fetch(`https://calm-gold-slug-toga.cyclic.app/courses/delete/${item}`,{
-        method : "DELETE",
-      })
+        let res = await axios.get(`http://localhost:8080/users/`)
+        console.log(res.data)
+        setUsersData(res.data)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+  const fetchData = async() => {
+    try {
+      let res = await axios.get("http://localhost:8080/courses")
+        setData(res.data.courses);
     } catch (error) {
       console.log(error)
     }
   }
-
+  useEffect(() => {
+    getUsers()
+    fetchData()
+  }, []);
+  
 
   return (
     <MainDiv>
       <Left>
         <div className='home-btn'><button>Home</button></div>
         <div className='overview'>
-          <button>Dashboard</button>
-          <button>Orders</button>
-          <button>Products</button>
-          <button>Reports</button>
+          <Button selected={selectTed === "dashboard"} onClick={()=>{handleClick("dashboard")}}>Dashboard</Button>
+          <Button selected={selectTed === "registerUser"} onClick={()=>{handleClick("registerUser")}}>Register Users</Button>
+          <Button selected={selectTed === "purchasecourse"} onClick={()=>{handleClick("purchasecourse")}}>Purchased Course</Button>
+          <Button selected={selectTed === "report"} onClick={()=>{handleClick("report")}}>Reports</Button>
         </div>
       </Left>
         <Right>
         <NavDiv>
             <div className='logout-btn'>
               <button><Link style={{color:"#fff",textDecoration:"none"}} to={"/addCourses"}>Add</Link></button>
-              <button>Logout</button>
+              <button id='logout'>Logout</button>
             </div>
         </NavDiv>
         <div className='overview-heading'>
           <div>
             <FaRegUserCircle className='icon' />
-            <h1 id="count">5</h1>
+            <h1 id="count">{usersData?.length}</h1>
             <h3 id="user">Register Users</h3>
           </div>
           <div>
             <SiCoursera className='icon'/>
-            <h1 id="count">5</h1>
-            <h3 id="user">Register Users</h3>
+            <h1 id="count">{data?.length}</h1>
+            <h3 id="user">Total Courses</h3>
           </div>
           <div>
             <BiAddToQueue className='icon'/>
             <h1 id="count">5</h1>
-            <h3 id="user">Register Users</h3>
+            <h3 id="user">Blocklist User</h3>
           </div>
         </div>
-        <ShowData>
-            <table>
-              <thead>
-                <tr>
-                  <th>S.No</th>
-                  <th>Delete</th>
-                  <th>Update</th>
-                  <th>Title</th>
-                  <th>Description</th>
-                  <th>Instructor</th>
-                  <th>Original Price</th>
-                </tr>
-              </thead>
-              <tbody>
-                {data?.map((item,i)=>(
-                  <tr>
-                  <td>{`${i+1} )`}</td>
-                  <td className='edit-course'>
-                    <MdDeleteOutline id='delete-btn' onClick={()=>{handleDelete(item.id)}} />
-                    </td>
-                  <td className='delete-course'><Link to={`/update/${item.id}`}>
-                    <AiOutlineEdit id='edit-btn'/>
-                    </Link></td>
-                  <td>{item.title}</td>
-                  <td>{item.description}</td>
-                  <td>{item.instructor}</td>
-                  <td>{item.original_price}</td>
-                </tr>))}
-              </tbody>
-            </table>
-        </ShowData>
+        {selectTed === "dashboard" && <Dashboard />}
+        {selectTed === "registerUser" && <RegisterUser />}
+        {selectTed === "purchasecourse" && <PurchaseCourses />}
+        {selectTed === "report" &&  <Dashboard />}
         </Right>
     </MainDiv>
   )
@@ -110,25 +91,27 @@ margin: 0;
 padding: 0;
 display: flex;
 `
+const Button = styled.button`
+  display: block;
+    padding: .5rem;
+    width:100% ;
+    background-color: ${(props) =>
+    props.selected ? "#fff" : "#0056d2"};
+    color: ${(props) =>
+    props.selected ? "#0056d2" : "#fff"};
+    border: none;
+    margin: .8rem auto ;
+    &:hover {
+      background-color: #fff ;
+      color: #0056d2;
+      cursor: pointer;
+  }
+`
 const Left = styled.div`
 width: 20%;
 background-color: #0056d2;
 .overview{
   text-align: center;
-  button{
-    display: block;
-    padding: .5rem;
-    width:100% ;
-    background-color: #0056d2;
-    color: #fff;
-    border: none;
-    margin: .8rem auto ;
-  }
-  button: hover {
-    background-color: #fff ;
-    color: #0056d2;
-    cursor: pointer;
-  }
 }
 .home-btn{
       width: 30%;
@@ -188,10 +171,13 @@ const NavDiv = styled.div`
         display: flex;
         justify-content: end;
         align-items: center;
+        .logout{
+          padding: .7rem 1rem;
+        }
         button{
           padding: .7rem .5rem;
         margin-right: .5rem;
-        width: 20%;
+        width: 5rem;
         font-size: 1.1rem;
         font-weight: bolder;
         border: none;
