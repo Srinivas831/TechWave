@@ -1,4 +1,3 @@
-# ambiguous-oven-8467 
 
 # Tech Wave
 
