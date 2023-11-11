@@ -13,6 +13,7 @@ import { AddCourses } from "../Pages/AddCourses";
 import MyLearning from "../Pages/MyLearning";
 import { Courses } from "../Pages/Courses";
 import PrivateRoutes from "./PrivateRoutes";
+import About from "../Pages/About";
 
 
 function AllRoutes() {
@@ -31,6 +32,7 @@ function AllRoutes() {
       <Route path="/addCourses" element={<AddCourses />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/about" element={<About/>}/>
       <Route path="/cart" element={
       <PrivateRoutes>
           <Cart />

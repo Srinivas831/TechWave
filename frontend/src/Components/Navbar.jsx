@@ -40,6 +40,9 @@ function Navbar() {
       Cookies.remove("token");
       Cookies.remove("user");
       Cookies.remove("userId");
+      if(Cookies.get("isAdmin")){
+        Cookies.remove("isAdmin");
+      }
       setAlertSeverity('success');
       setAlertMessage('Logged out Successfully');
       navigate("/")
@@ -71,6 +74,7 @@ function Navbar() {
         console.log(err.message);
       });
   }, [showAlert]);
+  const Admin = Cookies.get("isAdmin")
 
   console.log(data);
 
@@ -94,9 +98,9 @@ function Navbar() {
             <li className="nav-links">
               <Link to="/about">About us</Link>
             </li>
-            <li className="nav-links">
-              <Link to="/contact">Contact</Link>
-            </li>
+           { Admin && <li className="nav-links">
+               <Link to="/admin">Admin</Link>
+            </li>}
             {isAuth ? (
               <li className="nav-links">
                 <Link to="/mylearning">My Learning</Link>

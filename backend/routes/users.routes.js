@@ -61,6 +61,12 @@ res.status(400).send({"message":"Error Regisetring User"});
 //login...........
 userRouter.post("/login",async(req,res)=>{
 try{
+    const Admin = await UserModel.findOne({email:req.body.email})
+    if(req.body.email === "admin@admin.com" && bcrypt.compare(req.body.password, Admin.password)){
+        const token=jwt.sign({userName:req.body.userName,userId:req.body._id},"secretkey");
+        return res.status(200).send({message :"Logged Successfully",token:token, Admin : true, user: Admin});
+    }
+    
 const findIfTHisEmailIsNotReg=await UserModel.findOne({email:req.body.email});
 if(!findIfTHisEmailIsNotReg){
     return res.status(200).send({"message":"This EmailId is not registered"});

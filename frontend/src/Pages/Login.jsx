@@ -59,6 +59,9 @@ export default function Login() {
         Cookies.set("token",res.data.token, { expires: 365 });
         Cookies.set("user",res.data.user.userName, { expires: 365 });
         Cookies.set("userId",res.data.user._id, { expires: 365 });
+        if(res.data.user.userName == "admin"){
+          Cookies.set("isAdmin",res.data.user.userName, { expires: 365 });
+        }
         setAlertSeverity('success');
         setAlertMessage('Logged Successfully');
       } 

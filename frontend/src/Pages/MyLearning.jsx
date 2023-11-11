@@ -6,54 +6,93 @@ import { useDispatch, useSelector } from "react-redux";
 import { getMyLearning } from "../redux/mylearning/action";
 
 function MyLearning() {
-  
-const dispatch=useDispatch();
+  const dispatch = useDispatch();
   const userId = Cookies.get("userId");
-console.log("userr",userId)
-  const {courseArray,loading,isError}=useSelector((store)=>{
+  console.log("userr", userId);
+  const { courseArray, loading, isError } = useSelector((store) => {
     return {
       courseArray: store.reducer.courseArray,
       loading: store.reducer.loading,
-      isError: store.reducer.isError
-    }
-  })
-  
-  console.log("q",courseArray);
+      isError: store.reducer.isError,
+    };
+  });
 
-useEffect(()=>{
-  dispatch(getMyLearning(userId))
-},[])
-if(loading){
- return <div style={{display:"flex",justifyContent:"center",alignItems:"center",height:"100vh"}}> <img src="https://media.tenor.com/JBgYqrobdxsAAAAi/loading.gif" alt="Girl in a jacket" width="200" height="200" style={{textAlign:"center"}}/></div>;
-  // return <div>Loading....</div>
-}
+  // console.log("q",courseArray);
+
+  useEffect(() => {
+    dispatch(getMyLearning(userId));
+  }, []);
+  if (!courseArray || courseArray.length === 0) {
+    return (
+      <div
+        style={{
+          textAlign: "center",
+          height: "50vh",
+          margin: "auto",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <h1>No items in your Learning Library</h1>
+      </div>
+    );
+  }
+
+  if (loading) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
+        {" "}
+        <img
+          src="https://media.tenor.com/JBgYqrobdxsAAAAi/loading.gif"
+          alt="Girl in a jacket"
+          width="200"
+          height="200"
+          style={{ textAlign: "center" }}
+        />
+      </div>
+    );
+    // return <div>Loading....</div>
+  }
   return (
     <DIV>
-    <div className="parent-mylearning">
-      <div className="parent-mylearning-top-heading">
-        <h1>My Learning</h1>
-      </div>
-      <div className="mylearning-course">
-        {courseArray?.map((ele) => {
-   
-          return (
-         
-              <div className="mylearning-course-card">
-                <div className="mylearning-course-card-img">
-        <iframe width="100%" height={"300px"} src={ele.fullvideo} title="YouTube video player" frameborder="0" allowFullScreen></iframe>
+      <div className="parent-mylearning">
+        <div className="parent-mylearning-top-heading">
+          <h1>My Learning</h1>
+        </div>
+        <div className="mylearning-course">
+          {courseArray.length > 0 &&
+            courseArray?.map((ele) => {
+              return (
+                <div className="mylearning-course-card">
+                  <div className="mylearning-course-card-img">
+                    <iframe
+                      width="100%"
+                      height={"300px"}
+                      src={ele.fullvideo}
+                      title="YouTube video player"
+                      frameborder="0"
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+                  <div className="mylearning-course-card-title">
+                    <h2>{ele.title}</h2>
+                    <p>{ele.instructor}</p>
+                    <h6>Rating: {ele.rating}</h6>
+                  </div>
                 </div>
-                <div className="mylearning-course-card-title">
-                  <h2>{ele.title}</h2>
-                  <p>{ele.instructor}</p>
-                  <h6>Rating: {ele.rating}</h6>
-                </div>
-              </div>
-  
-          );
-        })}
+              );
+            })}
+        </div>
       </div>
-    </div>
-  </DIV>
+    </DIV>
   );
 }
 
@@ -117,4 +156,3 @@ const DIV = Styled.div`
         }
     }
 // `;
-

@@ -73,7 +73,6 @@ if(flag){
 
   return (
     <MainDiv>
-
       <div className="leftside">
         <div className="parant">
         <h1>Checkout</h1>
@@ -274,7 +273,7 @@ const MainDiv = styled.div`
   display: flex;
   justify-content: space-evenly;
   text-align: left;
-  margin-top: 100px;
+  margin-top: 1.5rem;
   
   h1{
     margin-bottom: 30px;
