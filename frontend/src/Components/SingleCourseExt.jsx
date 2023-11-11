@@ -18,6 +18,7 @@ import * as React from 'react';
 
 import { useNavigate } from "react-router-dom";
 import "../Css/utils.css";
+import { url } from "../api";
 const SingleCourseExt = ({id,_id,title, category, course_includes, description, discounted_price, original_price, fullvideo, hours, image, instructor, language, learnings, rating, students, requirements}) => {
 
  
@@ -66,9 +67,8 @@ const nav=useNavigate();
       original_price:original_price,
       discounted_price:discounted_price,
       hours:hours
-
     }
-    axios.post("http://localhost:8080/courses/addtocart",cartData)
+    axios.post(`${url}/courses/addtocart`,cartData)
     .then((res) => {
       if (res.data.message === "Already in cart") {
         setAlertSeverity('warning');
@@ -95,16 +95,16 @@ const nav=useNavigate();
     <DIV>
       {/* for alert message */}
       {showAlert && (
-          <Stack
-          sx={{
-            width: ["50%", "20%"],
-            position: 'fixed',
-            top: ['10%'], 
-            left: '50%', 
-            transform: 'translate(-50%, -50%)',
-          }}
-          spacing={2}
-        >
+            <Stack
+            sx={{
+              width: ["30%", "14%"],
+              position: 'fixed',
+              top: ['90%'], 
+              right: '2px', 
+              transform: 'translate(-30%, -30%)',
+            }}
+            spacing={2}
+          >
           <Alert variant="filled" severity={alertSeverity}>
             {alertMessage}
           </Alert>
@@ -192,7 +192,7 @@ const nav=useNavigate();
             <div className="additional-content1">
             <h2 style={{lineHeight:"1.5"}}>Subscribe to TechWave's top courses</h2>
             <p style={{lineHeight:"1.5"}}>Get this course, plus 10,500+ of our top-rated courses, with Personal Plan. <a href="#">Learn more</a></p>
-            <Button className="extra_big_dark_button" style={{margin:"5px 0"}} onClick={handleSubscription}>Start subscription</Button>
+            <Button className="extra_big_dark_button" style={{margin:"5px 0px",width:"12vw"}} onClick={handleSubscription}>Start subscription</Button>
             <p style={{lineHeight:"1.5"}}>Starting at ₹750 per month</p>
             <p style={{lineHeight:"1.5"}}>or</p>
             </div>
@@ -228,7 +228,7 @@ font-family: var(--primary-font-family);
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
     padding: 10px;
     width: 35%;
-    height: 95vh;
+    height:100vh;
     /* border: 2px solid black; */
     margin: auto;
     margin-top: 0px;

@@ -4,13 +4,14 @@ import {AiOutlineEdit} from "react-icons/ai"
 import {BiUserCircle} from "react-icons/bi"
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { url } from '../api'
 
 export const RegisterUser = () => {
     const [registerUsersData,setRegisterUsersData] = useState([]);
 
     const getUsers = async() => {
         try {
-            let res = await axios.get(`http://localhost:8080/users/`)
+            let res = await axios.get(`${url}/users/`)
             console.log(res.data)
             setRegisterUsersData(res.data)
         } catch (error) {

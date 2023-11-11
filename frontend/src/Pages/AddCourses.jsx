@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import {IoMdClose} from "react-icons/io"
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { url } from '../api';
 
 export  function AddCourses() {
     const [formDetail,setFormDetails] = useState({
@@ -27,7 +28,7 @@ requirements:[""]
 
   const postCourse = async (obj) => {
       try {
-        let res = await axios.post("http://localhost:8080/courses/addCourses", obj);
+        let res = await axios.post(`${url}/courses/addCourses`, obj);
       } catch (error) {
         console.error(error);
       }

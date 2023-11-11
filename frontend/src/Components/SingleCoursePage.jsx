@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import SingleCourseExt from './SingleCourseExt';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { url } from '../api';
 
 const SingleCoursePage = () => {
     const { id } = useParams();
@@ -12,7 +13,7 @@ const SingleCoursePage = () => {
         try {
 
             setLoading(true);
-            const res = await axios.get(`http://localhost:8080/courses/${id}`)
+            const res = await axios.get(`${url}/courses/${id}`)
            .then((res)=>{
             setLoading(false)
             setData(res.data.course)
@@ -36,8 +37,8 @@ const SingleCoursePage = () => {
     return (
         <>
             {
-                loading ? <div style={{display:"flex", justifyContent:"center", height:"50vh"}}>
-                    <img src="https://media.tenor.com/JBgYqrobdxsAAAAi/loading.gif" alt="Girl in a jacket" width="200" height="200" style={{textAlign:"center"}}/>
+                loading ? <div style={{display:"flex", justifyContent:"center", height:"50vh",alignItems:"center"}}>
+                    <img src="https://media.tenor.com/JBgYqrobdxsAAAAi/loading.gif" alt="Girl in a jacket" width="150" height="150" style={{textAlign:"center"}}/>
                 </div> :
                 data && <SingleCourseExt key={data.id} {...data} />
             }

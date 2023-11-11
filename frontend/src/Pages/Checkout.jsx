@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState } from "react";
 import { styled } from "styled-components";
 import { BiChevronDown } from "react-icons/bi";
 import { SiPaytm } from "react-icons/si";
@@ -12,6 +12,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import { addMyLearning } from "../redux/mylearning/action";
+import axios from "axios";
+import { url } from "../api";
 
 function Checkout() {
   const [credit,setCredit] = useState(false);
@@ -20,36 +22,58 @@ function Checkout() {
   const [mobileWallet,setMobileWallet] = useState(false);
   const [count,setCount]=useState(0);
 
+
+  const [cardName, setCardName] = useState("");
+const [cardNumber, setCardNumber] = useState("");
+const [expiryDate, setExpiryDate] = useState("");
+const [cvv, setCvv] = useState("");
+const [showPaymentError, setShowPaymentError] = useState(false);
+
   const originalPrice=useSelector((store)=>store.cartReducer.originalPrice);
   const discountPrice=useSelector((store)=>store.cartReducer.discountPrice);
-  const productIds = useSelector((store) => store.cartReducer.productId);
+  const productId = useSelector((store) => store.cartReducer.productId);
   const flag=useSelector((store)=>store.reducer.flag);
   const userId = Cookies.get("userId");
   const nav=useNavigate();
   const dispatch=useDispatch();
 
 const discountPercentage = Math.round(((originalPrice - discountPrice) / originalPrice) * 100);
-console.log(productIds,"idss");
+console.log(productId,"idss");
 
 const handleFinalCheckout=()=>{
+  if (!credit && !paytm && !netbanking && !mobileWallet) {
+    // No payment method selected
+    alert("Choose a payment method before completing the checkout.");
+  }
+  else {
+    if(credit && (!cardName || !cardNumber || !expiryDate ||!cvv)){
+        alert("Enter all details");
+    }
+    else{
+    // Valid checkout action
+    setShowPaymentError(true); 
   let checkoutData={
     userId,
-    productId:productIds
+    productId:productId
   }
+  axios.delete(`${url}/courses/deletefromcart?productId=${checkoutData.productId}&&userId=${checkoutData.userId}`)
   dispatch(addMyLearning(checkoutData))
   setCount(count+1);
 }
+  }
+}
 
 console.log("flag",flag);
-// useEffect(()=>{
- 
-// },[count]);
+
 if(flag){
   alert("purchased");
+  nav("/")
 }
+
 
   return (
     <MainDiv>
+
       <div className="leftside">
         <div className="parant">
         <h1>Checkout</h1>
@@ -140,13 +164,27 @@ if(flag){
             </div> <hr />
             {credit ? <><div className="credit-form">
                 <p>Name on Card</p>
-                <input type="text" placeholder="Name on Card"/>
+                <input  type="text"
+  placeholder="Name on Card"
+  value={cardName}
+  onChange={(e) => setCardName(e.target.value)}/>
                 <p>Card Number</p>
-                <input type="text" placeholder="1234 5678 9012 3456"/>
+                <input  type="text"
+  placeholder="1234 5678 9012 3456"
+  value={cardNumber}
+  onChange={(e) => setCardNumber(e.target.value)}/>
+
                 <p>Exprire Date</p>
-                <input type="text" placeholder="MM / YY"/>
-                <p>CVV / CVC</p>
-                <input type="text" placeholder="CVV"/>
+                <input type="text"
+  placeholder="MM / YY"
+  value={expiryDate}
+  onChange={(e) => setExpiryDate(e.target.value)}/>
+
+                <p>CVV</p>
+                <input  type="text"
+  placeholder="CVV"
+  value={cvv}
+  onChange={(e) => setCvv(e.target.value)}/>
             </div><hr /></>:""}
             <div className="common-css">
                 <input type="checkbox" onChange={(e)=>{setPaytm(e.target.checked)}}/>
@@ -219,7 +257,8 @@ if(flag){
           <p id="termCondition">
             By completing your purchase you agree to these Terms of Service.
           </p>
-          <button className="checkout-btn" onClick={handleFinalCheckout}>Complete Checkout</button>
+          <button className="checkout-btn" 
+ onClick={handleFinalCheckout}>Complete Checkout</button>
           <p className="guarantee-tag">30-Day Money-Back Guarantee</p>
 
         </div>

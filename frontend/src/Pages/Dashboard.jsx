@@ -6,6 +6,7 @@ import axios from "axios"
 import { useState,useEffect } from 'react'
 import { Link } from "react-router-dom"
 import styled from 'styled-components'
+import { url } from '../api';
 
 
 export const Dashboard = () => {
@@ -13,7 +14,7 @@ export const Dashboard = () => {
     const [data,setData] = useState([])
 const fetchData = async() => {
         try {
-          let res = await axios.get("http://localhost:8080/courses")
+          let res = await axios.get(`${url}/courses`)
             setData(res.data.courses);
         } catch (error) {
           console.log(error)
@@ -24,7 +25,7 @@ const fetchData = async() => {
         }, []);
 const handleDelete = async(id) => {
         try {
-          let res = await axios.delete(`http://localhost:8080/courses/delete/${id}`)
+          let res = await axios.delete(`${url}/courses/delete/${id}`)
           fetchData()
         } catch (error) {
           console.log(error)

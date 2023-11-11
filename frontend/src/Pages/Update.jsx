@@ -4,6 +4,7 @@ import {IoMdClose} from "react-icons/io"
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
+import { url } from '../api'
 
 
 export  const Update = () => {
@@ -13,7 +14,7 @@ export  const Update = () => {
 
   const getCourseById = async() => {
     try {
-      let res = await axios.get(`http://localhost:8080/courses/updateData/${id}`)
+      let res = await axios.get(`${url}/courses/updateData/${id}`)
       setUpdateCourse(res.data)
     } catch (error) {
      console.log("dont Get",error) 
@@ -21,7 +22,7 @@ export  const Update = () => {
   }
   const putCourse = async (obj) => {
       try {
-        let res = await axios.put(`http://localhost:8080/courses/update/${id}`,obj);
+        let res = await axios.put(`${url}/courses/update/${id}`,obj);
         console.log(res);
       } catch (error) {
         console.error(error);

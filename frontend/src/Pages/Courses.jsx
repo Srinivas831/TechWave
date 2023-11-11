@@ -10,6 +10,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay } from "swiper/modules";
 import { slider } from "../SliderData/slider";
+import { url } from "../api";
 
 export const Courses = () => {
   const [search, setSearch] = useState("");
@@ -45,8 +46,7 @@ export const Courses = () => {
   const fetchData = async () => {
     try {
       setIsLoading(true);
-      let url = "https://calm-gold-slug-toga.cyclic.app/courses";
-     // let url = "https://techwave-test.onrender.com/courses";
+      let urll = `${url}/courses`;
       const params = { page: currentPage, limit: 10 };
 
       if (sort) {
@@ -61,7 +61,7 @@ export const Courses = () => {
         params.search = search;
       }
 
-      const response = await axios.get(url, { params });
+      const response = await axios.get(urll, { params });
       console.log(response);
       //console.log(response.data.courses);
       //setCourses(response.data);
@@ -156,7 +156,8 @@ export const Courses = () => {
         <div className={styles.course_list}>
           {isLoading ? (
             <div className={styles.loaderdiv}>
-              <span className={styles.loader}></span>
+              {/* <span className={styles.loader}></span> */}
+              <div style={{display:"flex",justifyContent:"center",alignItems:"center",height:"100vh"}}> <img src="https://media.tenor.com/JBgYqrobdxsAAAAi/loading.gif" alt="Girl in a jacket" width="150" height="150" style={{textAlign:"center"}}/></div>;
             </div>
           ) : (
             courses.length > 0 &&

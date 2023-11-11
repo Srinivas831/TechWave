@@ -8,6 +8,8 @@ import axios from "axios"
 import { Dashboard } from './Dashboard'
 import { RegisterUser } from './RegisterUser'
 import { PurchaseCourses } from './PurchaseCourses'
+import { url } from '../api'
+
 
 export const Admin = () => {
   const [data,setData] = useState([])
@@ -19,7 +21,7 @@ export const Admin = () => {
   }
   const getUsers = async() => {
     try {
-        let res = await axios.get(`http://localhost:8080/users/`)
+        let res = await axios.get(`${url}/users/`)
         console.log(res.data)
         setUsersData(res.data)
     } catch (error) {
@@ -29,7 +31,7 @@ export const Admin = () => {
 
   const fetchData = async() => {
     try {
-      let res = await axios.get("http://localhost:8080/courses")
+      let res = await axios.get(`${url}/courses`)
         setData(res.data.courses);
     } catch (error) {
       console.log(error)

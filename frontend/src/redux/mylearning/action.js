@@ -1,11 +1,12 @@
 import axios from "axios";
+import { url } from "../../api";
 
 const addMyLearning=(data)=>(dispatch)=>{
     console.log(data,"aaaaa")
     dispatch({
         type:"LOADING"
     })
-    axios.post("http://localhost:8080/courses/addtopurchased",data)
+    axios.post(`${url}/courses/addtopurchased`,data)
     .then((res)=>{console.log(res)
         dispatch({
             type:"success"
@@ -22,7 +23,10 @@ const addMyLearning=(data)=>(dispatch)=>{
 const getMyLearning=(userId)=>(dispatch)=>{
     const param={userId}
     console.log("param",param);
-    axios.get(`http://localhost:8080/courses/getcoursesformylearning?userId=${userId}`)
+    dispatch({
+        type:"LOADING"
+    })
+    axios.get(`${url}/courses/getcoursesformylearning?userId=${userId}`)
     .then((res)=>{ console.log("cou",res)
         dispatch({
             type:"GET_MYLEARNING",
