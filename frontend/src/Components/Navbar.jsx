@@ -9,6 +9,7 @@ import Cookies from "js-cookie";
 import axios from "axios";
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
+import { url } from "../api";
 
 function Navbar() {
   const [menu, setmenu] = useState(false);
@@ -29,7 +30,7 @@ function Navbar() {
   
 
  function handlLogout(){
-  axios.post("https://calm-gold-slug-toga.cyclic.app/users/logout",{
+  axios.post(`${url}/users/logout`,{
     headers:{
       Authorization:`Bearer ${isAuth}`
     }
@@ -61,7 +62,7 @@ function Navbar() {
 
     }
     axios
-      .get(`http://localhost:8080/courses/getfromcart?userId=${userId}`)
+      .get(`${url}/courses/getfromcart?userId=${userId}`)
       .then((res) => {
         console.log(res.data);
         setData(res.data.data);

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Styled from "styled-components";
 import "../Css/utils.css";
-import { Link} from "react-router-dom";
 import Cookies from "js-cookie";
 import { useDispatch, useSelector } from "react-redux";
 import { getMyLearning } from "../redux/mylearning/action";
@@ -24,7 +23,10 @@ console.log("userr",userId)
 useEffect(()=>{
   dispatch(getMyLearning(userId))
 },[])
-
+if(loading){
+ return <div style={{display:"flex",justifyContent:"center",alignItems:"center",height:"100vh"}}> <img src="https://media.tenor.com/JBgYqrobdxsAAAAi/loading.gif" alt="Girl in a jacket" width="200" height="200" style={{textAlign:"center"}}/></div>;
+  // return <div>Loading....</div>
+}
   return (
     <DIV>
     <div className="parent-mylearning">
@@ -35,10 +37,10 @@ useEffect(()=>{
         {courseArray?.map((ele) => {
    
           return (
-            <Link to={`/mylearning/${ele._id}`} key={ele.id} className="link">
+         
               <div className="mylearning-course-card">
                 <div className="mylearning-course-card-img">
-                <iframe width="400" height="315" src={ele.fullvideo} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe width="100%" height={"300px"} src={ele.fullvideo} title="YouTube video player" frameborder="0" allowFullScreen></iframe>
                 </div>
                 <div className="mylearning-course-card-title">
                   <h2>{ele.title}</h2>
@@ -46,7 +48,7 @@ useEffect(()=>{
                   <h6>Rating: {ele.rating}</h6>
                 </div>
               </div>
-            </Link>
+  
           );
         })}
       </div>
@@ -77,15 +79,17 @@ const DIV = Styled.div`
     .mylearning-course{
         margin : 2.5rem auto;
         display : grid;
-        grid-template-columns : 23% 23% 23% 23%;
-        /* border : 1px solid red; */
+        grid-template-columns : repeat(3,1fr);
+        gap:25px;
         justify-content : space-between;
+
     }
     .link{
         text-decoration : none;
     }
     .mylearning-course-card{
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        padding:10px
     }
     .mylearning-course-card-img{
         width : 100%;
@@ -96,9 +100,21 @@ const DIV = Styled.div`
     .mylearning-course-card-title h2 {
         color : var(--dark-color);
         font-weight : 500;
+        height:80px;
+        overflow:hidden;
+        
+    }
+    .mylearning-course-card-desc p{
     }
     .mylearning-course-card-title p , .mylearning-course-card-title h6{
         color : var(--dark-color);
+    }
+
+    @media screen and (max-width:600px){
+      .mylearning-course{
+            grid-template-columns : repeat(1,1fr);
+            
+        }
     }
 // `;
 

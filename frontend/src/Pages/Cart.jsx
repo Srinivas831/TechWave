@@ -7,6 +7,7 @@ import "../Css/utils.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Cookies from "js-cookie";
+import { url } from '../api';
 
 
 function Cart() {
@@ -22,7 +23,7 @@ function Cart() {
   console.log(userId);
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/courses/getfromcart?userId=${userId}`)
+      .get(`${url}/courses/getfromcart?userId=${userId}`)
       .then((res) => {
         console.log(res.data);
         setLoading(false);
@@ -51,7 +52,7 @@ function Cart() {
   const handlRemoveFromCart = (userId, productId) => {
     axios
       .delete(
-        `http://localhost:8080/courses/deletefromcart?userId=${userId}&productId=${productId}`
+        `${url}/courses/deletefromcart?userId=${userId}&productId=${productId}`
       )
       .then((res) => {
         setOriginalPrice(
@@ -79,12 +80,12 @@ function Cart() {
     }
   };
 
-  if (loading) {
-    return <h1>Loading...</h1>;
+  if(loading){
+    <img src="https://media.tenor.com/JBgYqrobdxsAAAAi/loading.gif" alt="Girl in a jacket" width="200" height="200" style={{textAlign:"center"}}/>;
   }
   if (!data || data.length === 0) {
     return (
-      <div>
+      <div style={{textAlign:"center",height:"50vh",margin:"auto",display:"flex",justifyContent:"center",alignItems:"center"}}>
         <h1>No items in your cart</h1>
       </div>
     );

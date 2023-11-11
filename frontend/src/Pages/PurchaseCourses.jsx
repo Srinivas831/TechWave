@@ -4,13 +4,14 @@ import styled from 'styled-components'
 import {BiUserCircle} from "react-icons/bi"
 import {AiOutlineEdit} from "react-icons/ai"
 import axios from 'axios'
+import { url } from '../api'
 
 export const PurchaseCourses = () => {
   const [registerUsersData,setRegisterUsersData] = useState([]);
 
     const getUsers = async() => {
         try {
-            let res = await axios.get(`http://localhost:8080/users/`)
+            let res = await axios.get(`${url}/users/`)
             console.log(res.data)
             setRegisterUsersData(res.data)
         } catch (error) {
@@ -19,7 +20,7 @@ export const PurchaseCourses = () => {
     }
     const getPurchasedData = async() => {
       try {
-        let res = await axios.get(`https://localhost:8080/courses/getfrompurchased`)
+        let res = await axios.get(`${url}/courses/getfrompurchased`)
         console.log(res)
       } catch (error) {
         console.log(error)

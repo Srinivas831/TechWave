@@ -16,6 +16,7 @@ import axios from "axios";
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import {useNavigate} from "react-router-dom";
+import { url } from '../api';
 // https://calm-gold-slug-toga.cyclic.app/
 function Signup() {
   const defaultTheme = createTheme();
@@ -46,7 +47,7 @@ function Signup() {
         email:email,
         password:password
     }
-    axios.post("http://localhost:8080/users/register", newData)
+    axios.post(`${url}/users/register`, newData)
     .then((res) => {
       if (res.data.message === "Registered Successfully") {
         setAlertSeverity('success');
@@ -171,16 +172,16 @@ function Signup() {
         </Box>
       </Container>
       {showAlert && (
-       <Stack
-       sx={{
-         width: ["50%", "30%"],
-         position: 'fixed',
-         top: ['10%'], 
-         left: '50%', 
-         transform: 'translate(-50%, -50%)',
-       }}
-       spacing={2}
-     >
+        <Stack
+        sx={{
+          width: ["30%", "20%"],
+          position: 'fixed',
+          top: ['90%'], 
+          right: '0.1%', 
+          transform: 'translate(-30%, -30%)',
+        }}
+        spacing={2}
+      >
           <Alert variant="filled" severity={alertSeverity}>
             {alertMessage}
           </Alert>

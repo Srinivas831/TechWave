@@ -17,6 +17,7 @@ import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
+import { url } from '../api';
 
 
 function Copyright(props) {
@@ -51,7 +52,7 @@ export default function Login() {
         email,
         password
     }
-    axios.post("http://localhost:8080/users/login",data)
+    axios.post(`${url}/users/login`,data)
     .then((res) => {
       console.log(res)
       if (res.data.message === "Logged Successfully") {
@@ -75,7 +76,7 @@ export default function Login() {
       const timer = setTimeout(() => {
         setShowAlert(false);
         if(alertSeverity==="success"){
-          nav(-2);
+          nav(-1);
       }
       }, 2000)
       return () => clearTimeout(timer);
@@ -156,11 +157,11 @@ export default function Login() {
       {showAlert && (
           <Stack
           sx={{
-            width: ["50%", "40%"],
+            width: ["30%", "20%"],
             position: 'fixed',
-            top: ['10%'], 
-            left: '50%', 
-            transform: 'translate(-50%, -50%)',
+            top: ['90%'], 
+            right: '0.1%', 
+            transform: 'translate(-30%, -30%)',
           }}
           spacing={2}
         >
