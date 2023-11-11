@@ -97,7 +97,7 @@ const nav=useNavigate();
       {showAlert && (
             <Stack
             sx={{
-              width: ["30%", "14%"],
+              width: ["48%", "14%"],
               position: 'fixed',
               top: ['90%'], 
               right: '2px', 

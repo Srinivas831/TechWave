@@ -174,7 +174,7 @@ function Signup() {
       {showAlert && (
         <Stack
         sx={{
-          width: ["30%", "20%"],
+          width: ["48%", "20%"],
           position: 'fixed',
           top: ['90%'], 
           right: '0.1%', 
