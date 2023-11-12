@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Styled from "styled-components";
 import "../Css/utils.css";
 import Cookies from "js-cookie";

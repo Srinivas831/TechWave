@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import {BiUserCircle} from "react-icons/bi"
-import {AiOutlineEdit} from "react-icons/ai"
 import axios from 'axios'
-// import { url } from '../api'
+
 
 export const PurchaseCourses = () => {
 

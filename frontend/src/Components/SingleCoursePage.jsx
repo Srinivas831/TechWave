@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import SingleCourseExt from './SingleCourseExt';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-// import { url } from '../api';
+
 
 const SingleCoursePage = () => {
 

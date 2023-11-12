@@ -4,7 +4,7 @@ import {AiOutlineEdit} from "react-icons/ai"
 import {BiUserCircle} from "react-icons/bi"
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-// import { url } from '../api'
+
 
 export const RegisterUser = () => {
 

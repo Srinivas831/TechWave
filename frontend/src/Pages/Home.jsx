@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import Styled from "styled-components";
 import hero_img from "../Assets/hero-img.png";
 import "@fortawesome/fontawesome-svg-core/styles.css";

@@ -7,7 +7,6 @@ import "../Css/utils.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Cookies from "js-cookie";
-// import { url } from '../api';
 
 
 function Cart() {

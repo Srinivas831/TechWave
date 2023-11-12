@@ -4,7 +4,6 @@ import {IoMdClose} from "react-icons/io"
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
-// import { url } from '../api'
 
 
 export  const Update = () => {

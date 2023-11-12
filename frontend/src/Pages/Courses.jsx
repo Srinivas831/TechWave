@@ -10,7 +10,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay } from "swiper/modules";
 import { slider } from "../SliderData/slider";
-// import { url } from "../api";
+
 
 export const Courses = () => {
 

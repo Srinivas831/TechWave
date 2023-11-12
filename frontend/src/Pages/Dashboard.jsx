@@ -1,12 +1,11 @@
 import React from 'react'
-
 import {AiOutlineEdit} from "react-icons/ai"
 import {MdDeleteOutline} from "react-icons/md";
 import axios from "axios"
 import { useState,useEffect } from 'react'
 import { Link } from "react-router-dom"
 import styled from 'styled-components'
-// import { url } from '../api';
+
 
 
 export const Dashboard = () => {
@@ -27,7 +26,7 @@ const fetchData = async() => {
         }, []);
 const handleDelete = async(id) => {
         try {
-          let res = await axios.delete(`${url}/courses/delete/${id}`)
+          await axios.delete(`${url}/courses/delete/${id}`)
           fetchData()
         } catch (error) {
           console.log(error)

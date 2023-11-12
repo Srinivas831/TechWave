@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import styles from "../Css/Courses.module.css";
 
 export const CourseSidebar = ({ handleFilters, handleSort }) => (

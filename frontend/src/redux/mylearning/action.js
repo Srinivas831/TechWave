@@ -1,5 +1,4 @@
 import axios from "axios";
-// import { url } from "../../api";
 
 const url = "https://tech-wave-backend-server.onrender.com"
 

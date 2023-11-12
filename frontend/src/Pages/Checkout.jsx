@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from "react";
+import React, {useState } from "react";
 import { styled } from "styled-components";
 import { BiChevronDown } from "react-icons/bi";
 import { SiPaytm } from "react-icons/si";
@@ -13,7 +13,7 @@ import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import { addMyLearning } from "../redux/mylearning/action";
 import axios from "axios";
-// import { url } from "../api";
+
 
 function Checkout() {
 

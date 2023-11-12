@@ -8,7 +8,7 @@ import axios from "axios"
 import { Dashboard } from './Dashboard'
 import { RegisterUser } from './RegisterUser'
 import { PurchaseCourses } from './PurchaseCourses'
-// import { url } from '../api'
+
 
 
 export const Admin = () => {
