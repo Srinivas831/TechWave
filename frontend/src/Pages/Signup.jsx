@@ -16,11 +16,11 @@ import axios from "axios";
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import {useNavigate} from "react-router-dom";
-import { url } from '../api';
+// import { url } from '../api';
 // https://calm-gold-slug-toga.cyclic.app/
 function Signup() {
   const defaultTheme = createTheme();
-
+  const url = "https://tech-wave-backend-server.onrender.com"
   // Define state variables for storing user input
   const [firstName, setFirstName] = React.useState('');
   const [lastName, setLastName] = React.useState('');

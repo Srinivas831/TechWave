@@ -1,5 +1,7 @@
 import axios from "axios";
-import { url } from "../../api";
+// import { url } from "../../api";
+
+const url = "https://tech-wave-backend-server.onrender.com"
 
 const addMyLearning=(data)=>(dispatch)=>{
     console.log(data,"aaaaa")

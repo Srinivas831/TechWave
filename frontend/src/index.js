@@ -6,8 +6,11 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
+// import dotenv from 'dotenv/config'
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+// dotenv.config();
+
 root.render(
     <Provider store={store}>
     <BrowserRouter>

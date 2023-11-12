@@ -7,11 +7,13 @@ import "../Css/utils.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Cookies from "js-cookie";
-import { url } from '../api';
+// import { url } from '../api';
 
 
 function Cart() {
 
+  const url = "https://tech-wave-backend-server.onrender.com"
+  
   const [data, setData] = useState([]);
   const [originalPrice, setOriginalPrice] = useState(0);
   const [discountPrice, setDiscountPrice] = useState(0);

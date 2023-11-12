@@ -4,10 +4,13 @@ import {IoMdClose} from "react-icons/io"
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
-import { url } from '../api'
+// import { url } from '../api'
 
 
 export  const Update = () => {
+
+  const url = "https://tech-wave-backend-server.onrender.com"
+  
     const {id} = useParams()
     const navigate = useNavigate()
     const [updateCourse,setUpdateCourse] = useState({})

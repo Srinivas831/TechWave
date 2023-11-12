@@ -13,9 +13,12 @@ import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import { addMyLearning } from "../redux/mylearning/action";
 import axios from "axios";
-import { url } from "../api";
+// import { url } from "../api";
 
 function Checkout() {
+
+  const url = "https://tech-wave-backend-server.onrender.com"
+  
   const [credit,setCredit] = useState(false);
   const [paytm,setPaytm] = useState(false)
   const [netbanking,setNetbanking] = useState(false)

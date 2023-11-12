@@ -4,9 +4,12 @@ import styled from 'styled-components'
 import {BiUserCircle} from "react-icons/bi"
 import {AiOutlineEdit} from "react-icons/ai"
 import axios from 'axios'
-import { url } from '../api'
+// import { url } from '../api'
 
 export const PurchaseCourses = () => {
+
+  const url = "https://tech-wave-backend-server.onrender.com"
+  
   const [registerUsersData,setRegisterUsersData] = useState([]);
 
     const getUsers = async() => {

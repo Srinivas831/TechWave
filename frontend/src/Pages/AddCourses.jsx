@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import {IoMdClose} from "react-icons/io"
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { url } from '../api';
+// import { url } from '../api';
 
 export  function AddCourses() {
     const [formDetail,setFormDetails] = useState({
@@ -25,6 +25,8 @@ course_includes:[""],
 requirements:[""]
 })
     const navigate = useNavigate()
+
+    const url = "https://tech-wave-backend-server.onrender.com"
 
   const postCourse = async (obj) => {
       try {

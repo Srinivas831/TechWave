@@ -8,10 +8,13 @@ import axios from "axios"
 import { Dashboard } from './Dashboard'
 import { RegisterUser } from './RegisterUser'
 import { PurchaseCourses } from './PurchaseCourses'
-import { url } from '../api'
+// import { url } from '../api'
 
 
 export const Admin = () => {
+
+  const url = "https://tech-wave-backend-server.onrender.com"
+  
   const [data,setData] = useState([])
   const [usersData,setUsersData] = useState([])
   const [selectTed , setSelectTed] = useState("dashboard")

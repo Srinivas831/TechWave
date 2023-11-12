@@ -2,9 +2,12 @@ import { useEffect, useState } from 'react'
 import SingleCourseExt from './SingleCourseExt';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import { url } from '../api';
+// import { url } from '../api';
 
 const SingleCoursePage = () => {
+
+    const url = "https://tech-wave-backend-server.onrender.com"
+    
     const { id } = useParams();
     const [data, setData] = useState({});
     const[loading,setLoading]=useState(false);
