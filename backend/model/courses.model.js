@@ -1,5 +1,5 @@
 const mongoose=require("mongoose");
-
+mongoose.set('strictQuery', true);
 const productSchema=mongoose.Schema({
     image:{
         type:String,
