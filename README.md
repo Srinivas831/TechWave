@@ -13,7 +13,7 @@ Once a user finds a course they're interested in, they can easily add it to thei
  
  Welcome to the Tech Wave homepage, your gateway to a world of knowledge and skill enhancement. Explore a diverse selection of courses, sign up, and embark on your learning journey. Discover high-quality content, experience course previews, and build your personalized learning experience. Join us at Tech Wave and unlock the doors to your educational aspirations.
 
- ![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
+ ![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/y8w7ho5tummfpxp8gj9o.jpg)
 
 
 ## Course page
@@ -27,7 +27,7 @@ Discover an array of courses at Tech Wave's course listing page. With our user-f
 
 Welcome to our Blogs Page, your source for the latest insights and trending topics. Explore a curated selection of informative and thought-provoking blogs that cover a wide range of subjects. Stay updated with the latest trends, ideas, and expert opinions in various fields. Our Blogs Page is your go-to destination for staying informed and inspired. Join us here and dive into the world of knowledge and discovery.
 
-![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
+![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/1yb6q324q1eergoto1m9.jpg)
 
 ## Cart page
 
