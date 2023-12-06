@@ -6,7 +6,7 @@ Tech Wave is a comprehensive full-stack project that offers users a seamless edu
 Once a user finds a course they're interested in, they can easily add it to their cart and proceed to checkout, simplifying the course enrollment process. After successfully purchasing a course, users can conveniently access their acquired content in the "My Learning" section, ensuring easy tracking of their learning journey. Tech Wave is your one-stop solution for hassle-free online learning and course management.
 
 
-![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
+![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/5jpu192myxgvavu6u3ee.jpeg)
 
 
 ## Home page
@@ -27,14 +27,14 @@ Discover an array of courses at Tech Wave's course listing page. With our user-f
 
 Welcome to our Blogs Page, your source for the latest insights and trending topics. Explore a curated selection of informative and thought-provoking blogs that cover a wide range of subjects. Stay updated with the latest trends, ideas, and expert opinions in various fields. Our Blogs Page is your go-to destination for staying informed and inspired. Join us here and dive into the world of knowledge and discovery.
 
-![Logo]()
+![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ykfy2i8yzv76k7989xuw.jpg)
 
 ## Cart page
 
 
 Welcome to your Cart Page, where your learning journey comes together. This is where you can review and manage the courses you've selected. Easily add or remove courses, apply discounts, and finalize your course purchases. Your Cart Page ensures a seamless and convenient checkout process, so you can quickly secure the courses you desire. Get ready to enhance your skills and knowledge with a click of a button.
 
-![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
+![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/zb86iwgat1w2d9v536yk.jpg)
 
 ## API Reference
 
