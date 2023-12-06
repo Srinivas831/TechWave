@@ -105,7 +105,11 @@ We follow responsive web design principles to ensure our website functions seaml
   GET /https://tech-wave-backend-server.onrender.com/getcoursesformylearning
 ```
 
-## Deploy Link
+## Deployment: 
+
+Vercel used for deploying and hosting the frontend and for backend components we used Render.com .
+
+Our tech stack is carefully chosen to provide a robust, scalable, and user-friendly experience for our customers while ensuring the security and integrity of their data.
 
 ```http
   https://tech-wave-gold.vercel.app/
