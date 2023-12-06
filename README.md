@@ -38,27 +38,16 @@ Welcome to your Cart Page, where your learning journey comes together. This is w
 
 ## API Reference
 
-#### Get all items
+### Base Api 
 
 ```http
-  GET /api/items
+  GET /https://tech-wave-backend-server.onrender.com
 ```
 
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `api_key` | `string` | **Required**. Your API key |
-
-#### Get item
+#### Get all Courses
 
 ```http
-  GET /api/items/${id}
+  GET /https://tech-wave-backend-server.onrender.com/getcoursesformylearning
 ```
 
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `id`      | `string` | **Required**. Id of item to fetch |
-
-#### add(num1, num2)
-
-Takes two numbers and returns the sum.
 
