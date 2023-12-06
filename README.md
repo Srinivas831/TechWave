@@ -36,6 +36,61 @@ Welcome to your Cart Page, where your learning journey comes together. This is w
 
 ![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/zb86iwgat1w2d9v536yk.jpg)
 
+# Tech Stack Overview
+
+Our Tech Wave platform is built on a robust and cutting-edge tech stack, ensuring a seamless and dynamic user experience. Individually, we leverage the power of:
+
+## Frontend Technologies
+
+In our frontend development, we harness the power of cutting-edge technologies to provide you with a top-notch user experience:
+
+### React.js
+
+Our frontend is built using React.js, a popular JavaScript library for building user interfaces. React's component-based architecture allows us to create modular and reusable UI components, making the development process efficient and maintainable.
+
+### JavaScript (JS)
+
+JavaScript is the foundation of our frontend development. It enables dynamic and interactive features on our website, ensuring a seamless and engaging user experience.
+
+### Redux
+
+Redux: Seamlessly managing state across the application for a smooth and organized workflow.
+
+### Styled Components
+
+Styled Components: Elevating the aesthetics of our UI by styling components with a dynamic and efficient approach.
+
+
+## Backend Technology
+
+In the backend development of Tech Wave, we employ a robust and scalable tech stack to ensure seamless functionality and data management:
+
+### Node.js
+
+Node.js: Powering our server-side, Node.js enables fast and efficient handling of server requests.
+
+### Express.js
+
+Express.js: Serving as our backend framework, Express.js streamlines the development process with its minimalistic and flexible structure.
+
+### MongoDB
+
+MongoDB: As our database of choice, MongoDB provides a scalable and versatile solution for effective data storage and retrieval.
+
+### JSON Web Token (JWT)
+
+JSON Web Token (JWT): Ensuring secure user authentication and authorization, JWT enhances the overall security of our backend infrastructure.
+
+
+This backend tech stack is carefully crafted to deliver a high-performance and secure foundation for Tech Wave, enabling us to handle data, user authentication, and server-side operations with efficiency.
+
+
+### Responsive Design: 
+
+We follow responsive web design principles to ensure our website functions seamlessly on various devices, including desktops, tablets, and smartphones.
+
+
+
 ## API Reference
 
 ### Base Api 
