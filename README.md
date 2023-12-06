@@ -50,4 +50,9 @@ Welcome to your Cart Page, where your learning journey comes together. This is w
   GET /https://tech-wave-backend-server.onrender.com/getcoursesformylearning
 ```
 
+## Deploy Link
+
+```http
+  https://tech-wave-gold.vercel.app/
+```
 
