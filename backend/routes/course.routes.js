@@ -18,8 +18,6 @@ productRouter.get("/getcoursesformylearning",async(req,res)=>{
     }
 })
 
-
-
 productRouter.get("/getfromcart",async(req,res)=>{
     try{
         let userId=req.query.userId;
@@ -37,7 +35,6 @@ productRouter.get("/getfromcart",async(req,res)=>{
         res.status(400).send({message:"error getting"})
     }
 })
-
 
 productRouter.get("/", async (req, res) => {
     try {
@@ -85,23 +82,14 @@ productRouter.get("/getpurchase", async (req, res) => {
 });
 
 productRouter.get("/getfrompurchased",async(req,res)=>{
-    let userId=req.query.userId;
     try{
-        const userData = await PurchasedModel.findOne({ userId });
-        if (userData) {
-          const productIdArray = userData.productId;
-          res.status(200).send(productIdArray);
-        }
-         else {
-          res.status(200).send([]); // Return an empty array if no data is found
-        }
+        const userData = await PurchasedModel.find();
+        res.status(200).send(userData);
     }
     catch(err){
         res.status(400).send(err);
     }
 })
-
-
 
 productRouter.get("/:id",async(req,res)=>{
     const id=req.params.id;
@@ -113,8 +101,6 @@ catch(err){
 res.status(400).send({"message":err.message});
 }
 })
-
-
 
 productRouter.post("/addCourses", async (req, res) => {
     const payload = req.body;
@@ -164,7 +150,6 @@ productRouter.get("/updateData/:id", async (req, res) => {
     }
 });
 
-
 productRouter.post("/addtocart",async(req,res)=>{
     try{
         let obj=req.body;
@@ -186,7 +171,6 @@ productRouter.post("/addtocart",async(req,res)=>{
     }
 })
 
-
 productRouter.delete("/deletefromcart",async(req,res)=>{
     const userId=req.query.userId;
     const productId=req.query.productId;
@@ -204,8 +188,6 @@ productRouter.delete("/deletefromcart",async(req,res)=>{
         res.status(400).send({"message":"error deleting from cart"});
     }
 })
-
-
 
 productRouter.post("/addtopurchased",async(req,res)=>{
     const { userId, productId } = req.body;

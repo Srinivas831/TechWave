@@ -4,6 +4,7 @@ import {AiOutlineEdit} from "react-icons/ai"
 import {BiUserCircle} from "react-icons/bi"
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import Popup from './Popup'
 
 
 export const RegisterUser = () => {
@@ -11,6 +12,7 @@ export const RegisterUser = () => {
   const url = "https://tech-wave-backend-server.onrender.com"
   
     const [registerUsersData,setRegisterUsersData] = useState([]);
+    const [popup, setPopup] = useState(false);
 
     const getUsers = async() => {
         try {
@@ -21,9 +23,18 @@ export const RegisterUser = () => {
             console.log(error)
         }
     }
+   const showCourses = (id) => {
+     
+   } 
     useEffect(()=>{
         getUsers()
     },[])
+
+    const showPopup = ({userName,email},i) => {
+      // showCourses(id)
+      setPopup(!popup);
+      console.log(userName,i)
+    }
 
   return (
     <ShowData>
@@ -41,9 +52,15 @@ export const RegisterUser = () => {
                 {registerUsersData.length>0 && registerUsersData?.map((item,i)=>(
                   <tr key={item._id}>
                   <td className='common'>{`${i+1} )`}</td>
-                  <td><Link to={`userDetails/${item._id}`} className='userDetailBtn'>
-                        <BiUserCircle id='user-detail-btn'/>
-                        </Link></td>
+                  <td>
+                    {popup ? <Popup show={popup} handleClose={showPopup}>
+                          <p>Name : {item.userName}</p>
+                          <p>Email : {item.email}</p>
+                        </Popup> : <div className='userDetailBtn' onClick={()=>showPopup(item,i)}>
+                         <BiUserCircle id='user-detail-btn'/>
+                    </div> }
+                    
+                  </td>
                   <td><Link to={`/blockUser/${item._id}`} className='blockBtn'>
                     <AiOutlineEdit id='block-btn'/>
                     </Link></td>
@@ -91,6 +108,8 @@ tbody{
               background-color: #0056d2;
               color: white;
             }
+        } & :hover{
+          cursor: pointer;
         }
     }
     .blockBtn{

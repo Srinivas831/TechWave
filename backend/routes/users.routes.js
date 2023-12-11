@@ -101,4 +101,17 @@ userRouter.post("/logout",async(req,res)=>{
     }
 })
 
+// Blocklist
+userRouter.post("/userBlock",async(req,res)=>{
+    const {blacklist} = req.body
+    console.log(blacklist)
+    try {
+        const userBlock = new UserBlackListModel(blacklist)
+        await userBlock.save()
+        res.send({"msg":"EMail found"})
+    } catch (error) {
+        console.log({"msg":"error found"})
+    }
+})
+
 module.exports={userRouter};
