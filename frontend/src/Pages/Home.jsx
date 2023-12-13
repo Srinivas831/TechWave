@@ -4,10 +4,7 @@ import hero_img from "../Assets/hero-img.png";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../Css/utils.css";
-import {
-  faCheck,
-  faPlay,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faPlay } from "@fortawesome/free-solid-svg-icons";
 import learning_img from "../Assets/learning-people-img.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -125,6 +122,10 @@ function Home() {
           </div>
         </div>
       </div>
+      
+      {/* --- Recomended courses */}
+
+    
 
       {/* -------- Testimonials ----- */}
 
@@ -132,45 +133,87 @@ function Home() {
         <div>
           <h1>Testimonials</h1>
         </div>
-        <Swiper
-          spaceBetween={30}
-          centeredSlides={true}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-          }}
-          pagination={{
-            clickable: true,
-          }}
-          navigation={true}
-          modules={[Autoplay, Pagination, Navigation]}
-          className="mySwiper"
-        >
-          <SwiperSlide>
-            <TestiCard key={data.testi[0]?.id} img = {data.testi[0]?.img} post= {data.testi[0]?.post} name ={data.testi[0]?.name}/>
-          </SwiperSlide>
-          <SwiperSlide>
-            <TestiCard key={data.testi[1]?.id} img = {data.testi[1]?.img} post= {data.testi[1]?.post} name ={data.testi[1]?.name}/>
-          </SwiperSlide>
-          <SwiperSlide>
-            <TestiCard key={data.testi[2]?.id} img = {data.testi[2]?.img} post= {data.testi[2]?.post} name ={data.testi[2]?.name}/>
-          </SwiperSlide>
-          <SwiperSlide>
-            <TestiCard key={data.testi[3]?.id} img = {data.testi[3]?.img} post= {data.testi[3]?.post} name ={data.testi[3]?.name}/>
-          </SwiperSlide>
-          <SwiperSlide>
-            <TestiCard key={data.testi[4]?.id} img = {data.testi[4]?.img} post= {data.testi[4]?.post} name ={data.testi[4]?.name}/>
-          </SwiperSlide>
-          <SwiperSlide>
-            <TestiCard key={data.testi[5]?.id} img = {data.testi[5]?.img} post= {data.testi[5]?.post} name ={data.testi[5]?.name}/>
-          </SwiperSlide>
-          <SwiperSlide>
-            <TestiCard key={data.testi[6]?.id} img = {data.testi[6]?.img} post= {data.testi[6]?.post} name ={data.testi[6]?.name}/>
-          </SwiperSlide>
-          <SwiperSlide>
-            <TestiCard key={data.testi[7]?.id} img = {data.testi[7]?.img} post= {data.testi[7]?.post} name ={data.testi[7]?.name}/>
-          </SwiperSlide>
-        </Swiper>
+        <div className="swiper-parent">
+          <Swiper
+            spaceBetween={10}
+            centeredSlides={true}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            // pagination={{
+            // clickable: true,
+            // }}
+            navigation={true}
+            modules={[Autoplay, Pagination, Navigation]}
+            className="mySwiper"
+          >
+            <SwiperSlide>
+              <TestiCard
+                key={data.testi[0]?.id}
+                img={data.testi[0]?.img}
+                post={data.testi[0]?.post}
+                name={data.testi[0]?.name}
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <TestiCard
+                key={data.testi[1]?.id}
+                img={data.testi[1]?.img}
+                post={data.testi[1]?.post}
+                name={data.testi[1]?.name}
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <TestiCard
+                key={data.testi[2]?.id}
+                img={data.testi[2]?.img}
+                post={data.testi[2]?.post}
+                name={data.testi[2]?.name}
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <TestiCard
+                key={data.testi[3]?.id}
+                img={data.testi[3]?.img}
+                post={data.testi[3]?.post}
+                name={data.testi[3]?.name}
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <TestiCard
+                key={data.testi[4]?.id}
+                img={data.testi[4]?.img}
+                post={data.testi[4]?.post}
+                name={data.testi[4]?.name}
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <TestiCard
+                key={data.testi[5]?.id}
+                img={data.testi[5]?.img}
+                post={data.testi[5]?.post}
+                name={data.testi[5]?.name}
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <TestiCard
+                key={data.testi[6]?.id}
+                img={data.testi[6]?.img}
+                post={data.testi[6]?.post}
+                name={data.testi[6]?.name}
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <TestiCard
+                key={data.testi[7]?.id}
+                img={data.testi[7]?.img}
+                post={data.testi[7]?.post}
+                name={data.testi[7]?.name}
+              />
+            </SwiperSlide>
+          </Swiper>
+        </div>
       </div>
     </DIV>
   );
@@ -321,8 +364,12 @@ const DIV = Styled.div`
         transition : all 0.5s ease;
 
     }
-    .swiper {
+    .swiper-parent{
+      margin : 0 auto;
       width: 100%;
+    }
+    .swiper {
+      max-width : 700px;
       height: 100%;
     }
 
