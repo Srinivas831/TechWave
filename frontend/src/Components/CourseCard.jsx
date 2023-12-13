@@ -11,7 +11,7 @@ export const CourseCard = ({ course }) => {
 
       <CourseMid>
         <h3>{course.title}</h3>
-        <p className="descp">{course.description}</p>
+        <p className="descp">{course.description.slice(0, 70)+`...`}</p>
         <p style={{ color: "gray" }}>{course.instructor}</p>
         <p>Ratings: {course.rating}</p>
       </CourseMid>
