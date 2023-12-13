@@ -1,8 +1,6 @@
 import React from 'react'
 import Styled from "styled-components";
 import "../Css/utils.css";
-import { faQuoteLeft } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function TestiCard({name , img , post}) {
   return (
@@ -13,7 +11,6 @@ function TestiCard({name , img , post}) {
           </div>
           <div className="card-text">
             <div>
-            <FontAwesomeIcon icon={faQuoteLeft} style={{fontSize: "2rem" , color: "#22242a"}}/>
             </div>
             <div>
               <p>{post}</p>
@@ -37,11 +34,12 @@ const CARD = Styled.div`
       display: flex;
       /* gap:2rem; */
       justify-content: space-around;
-      align-items: center; 
+      align-items: start; 
     }
     .card-img{
-      width : 200px;
-      height : 200px;
+      margin : 1.5rem auto;
+      width : 100px;
+      height : 100px;
       border-radius : 50%;
       /* border : 1px solid red; */
       overflow : hidden;
@@ -50,7 +48,7 @@ const CARD = Styled.div`
     }
     .card-img img{
       width : 100%;
-        object-fit : cover;
+      object-fit : cover;
     }
     .card-text{
       display : flex;
@@ -59,12 +57,14 @@ const CARD = Styled.div`
       width : 50%;
       margin: auto;
       padding : 0 1rem;
+      text-align : left;
     }
     .card-text-last{
-      text-align : center;
+      text-align : left;
       justify-content : center;
       align-items : center;
-      font-size : 2rem;
+      font-size : 1rem;
+      font-weight : 600;
     }
 
 
