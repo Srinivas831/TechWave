@@ -15,7 +15,7 @@ import { slider } from "../SliderData/slider";
 export const Courses = () => {
 
   const url = "https://tech-wave-backend-server.onrender.com"
-  
+
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("");
   const [filters, setFilters] = useState([]);
@@ -122,10 +122,13 @@ export const Courses = () => {
             return (
               <SwiperSlide key={item.id} className={styles.slider}>
                 <img src={item.image} />
-                <p style={{ fontWeight: "bolder" }}>{item.title}</p>
-                <p>{item.description.slice(0, 70)}...</p>
-                <h4>₹{item.original_price}</h4>
-                <h3>₹{item.discounted_price}</h3>
+                <div className={styles.sliderText}>
+                  <p style={{ fontWeight: "bolder" }}>{item.title}</p>
+                  <p>{item.description.slice(0, 70)}...</p>
+                  <h4>₹{item.original_price}</h4>
+                  <h3>₹{item.discounted_price}</h3>
+                </div>
+
               </SwiperSlide>
             );
           })}
@@ -160,7 +163,7 @@ export const Courses = () => {
           {isLoading ? (
             <div className={styles.loaderdiv}>
               {/* <span className={styles.loader}></span> */}
-              <div style={{display:"flex",justifyContent:"center",alignItems:"center",height:"100vh"}}> <img src="https://media.tenor.com/JBgYqrobdxsAAAAi/loading.gif" alt="Girl in a jacket" width="150" height="150" style={{textAlign:"center"}}/></div>;
+              <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}> <img src="https://media.tenor.com/JBgYqrobdxsAAAAi/loading.gif" alt="Girl in a jacket" width="150" height="150" style={{ textAlign: "center" }} /></div>;
             </div>
           ) : (
             courses.length > 0 &&

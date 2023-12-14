@@ -169,3 +169,7 @@
   align-items: center;
   height: 50vh;
 }
+
+.sliderText{
+  padding-left: 0.6rem;
+}
