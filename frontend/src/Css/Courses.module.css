@@ -18,8 +18,8 @@
 
   @media screen and (max-width: 450px) {
     & input {
-        width: 100%;
-      }
+      width: 100%;
+    }
   }
 }
 
@@ -76,8 +76,17 @@
 }
 
 .slider {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-bottom: 0.8em;
+  border-radius: 0.6em;
+  overflow: hidden;
   & img {
     width: 100%;
+    aspect-ratio: 16/9;
+  }
+
+  .sliderText {
+    padding: 0 0.4em;
   }
 
   .disc {
@@ -110,10 +119,9 @@
     margin-bottom: 2em;
     flex-wrap: wrap;
 
-    
-  & button {
-    padding: 0.4em;
-  }
+    & button {
+      padding: 0.4em;
+    }
   }
 }
 
@@ -126,6 +134,7 @@
   transform: rotate(45deg);
   box-sizing: border-box;
 }
+
 .loader::before {
   content: "";
   position: absolute;
@@ -154,10 +163,13 @@
   }
 }
 
+.loaderdiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
 
-.loaderdiv{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50vh;
+.sliderText{
+  padding-left: 0.6rem;
 }
