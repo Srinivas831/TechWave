@@ -86,7 +86,7 @@ function Cart() {
   }
   if (!data || data.length === 0) {
     return (
-      <div style={{textAlign:"center",height:"50vh",margin:"auto",display:"flex",justifyContent:"center",alignItems:"center"}}>
+      <div style={{textAlign:"center",height:"80vh",margin:"auto",display:"flex",justifyContent:"center",alignItems:"center"}}>
         <h1>No items in your cart</h1>
       </div>
     );
@@ -163,6 +163,7 @@ export default Cart;
 
 const DIV = Styled.div`
     font-family : var(--primary-font-family);
+    min-height : 80vh ;
     .parent-cart{
         width : 90%;
         margin : 2.5rem auto;
