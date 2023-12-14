@@ -18,7 +18,7 @@ import About from "../Pages/About";
 
 function AllRoutes() {
   return (
-    <Routes>
+    <Routes >
       <Route path="/" element={<Home />} />
       <Route path="/courses" element={<Courses />}></Route>
       <Route path="/courses/:id" element={<SingleCoursePage />} />
@@ -47,3 +47,5 @@ function AllRoutes() {
 }
 
 export default AllRoutes;
+
+
