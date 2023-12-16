@@ -9,7 +9,11 @@ import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faLocationDot, faPhoneVolume } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEnvelope,
+  faLocationDot,
+  faPhoneVolume,
+} from "@fortawesome/free-solid-svg-icons";
 
 function Footer() {
   return (
@@ -65,15 +69,21 @@ function Footer() {
                 icon={faLocationDot}
                 style={{ fontSize: "20px" }}
               />
-              <p>Bangaluru 74 ave,sute <br/>Karnataka, 500055</p>
+              <p>
+                Bangaluru 74 ave,sute <br />
+                Karnataka, 500055
+              </p>
             </div>
             <div>
-            <FontAwesomeIcon icon={faEnvelope} style={{ fontSize: "20px" }}/>
-            <p>support@techwave.com</p>
+              <FontAwesomeIcon icon={faEnvelope} style={{ fontSize: "20px" }} />
+              <p>support@techwave.com</p>
             </div>
             <div>
-            <FontAwesomeIcon icon={faPhoneVolume} style={{ fontSize: "20px" }}/>
-            <p>+91 9900 0099</p>
+              <FontAwesomeIcon
+                icon={faPhoneVolume}
+                style={{ fontSize: "20px" }}
+              />
+              <p>+91 9900 0099</p>
             </div>
           </div>
         </div>
@@ -87,6 +97,10 @@ export default Footer;
 const DIV = Styled.div`
     background-color : var(--dark-color);
     font-family : var(--primary-font-family);
+    position : relative;
+    width : 100%;
+    left : 0;
+    bottom: 0;
     .footer-parent{
         width : 90%;
         display : grid;
