@@ -11,19 +11,23 @@ export const CourseCard = ({ course }) => {
 
       <CourseMid>
         <h3>{course.title}</h3>
-        <p className="descp">{course.description.slice(0, 70)+`...`}</p>
+        <p className="descp">{course.description.slice(0, 70) + `...`}</p>
         <p style={{ color: "gray" }}>{course.instructor}</p>
         <p>Ratings: {course.rating}</p>
       </CourseMid>
 
       <CourseRight>
-        <p style={{ textDecoration: "line-through" }}>
-          Rs.{course.original_price}
-        </p>
-        <p style={{ fontSize: "24px" }}>Rs.{course.discounted_price}</p>
-        <a href={`/courses/${course._id}`} className="explore_link">
-          Explore
-        </a>
+        <div>
+          <p style={{ textDecoration: "line-through" }}>
+            Rs.{course.original_price}
+          </p>
+          <p style={{ fontSize: "24px" }}>Rs.{course.discounted_price}</p>
+        </div>
+        <div>
+          <a href={`/courses/${course._id}`} className="explore_link">
+            Explore
+          </a>
+        </div>
       </CourseRight>
     </CourseWrapper>
   );
@@ -50,6 +54,7 @@ const CourseLeft = styled.div`
 
   @media screen and (max-width: 750px) {
     flex: 1.5;
+    width: 100%;
   }
 `;
 
@@ -75,7 +80,7 @@ const CourseRight = styled.div`
   text-align: center;
   justify-content: center;
   align-items: center;
-  gap: 0.3em;
+  gap: 1.2em;
 
   .explore_link {
     border: 1px solid #0056d2;
@@ -93,14 +98,16 @@ const CourseRight = styled.div`
 
   @media screen and (max-width: 750px) {
     flex: 1.5;
+    flex-direction: row;
+    justify-content: space-between;
 
     button {
       padding: 0.5em 1em;
+
     }
   }
 
   @media screen and (max-width: 450px) {
     margin-top: 1.2em;
-    align-items: flex-start;
   }
 `;
