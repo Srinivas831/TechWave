@@ -26,13 +26,20 @@
 .course_container {
   display: flex;
   gap: 2em;
+  align-items: start;
+  padding: 0.5em;
 
   & .sidebar {
+    top: 0;
+
     flex: 2;
     border-right: 1px solid gray;
+    position: sticky;
+    height: 100vh;
 
     @media screen and (max-width: 968px) {
       border: none;
+      position: static;
     }
   }
 
@@ -46,6 +53,8 @@
 
   @media screen and (max-width: 750px) {
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
 
@@ -80,6 +89,8 @@
   margin-bottom: 0.8em;
   border-radius: 0.6em;
   overflow: hidden;
+  min-height: 10vh;
+
   & img {
     width: 100%;
     aspect-ratio: 16/9;
@@ -97,6 +108,10 @@
     text-decoration: line-through;
     color: gray;
     font-weight: 400;
+  }
+
+  @media screen and (min-width: 751px) and (max-width: 1120px) {
+    min-height: 60vh;
   }
 }
 
@@ -170,6 +185,6 @@
   height: 50vh;
 }
 
-.sliderText{
+.sliderText {
   padding-left: 0.6rem;
 }

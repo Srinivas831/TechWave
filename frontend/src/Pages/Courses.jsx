@@ -30,6 +30,7 @@ export const Courses = () => {
 
   const handleSort = (e) => {
     setSort(e.target.value);
+    window.location.href = `#course_container`
   };
 
   const handleFilters = (filter) => {
@@ -39,6 +40,7 @@ export const Courses = () => {
       setFilters([...filters, filter]);
     }
     setCurrentPage(1);
+    window.location.href = `#course_container`
   };
 
   const handlePageChange = (pageNumber) => {
@@ -95,7 +97,7 @@ export const Courses = () => {
 
       {/* Slider */}
       <div>
-        <h2 style={{ marginBottom: "1.5em" }}>Recommended Courses For You</h2>
+        <h2 style={{ marginBottom: "1.5em", fontSize: "1.5em", fontWeight: "600" }}>Recommended Courses For You</h2>
         <Swiper
           modules={[Autoplay]}
           slidesPerView={4}
@@ -124,7 +126,7 @@ export const Courses = () => {
                 <img src={item.image} />
                 <div className={styles.sliderText}>
                   <p style={{ fontWeight: "bolder" }}>{item.title}</p>
-                  <p>{item.description.slice(0, 70)}...</p>
+                  <p >{item.description.slice(0, 70)}...</p>
                   <h4>₹{item.original_price}</h4>
                   <h3>₹{item.discounted_price}</h3>
                 </div>
@@ -144,13 +146,14 @@ export const Courses = () => {
           textAlign: "center",
           marginBottom: "1.5em",
           fontSize: "1.8em",
+          fontWeight: "600"
         }}
       >
         Available Courses
       </h2>
 
       {/* Sidebar */}
-      <div className={styles.course_container}>
+      <div className={styles.course_container} id="course_container">
         <div className={styles.sidebar}>
           <CourseSidebar
             handleFilters={handleFilters}
@@ -163,7 +166,8 @@ export const Courses = () => {
           {isLoading ? (
             <div className={styles.loaderdiv}>
               {/* <span className={styles.loader}></span> */}
-              <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}> <img src="https://media.tenor.com/JBgYqrobdxsAAAAi/loading.gif" alt="Girl in a jacket" width="150" height="150" style={{ textAlign: "center" }} /></div>;
+              <div style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "100%", margin: "auto" }}>
+                <img src="https://media.tenor.com/JBgYqrobdxsAAAAi/loading.gif" alt="Loading..." width="150" height="150" style={{ display: "block", margin: "auto" }} /></div>;
             </div>
           ) : (
             courses.length > 0 &&
