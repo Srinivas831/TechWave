@@ -7,7 +7,8 @@ import styled from 'styled-components'
 import Popup from './Popup'
 
 
-export const RegisterUser = () => {
+export const RegisterUser = ({user,update,updateBlockusers}) => {
+  // console.log(user,typeof(update))
 
   const url = "https://tech-wave-backend-server.onrender.com"
   
@@ -17,15 +18,12 @@ export const RegisterUser = () => {
     const getUsers = async() => {
         try {
             let res = await axios.get(`${url}/users/`)
-            console.log(res.data)
+            // console.log(res.data)
             setRegisterUsersData(res.data)
         } catch (error) {
             console.log(error)
         }
     }
-   const showCourses = (id) => {
-     
-   } 
     useEffect(()=>{
         getUsers()
     },[])
@@ -34,6 +32,21 @@ export const RegisterUser = () => {
       // showCourses(id)
       setPopup(!popup);
       console.log(userName,i)
+    }
+    const blockUser = async(email) => {
+      let obj = {
+        blockEmail : email,
+      }
+      // console.log(obj)
+      try {
+        let res = await axios.post("http://localhost:8080/users/userBlock",obj)
+        update(user-1)
+        getUsers()
+        updateBlockusers()
+        // console.log(res.data.msg);
+      } catch (error) {
+        console.log(error)
+      }
     }
 
   return (
@@ -61,9 +74,11 @@ export const RegisterUser = () => {
                     </div> }
                     
                   </td>
-                  <td><Link to={`/blockUser/${item._id}`} className='blockBtn'>
-                    <AiOutlineEdit id='block-btn'/>
-                    </Link></td>
+                  <td>
+                    <div className='blockBtn'>
+                       <button onClick={()=>blockUser(item.email)} className='block-user'><AiOutlineEdit id='block-btn'/></button>
+                    </div>
+                  </td>
                   <td className='common'>{item.userName}</td>
                   <td className='common'>{item.email}</td>
                 </tr>))}
@@ -115,6 +130,10 @@ tbody{
     .blockBtn{
         display: flex;
         justify-content: center;
+        .block-user{
+          background: none;
+          border: none;
+        }
         #block-btn{
           padding: .3rem;
           color: black;

@@ -117,6 +117,7 @@ height: 50vh;
   overflow-y: auto ;
 table{
   border-collapse: collapse;
+  width: 100%;
   
   thead {
       tr {
