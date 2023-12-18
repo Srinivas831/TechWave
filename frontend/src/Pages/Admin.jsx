@@ -18,8 +18,9 @@ export const Admin = () => {
   const [data,setData] = useState([])
   const [totalPage,setTotalPage] = useState(0);
   const [lastPage,setLastPage] = useState(0);
-  const [usersData,setUsersData] = useState()
+  const [usersData,setUsersData] = useState(0)
   const [selectTed , setSelectTed] = useState("dashboard")
+  const [blocklistUsers,setBlocklistUsers] = useState(0)
   const navigate = useNavigate()
 
   const handleClick = (tab) => {
@@ -29,7 +30,7 @@ export const Admin = () => {
     try {
         let res = await axios.get(`${url}/users/`)
         console.log(res.data)
-        setUsersData(res.data)
+        setUsersData(res.data.length)
     } catch (error) {
         console.log(error)
     }
@@ -52,10 +53,19 @@ export const Admin = () => {
       console.log(error)
     }
   }
+  const getBlockUsers = async() => {
+    try {
+      let res = await axios.get("http://localhost:8080/users/blockUsers");
+      setBlocklistUsers(res.data.length)
+    } catch (error) {
+      console.log({"msg":error.message})
+    }
+  }
   useEffect(() => {
     getUsers()
     fetchData()
     lastPageData()
+    getBlockUsers()
   }, [data]);
 
   const navigateToHome = () => {
@@ -83,7 +93,7 @@ export const Admin = () => {
         <div className='overview-heading'>
           <div>
             <FaRegUserCircle className='icon' />
-            <h1 id="count">{usersData?.length}</h1>
+            <h1 id="count">{usersData}</h1>
             <h3 id="user">Register Users</h3>
           </div>
           <div>
@@ -93,12 +103,12 @@ export const Admin = () => {
           </div>
           <div>
             <BiAddToQueue className='icon'/>
-            <h1 id="count">5</h1>
+            <h1 id="count">{blocklistUsers}</h1>
             <h3 id="user">Blocklist User</h3>
           </div>
         </div>
         {selectTed === "dashboard" && <Dashboard count={data} update={setData}/>}
-        {selectTed === "registerUser" && <RegisterUser />}
+        {selectTed === "registerUser" && <RegisterUser user={usersData} update={setUsersData} updateBlockusers={getBlockUsers}/>}
         {selectTed === "purchasecourse" && <PurchaseCourses />}
         {selectTed === "report" &&  <Dashboard />}
         </Right>

@@ -157,7 +157,7 @@ export const PurchaseCourses = () => {
                 <td className='common'>{`${i + 1} )`}</td>
                 <td className='common'>{item.userName}</td>
                 <td className='common'>{item.email}</td>
-                <td>{item.purchasedCourses.length}</td>
+                <td className='common'>{item.purchasedCourses.length}</td>
               </tr>
             ))}
         </tbody>

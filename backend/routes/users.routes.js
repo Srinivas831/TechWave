@@ -3,9 +3,7 @@ const bcrypt=require('bcrypt');
 const { UserModel } = require("../model/users.model");
 const userRouter = express.Router();
 const jwt=require("jsonwebtoken");
-const { BlackListModel } = require("../model/blacklist.model");
-
-
+const {BlackListModel} = require("../model/blacklist.model")
 
 userRouter.get("/",async(req,res)=>{
     try {
@@ -57,7 +55,6 @@ res.status(400).send({"message":"Error Regisetring User"});
 }
 })
 
-
 //login...........
 userRouter.post("/login",async(req,res)=>{
 try{
@@ -102,15 +99,30 @@ userRouter.post("/logout",async(req,res)=>{
 })
 
 // Blocklist
-userRouter.post("/userBlock",async(req,res)=>{
-    const {blacklist} = req.body
-    console.log(blacklist)
+userRouter.post("/userBlock", async (req, res) => {
+    const token = req.body;
     try {
-        const userBlock = new UserBlackListModel(blacklist)
-        await userBlock.save()
-        res.send({"msg":"EMail found"})
+        const newUser = await UserModel.findOne({ email: token.blockEmail });
+        if (newUser) {
+            const userBlock = new BlackListModel(token);
+            await userBlock.save();
+            await UserModel.findOneAndDelete(newUser)
+            res.send({ "msg": "User block successful" });
+        } else {
+            res.send({ "msg": "User not found" });
+        }
     } catch (error) {
-        console.log({"msg":"error found"})
+        console.error("Error during userBlock operation:", error);
+        res.status(500).send({ "error": "Internal server error" });
+    }
+});
+
+userRouter.get("/blockUsers", async(req,res)=>{
+    try {
+        let data = await BlackListModel.find();
+        res.status(200).send(data);
+    } catch (error) {
+        res.status(404).send({"msg":"Data not found"})
     }
 })
 

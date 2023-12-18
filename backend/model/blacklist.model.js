@@ -1,7 +1,6 @@
 const mongoose=require("mongoose");
-mongoose.set('strictQuery', true);
 const blacklistSchema=mongoose.Schema({
-    token:String
+    blockEmail : String
 },{
     versionKey:false
 })
