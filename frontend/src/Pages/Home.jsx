@@ -14,9 +14,11 @@ import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import testi from "../testimonials.json";
 import TestiCard from "../Components/TestiCard";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
   const data = testi;
+  const nav=useNavigate();
   // console.log(data.testi)
   return (
     <DIV>
@@ -39,7 +41,7 @@ function Home() {
             </p>
           </div>
           <div className="hero-left-enrole">
-            <button className="big_dark_button">Enroll Now</button>
+            <button className="big_dark_button" onClick={()=>{nav("/courses")}}>Enroll Now</button>
             <div className="hero-left-enrole-video-play">
               <div className="hero-left-enrole-video-play-icon">
                 <FontAwesomeIcon

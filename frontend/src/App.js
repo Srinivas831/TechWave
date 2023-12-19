@@ -10,8 +10,6 @@ function App() {
       <Navbar/>
       <AllRoutes/>
       <Footer/>
-      {/* <Admin /> */}
-
     </div>
   )
 }

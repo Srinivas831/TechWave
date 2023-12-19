@@ -103,7 +103,8 @@ function Navbar() {
            { Admin && <li className="nav-links">
                <Link to="/admin">Admin</Link>
             </li>}
-            {isAuth ? (
+           
+           {isAuth && !Admin ? (
               <li className="nav-links">
                 <Link to="/mylearning">My Learning</Link>
               </li>

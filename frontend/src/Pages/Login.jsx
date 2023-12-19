@@ -19,7 +19,6 @@ import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 
 
-
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -80,7 +79,7 @@ export default function Login() {
       const timer = setTimeout(() => {
         setShowAlert(false);
         if(alertSeverity==="success"){
-          nav(-1);
+          nav(-2);
       }
       }, 2000)
       return () => clearTimeout(timer);
@@ -149,7 +148,7 @@ export default function Login() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/signup" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

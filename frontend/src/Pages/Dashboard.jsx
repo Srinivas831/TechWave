@@ -7,7 +7,6 @@ import { Link } from "react-router-dom"
 import styled from 'styled-components'
 
 
-
 export const Dashboard = ({count,update}) => {
 
   const url = "https://tech-wave-backend-server.onrender.com"
@@ -113,7 +112,7 @@ const PaginationDiv = styled.div`
 `
 const ShowData = styled.div`
 margin: 1rem;
-height: 50vh;
+height: 80vh;
   overflow-y: auto ;
 table{
   border-collapse: collapse;

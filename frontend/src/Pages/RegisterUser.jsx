@@ -39,7 +39,7 @@ export const RegisterUser = ({user,update,updateBlockusers}) => {
       }
       // console.log(obj)
       try {
-        let res = await axios.post("http://localhost:8080/users/userBlock",obj)
+        let res = await axios.post(`${url}/users/userBlock`,obj)
         update(user-1)
         getUsers()
         updateBlockusers()
