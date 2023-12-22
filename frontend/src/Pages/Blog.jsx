@@ -1,10 +1,12 @@
 
 import React from 'react'
 import styled from 'styled-components'
+import Navbar from '../Components/Navbar'
 
 function Blog() {
   return (
     <MainDiv>
+        <Navbar />
         <div className='headingNavbar'><h1>Our Blogs</h1></div>
         <div className='course-div'>
             <div className='image-div'>

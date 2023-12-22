@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import SingleCourseExt from './SingleCourseExt';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import Navbar from './Navbar';
 
 
 const SingleCoursePage = () => {
@@ -39,6 +40,7 @@ const SingleCoursePage = () => {
 
     return (
         <>
+            <Navbar />
             {
                 loading ? <div style={{display:"flex", justifyContent:"center", height:"50vh",alignItems:"center"}}>
                     <img src="https://media.tenor.com/JBgYqrobdxsAAAAi/loading.gif" alt="Girl in a jacket" width="150" height="150" style={{textAlign:"center"}}/>

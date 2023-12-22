@@ -13,6 +13,7 @@ import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import { addMyLearning } from "../redux/mylearning/action";
 import axios from "axios";
+import Navbar from "../Components/Navbar";
 
 
 function Checkout() {
@@ -69,13 +70,16 @@ const handleFinalCheckout=()=>{
 console.log("flag",flag);
 
 if(flag){
-  alert("purchased");
+  alert("Purchased Successfully\nGo to my learning section to view the course");
   nav("/")
 }
 
 
   return (
+    <div>
+      <Navbar />
     <MainDiv>
+      
       <div className="leftside">
         <div className="parant">
         <h1>Checkout</h1>
@@ -266,6 +270,7 @@ if(flag){
         </div>
       </div>
     </MainDiv>
+    </div>
   );
 }
 
@@ -340,6 +345,7 @@ const MainDiv = styled.div`
           width:.9rem ;
           height:.9rem;
           margin: .5rem .5rem .5rem .2rem;
+          cursor: pointer;
         }
         div > b {
           margin-left: 10px;
@@ -380,6 +386,7 @@ const MainDiv = styled.div`
             margin-bottom: .7rem;
             display: block;
             padding: .6rem;
+            /* cursor: pointer; */
           }
         
       }
@@ -390,6 +397,7 @@ const MainDiv = styled.div`
           margin: .5rem .5rem .5rem .2rem;
           width:.9rem ;
           height:.9rem;
+          cursor: pointer;
         }
         .logo-and-common{
           display: flex;
@@ -460,6 +468,7 @@ const MainDiv = styled.div`
         background-color: #0056d2;
         color: #ffffff;
         border: none;
+        cursor: pointer;
       }
       .guarantee-tag{
         width: 100%;

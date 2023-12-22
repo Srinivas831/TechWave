@@ -32,6 +32,7 @@ function Navbar() {
   
 
  function handlLogout(){
+
   axios.post(`${url}/users/logout`,{
     headers:{
       Authorization:`Bearer ${isAuth}`
@@ -48,6 +49,7 @@ function Navbar() {
       setAlertSeverity('success');
       setAlertMessage('Logged out Successfully');
       navigate("/")
+
     } 
     else {
       setAlertSeverity('error');

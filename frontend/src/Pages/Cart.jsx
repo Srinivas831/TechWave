@@ -7,6 +7,7 @@ import "../Css/utils.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Cookies from "js-cookie";
+import Navbar from '../Components/Navbar';
 
 
 function Cart() {
@@ -86,14 +87,19 @@ function Cart() {
   }
   if (!data || data.length === 0) {
     return (
-      <div style={{textAlign:"center",height:"80vh",margin:"auto",display:"flex",justifyContent:"center",alignItems:"center"}}>
+      <div>
+        <Navbar />
+        <div style={{textAlign:"center",height:"80vh",margin:"auto",display:"flex",justifyContent:"center",alignItems:"center"}}>
         <h1>No items in your cart</h1>
+      </div>
       </div>
     );
   }
 
   // -----------------------
   return (
+    <div>
+      <Navbar />
     <DIV>
       <div className="parent-cart">
         <div className="heading">
@@ -156,6 +162,7 @@ function Cart() {
         </div>
       </div>
     </DIV>
+    </div>
   );
 }
 

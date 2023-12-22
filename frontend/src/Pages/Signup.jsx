@@ -16,6 +16,7 @@ import axios from "axios";
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import {useNavigate} from "react-router-dom";
+import Navbar from '../Components/Navbar';
 
 function Signup() {
   const defaultTheme = createTheme();
@@ -74,7 +75,8 @@ function Signup() {
   }, [showAlert]);
 
   return (
-  
+   <div>
+    <Navbar />
     <ThemeProvider theme={defaultTheme}>
        
       <Container component="main" maxWidth="xs">
@@ -162,7 +164,7 @@ function Signup() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/login" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>
@@ -187,6 +189,7 @@ function Signup() {
         </Stack>
       )}
     </ThemeProvider>
+   </div>
   );
 }
 

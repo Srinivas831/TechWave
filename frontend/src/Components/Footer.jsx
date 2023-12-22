@@ -21,7 +21,8 @@ function Footer() {
       <div className="footer-parent">
         <div className="footer-part1">
           <div className="logo-div">
-            <img src={logo} alt="" />
+            {/* <img src={logo} alt="" /> */}
+            <h1>TechWave</h1>
           </div>
           <div>
             <p>
