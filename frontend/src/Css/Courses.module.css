@@ -3,23 +3,32 @@
   margin: auto;
 }
 
+.available {
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
 .searchbar {
-  margin: auto;
-  margin-bottom: 2em;
+  display: flex;
+  justify-content: end;
+  flex: 1;
   text-align: center;
+  margin: 0.8em;
 
   & input {
     padding: 0.6em;
     border-radius: 0.8em;
-    width: 50%;
-
-    border: 1px solid #0056d2;
+    font-size: 1em;
+    border: 1px solid gray;
   }
 
   @media screen and (max-width: 450px) {
     & input {
       width: 100%;
     }
+
+    flex: 1;
   }
 }
 
@@ -45,6 +54,22 @@
 
   & .course_list {
     flex: 8;
+  }
+
+  .course_list_top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center !important;
+    margin-bottom: 1em;
+    position: sticky;
+    align-items: start;
+    top: 0;
+    z-index: 100;
+    background-color: whitesmoke;
+
+    @media screen and (max-width: 625px) {
+      flex-direction: column;
+    }
   }
 
   @media screen and (min-width: 751px) and (max-width: 968px) {
@@ -90,6 +115,7 @@
   border-radius: 0.6em;
   overflow: hidden;
   min-height: 10vh;
+  border: 1px solid lightgray;
 
   & img {
     width: 100%;
@@ -156,7 +182,6 @@
   box-sizing: border-box;
   inset: -10px;
   border-radius: 50%;
-  border: 10px solid #0056d2;
   animation: prixClipFix 2s infinite linear;
 }
 
