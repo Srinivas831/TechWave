@@ -18,10 +18,8 @@ export const CourseCard = ({ course }) => {
 
       <CourseRight>
         <div>
-          <p style={{ textDecoration: "line-through" }}>
-            Rs.{course.original_price}
-          </p>
-          <p style={{ fontSize: "24px" }}>Rs.{course.discounted_price}</p>
+          <p className="og_price">Rs. {course.original_price}</p>
+          <p className="dsc_price">Rs. {course.discounted_price}</p>
         </div>
         <div>
           <a href={`/courses/${course._id}`} className="explore_link">
@@ -80,15 +78,16 @@ const CourseRight = styled.div`
   text-align: center;
   justify-content: center;
   align-items: center;
-  gap: 1.2em;
+  gap: 1em;
 
   .explore_link {
     border: 1px solid #0056d2;
-    border-radius: 0.6em;
+    border-radius: 0.4em;
     background-color: #0056d2;
     text-decoration: none;
-    padding: 1em 2em;
+    padding: 0.4em 0.6em;
     color: white;
+    transition: all 0.3s ease-in;
 
     &:hover {
       background-color: white;
@@ -96,18 +95,41 @@ const CourseRight = styled.div`
     }
   }
 
+  .og_price {
+    text-decoration: line-through;
+    font-size: 0.8em;
+    color: gray;
+  }
+
+  .dsc_price {
+    font-size: 1.3em;
+    font-weight: 600;
+  }
+
   @media screen and (max-width: 750px) {
     flex: 1.5;
-    flex-direction: row;
-    justify-content: space-between;
+    font-size: 10px;
 
-    button {
+    .explore_link {
       padding: 0.5em 1em;
-
     }
   }
 
   @media screen and (max-width: 450px) {
+    flex-direction: row;
+    justify-content: space-between;
     margin-top: 1.2em;
+
+    .og_price {
+      font-size: 1em;
+    }
+
+    .dsc_price {
+      font-size: 1.6em;
+    }
+
+    .explore_link {
+      font-size: 1.6em;
+    }
   }
 `;

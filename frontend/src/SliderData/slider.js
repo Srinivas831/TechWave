@@ -61,7 +61,7 @@ export const slider = [
   {
     id: 5,
     image: "https://i.ytimg.com/vi/UxTTEIhJ8to/maxresdefault.jpg",
-    title: "Angular Internationalization (i18n)",
+    title: "Angular Internationalization",
     description:
       "Learn how to internationalize Angular applications for global audiences.",
     instructor: "David Martin",
