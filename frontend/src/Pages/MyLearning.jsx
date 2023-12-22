@@ -4,6 +4,7 @@ import "../Css/utils.css";
 import Cookies from "js-cookie";
 import { useDispatch, useSelector } from "react-redux";
 import { getMyLearning } from "../redux/mylearning/action";
+import Navbar from "../Components/Navbar";
 
 function MyLearning() {
   const dispatch = useDispatch();
@@ -24,7 +25,9 @@ function MyLearning() {
   }, []);
   if (!courseArray || courseArray.length === 0) {
     return (
-      <div
+      <div>
+        <Navbar />
+        <div
         style={{
           textAlign: "center",
           height: "50vh",
@@ -35,6 +38,7 @@ function MyLearning() {
         }}
       >
         <h1>No items in your Learning Library</h1>
+      </div>
       </div>
     );
   }
@@ -62,7 +66,9 @@ function MyLearning() {
     // return <div>Loading....</div>
   }
   return (
-    <DIV>
+    <div>
+      <Navbar />
+      <DIV>
       <div className="parent-mylearning">
         <div className="parent-mylearning-top-heading">
           <h1>My Learning</h1>
@@ -93,6 +99,7 @@ function MyLearning() {
         </div>
       </div>
     </DIV>
+    </div>
   );
 }
 

@@ -17,6 +17,7 @@ import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
+import Navbar from '../Components/Navbar';
 
 
 function Copyright(props) {
@@ -87,6 +88,8 @@ export default function Login() {
   }, [showAlert]);
 
   return (
+    <div>
+      <Navbar />
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -174,5 +177,6 @@ export default function Login() {
         </Stack>
       )}
     </ThemeProvider>
+    </div>
   );
 }

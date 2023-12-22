@@ -15,6 +15,7 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import testi from "../testimonials.json";
 import TestiCard from "../Components/TestiCard";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../Components/Navbar"
 
 function Home() {
   const data = testi;
@@ -23,6 +24,7 @@ function Home() {
   return (
     <DIV>
       {/* ------- Hero section -------  */}
+      <Navbar />
       <div className="hero-section">
         <div className="hero-left">
           <div className="hero-left-heading">

@@ -39,7 +39,7 @@ export const RegisterUser = ({user,update,updateBlockusers}) => {
       }
       // console.log(obj)
       try {
-        let res = await axios.post(`${url}/users/userBlock`,obj)
+        let res = await axios.post("http://localhost:8080/users/userBlock",obj)
         update(user-1)
         getUsers()
         updateBlockusers()
@@ -62,26 +62,39 @@ export const RegisterUser = ({user,update,updateBlockusers}) => {
                 </tr>
               </thead>
               <tbody>
-                {registerUsersData.length>0 && registerUsersData?.map((item,i)=>(
-                  <tr key={item._id}>
-                  <td className='common'>{`${i+1} )`}</td>
-                  <td>
-                    {popup ? <Popup show={popup} handleClose={showPopup}>
-                          <p>Name : {item.userName}</p>
-                          <p>Email : {item.email}</p>
-                        </Popup> : <div className='userDetailBtn' onClick={()=>showPopup(item,i)}>
-                         <BiUserCircle id='user-detail-btn'/>
-                    </div> }
-                    
-                  </td>
-                  <td>
-                    <div className='blockBtn'>
-                       <button onClick={()=>blockUser(item.email)} className='block-user'><AiOutlineEdit id='block-btn'/></button>
-                    </div>
-                  </td>
-                  <td className='common'>{item.userName}</td>
-                  <td className='common'>{item.email}</td>
-                </tr>))}
+              {registerUsersData.length > 0 &&
+  registerUsersData
+    .filter((item) => item.email !== "admin@admin.com")
+    .map((item, i) => (
+      <tr key={item._id}>
+        <td className="common">{`${i + 1} )`}</td>
+        <td>
+          {popup ? (
+            <Popup show={popup} handleClose={showPopup}>
+              <p>Name : {item.userName}</p>
+              <p>Email : {item.email}</p>
+            </Popup>
+          ) : (
+            <div className="userDetailBtn" onClick={() => showPopup(item, i)}>
+              <BiUserCircle id="user-detail-btn" />
+            </div>
+          )}
+        </td>
+        <td>
+          <div className="blockBtn">
+            <button
+              onClick={() => blockUser(item.email)}
+              className="block-user"
+            >
+              <AiOutlineEdit id="block-btn" />
+            </button>
+          </div>
+        </td>
+        <td className="common">{item.userName}</td>
+        <td className="common">{item.email}</td>
+      </tr>
+    ))}
+
               </tbody>
             </table>
         </ShowData>

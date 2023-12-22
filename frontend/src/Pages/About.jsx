@@ -3,10 +3,12 @@ import Styled from "styled-components";
 import "../Css/utils.css";
 import post1 from "../Assets/blog-post1.png";
 import post2 from "../Assets/blog-post2.png";
+import Navbar from "../Components/Navbar";
 
 function About() {
   return (
     <DIV>
+      <Navbar />
       <div className="blog-parent">
         <div className="heading">
           <h1>Know About Us</h1>

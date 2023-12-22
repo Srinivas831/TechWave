@@ -3,7 +3,8 @@ const bcrypt=require('bcrypt');
 const { UserModel } = require("../model/users.model");
 const userRouter = express.Router();
 const jwt=require("jsonwebtoken");
-const {BlackListModel} = require("../model/blacklist.model")
+const {BlockListModel} = require("../model/blocklist.model")
+const {BlacklistUserModel} = require("../model/blacklistUser.model");
 
 userRouter.get("/",async(req,res)=>{
     try {
@@ -89,8 +90,10 @@ res.status(400).send({"message":"Error LoggingIn"});
 userRouter.post("/logout",async(req,res)=>{
     try {
         const token=req.headers.authorization?.split(" ")[1];
-        const Blacklist=new BlackListModel(token);
-        await Blacklist.save();
+        // const Blacklist=new BlockListModel(token);
+        // await Blacklist.save();
+        const LogoutUserModel = new BlacklistUserModel({logoutToken:token});
+        await LogoutUserModel.save();
         res.status(200).send({"message":"Logged out Successfully"})
     } 
     catch (error) {
@@ -104,7 +107,7 @@ userRouter.post("/userBlock", async (req, res) => {
     try {
         const newUser = await UserModel.findOne({ email: token.blockEmail });
         if (newUser) {
-            const userBlock = new BlackListModel(token);
+            const userBlock = new BlockListModel(token);
             await userBlock.save();
             await UserModel.findOneAndDelete(newUser)
             res.send({ "msg": "User block successful" });
@@ -117,9 +120,10 @@ userRouter.post("/userBlock", async (req, res) => {
     }
 });
 
+// Block users
 userRouter.get("/blockUsers", async(req,res)=>{
     try {
-        let data = await BlackListModel.find();
+        let data = await BlockListModel.find();
         res.status(200).send(data);
     } catch (error) {
         res.status(404).send({"msg":"Data not found"})
