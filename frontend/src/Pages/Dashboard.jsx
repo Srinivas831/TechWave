@@ -5,11 +5,10 @@ import axios from "axios"
 import { useState,useEffect } from 'react'
 import { Link } from "react-router-dom"
 import styled from 'styled-components'
+import { url } from '../api';
 
 
 export const Dashboard = ({count,update}) => {
-
-  const url = "https://tech-wave-backend-server.onrender.com"
   
   const [data,setData] = useState([])
   const [currentPage,setCurrentPage] = useState(1);

@@ -3,11 +3,10 @@ import SingleCourseExt from './SingleCourseExt';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import Navbar from './Navbar';
+import { url } from '../api';
 
 
 const SingleCoursePage = () => {
-
-    const url = "https://tech-wave-backend-server.onrender.com"
     
     const { id } = useParams();
     const [data, setData] = useState({});

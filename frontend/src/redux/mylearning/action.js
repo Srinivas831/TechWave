@@ -1,6 +1,5 @@
 import axios from "axios";
-
-const url = "https://tech-wave-backend-server.onrender.com"
+import { url } from "../../api";
 
 const addMyLearning=(data)=>(dispatch)=>{
     console.log(data,"aaaaa")

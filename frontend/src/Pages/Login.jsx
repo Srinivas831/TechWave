@@ -18,6 +18,7 @@ import Stack from '@mui/material/Stack';
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../Components/Navbar';
+import { url } from '../api';
 
 
 function Copyright(props) {
@@ -36,7 +37,7 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function Login() {
-  const url = "https://tech-wave-backend-server.onrender.com"
+  
   const [email, setEmail] = React.useState(''); // State variable for email
   const [password, setPassword] = React.useState(''); // State variable for password
   const [alertMessage, setAlertMessage] = React.useState('');

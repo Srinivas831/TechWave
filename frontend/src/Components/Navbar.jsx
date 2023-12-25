@@ -9,10 +9,9 @@ import Cookies from "js-cookie";
 import axios from "axios";
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
+import { url } from "../api";
 
 function Navbar() {
-
-  const url = "https://tech-wave-backend-server.onrender.com"
   
   const [menu, setmenu] = useState(false);
 

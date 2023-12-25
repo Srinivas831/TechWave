@@ -11,9 +11,9 @@ import "swiper/css/navigation";
 import { Autoplay } from "swiper/modules";
 import { slider } from "../SliderData/slider";
 import Navbar from "../Components/Navbar";
+import { url } from "../api";
 
 export const Courses = () => {
-  const url = "https://tech-wave-backend-server.onrender.com";
 
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("");
