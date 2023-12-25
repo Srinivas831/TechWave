@@ -18,8 +18,8 @@ export const CourseCard = ({ course }) => {
 
       <CourseRight>
         <div>
-          <p className="og_price">Rs. {course.original_price}</p>
-          <p className="dsc_price">Rs. {course.discounted_price}</p>
+          <p className="og_price">₹ {course.original_price}</p>
+          <p className="dsc_price">₹ {course.discounted_price}</p>
         </div>
         <div>
           <a href={`/courses/${course._id}`} className="explore_link">

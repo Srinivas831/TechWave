@@ -5,12 +5,10 @@ import {BiUserCircle} from "react-icons/bi"
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import Popup from './Popup'
+import { url } from '../api'
 
 
 export const RegisterUser = ({user,update,updateBlockusers}) => {
-  // console.log(user,typeof(update))
-
-  const url = "https://tech-wave-backend-server.onrender.com"
   
     const [registerUsersData,setRegisterUsersData] = useState([]);
     const [popup, setPopup] = useState(false);

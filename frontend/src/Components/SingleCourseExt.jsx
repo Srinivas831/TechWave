@@ -18,10 +18,9 @@ import * as React from 'react';
 
 import { useNavigate } from "react-router-dom";
 import "../Css/utils.css";
+import { url } from "../api";
 // import { url } from "../api";
 const SingleCourseExt = ({id,_id,title, category, course_includes, description, discounted_price, original_price, fullvideo, hours, image, instructor, language, learnings, rating, students, requirements}) => {
-
-  const url = "https://tech-wave-backend-server.onrender.com"
   
   const [alertMessage, setAlertMessage] = React.useState('');
   const [alertSeverity, setAlertSeverity] = React.useState('success');

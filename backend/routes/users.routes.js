@@ -91,7 +91,6 @@ userRouter.post("/logout",async(req,res)=>{
     // console.log(req.body.logoutToken)
     try {
         const token=req.headers.authorization?.split(" ")[1];
-       
         const LogoutUserModel = new BlacklistUserModel({logoutToken:token});
         await LogoutUserModel.save();
         res.status(200).send({"message":"Logged out Successfully"})
