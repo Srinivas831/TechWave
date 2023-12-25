@@ -13,8 +13,8 @@ function Blog() {
               <img src="https://datainflow.com/wp-content/uploads/2018/02/learn-javascript-online.jpg" alt="javascriptImage" />
             </div>
             <div className='java-content'>
-                <h1>JavaScript Learning Couse</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit dolorem asperiores dolores nobis excepturi non perspiciatis illo sequi aliquam! Ea error exercitationem nesciunt magni aut nulla vitae nam assumenda maiores ad laboriosam amet quos facere quo dolorum, inventore temporibus reprehenderit. Laborum officia excepturi veniam a nisi aspernatur sed veritatis eum  deserunt totam quas. <a href="">Read more...</a></p>
+                <h1>JavaScript Learning Course</h1>
+                <p>JavaScript is a versatile and widely-used programming language that enables dynamic and interactive content on websites. It is primarily used for client-side scripting, allowing developers to create responsive and engaging web applications. JavaScript is supported by all major web browsers and is essential for enhancing user experience through features like form validation, animations, and real-time updates without the need to reload the entire webpage.  <a href="https://en.wikipedia.org/wiki/JavaScript">Read more...</a></p>
                 <div className='person-read'>
                     <img src="https://th.bing.com/th/id/OIP.dNtFudvD2hAJMOhOBNysXwHaHa?pid=ImgDet&w=526&h=526&rs=1" width={"50px"} alt="person-image" />
                     <div>
@@ -26,8 +26,8 @@ function Blog() {
         </div>
         <div className='course-div2'>
             <div className='java-content'>
-                <h1>Angular Advance Learning Couse</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit dolorem asperiores dolores nobis excepturi non perspiciatis illo sequi aliquam! Ea error exercitationem nesciunt magni aut nulla vitae nam assumenda maiores ad laboriosam amet quos facere quo dolorum, inventore temporibus reprehenderit. Laborum officia excepturi veniam a nisi aspernatur sed veritatis eum  deserunt totam quas. <a href="">Read more...</a></p>
+                <h1>Angular JS Advance Learning Course</h1>
+                <p>Angular JS is a popular open-source web application framework developed and maintained by Google. It is written in TypeScript and allows developers to build dynamic, single-page web applications (SPAs). Angular provides a structured framework for creating robust and scalable front-end applications, facilitating the development process and maintenance. <a href="https://en.wikipedia.org/wiki/AngularJS">Read more...</a></p>
                 <div className='person-read'>
                     <img src="https://cdn.pixabay.com/photo/2014/07/09/10/04/man-388104_640.jpg" width={"50px"} alt="person-image" />
                     <div>
@@ -46,7 +46,9 @@ function Blog() {
             </div>
             <div className='java-content'>
                 <h1>How to Learn React</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit dolorem asperiores dolores nobis excepturi non perspiciatis illo sequi aliquam! Ea error exercitationem nesciunt magni aut nulla vitae nam assumenda maiores ad laboriosam amet quos facere quo dolorum, inventore temporibus reprehenderit. Laborum officia excepturi veniam a nisi aspernatur sed veritatis eum  deserunt totam quas. <a href="">Read more...</a></p>
+                <p>
+                   React is an open-source JavaScript library developed and maintained by Facebook. It is primarily used for building user interfaces for single-page applications where components are created and managed efficiently. React follows a declarative approach, allowing developers to describe how the user interface should look based on the application's state, and it automatically updates and renders the components when the state changes. <a href="https://en.wikipedia.org/wiki/React_(software)">Read more...</a>
+                </p>
                 <div className='person-read'>
                     <img src="https://i.pinimg.com/originals/f8/93/c7/f893c7e1abe5b076eaee7c58223329e5.png" width={"50px"} alt="person-image" />
                     <div>
@@ -58,8 +60,10 @@ function Blog() {
         </div>
         <div className='course-div2'>
             <div className='java-content'>
-                <h1>HTML5 Learning Couse</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit dolorem asperiores dolores nobis excepturi non perspiciatis illo sequi aliquam! Ea error exercitationem nesciunt magni aut nulla vitae nam assumenda maiores ad laboriosam amet quos facere quo dolorum, inventore temporibus reprehenderit. Laborum officia excepturi veniam a nisi aspernatur sed veritatis eum  deserunt totam quas. <a href="">Read more...</a></p>
+                <h1>HTML5 Learning Course</h1>
+                <p>
+                   HTML5, or HyperText Markup Language 5, is the latest version of the standard markup language used to create and structure content on the World Wide Web. Developed and maintained by the World Wide Web Consortium (W3C) and the Web Hypertext Application Technology Working Group (WHATWG), HTML5 introduces new features and improvements over its predecessors (like HTML 4 and XHTML). <a href="https://en.wikipedia.org/wiki/HTML5">Read more...</a>
+                </p>
                 <div className='person-read'>
                     <img src="https://i1.rgstatic.net/ii/profile.image/577690925502464-1514743657420_Q512/Hemali-Batra-Sharma.jpg" width={"50px"} alt="person-image" />
                     <div>
@@ -113,7 +117,7 @@ padding: 0%;
         h1{
             margin-bottom: 2rem;
             font-size: 40px;
-            width: 60%;
+            width: 90%;
         }
         a{
             text-decoration: none;
@@ -151,7 +155,7 @@ padding: 0%;
         h1{
             margin-bottom: 2rem;
             font-size: 40px;
-            width: 60%;
+            width: 90%;
         }
         a{
             text-decoration: none;
@@ -182,7 +186,7 @@ padding: 0%;
         h1{
             margin: 1.5rem 0rem;
             font-size: 30px;
-            width: 60%;
+            width: 100%;
         } 
     }
     }
@@ -197,7 +201,7 @@ padding: 0%;
         h1{
             margin: 1.5rem 0rem;
             font-size: 30px;
-            width: 60%;
+            width: 100%;
         } 
     }
     }
@@ -213,8 +217,9 @@ padding: 0%;
         width: 80%;
         h1{
             margin: 1.5rem 0rem;
-            font-size: 30px;
-            width: 60%;
+            font-size: 25px;
+            width: 100%;
+            /* border: 1px solid red; */
         } 
     }
 }
@@ -228,8 +233,10 @@ padding: 0%;
         width: 80%;
         h1{
             margin: 1.5rem 0rem;
-            font-size: 30px;
-            width: 60%;
+            font-size: 25px;
+            width: 100%;
+            /* border: 1px solid red; */
+
         } 
     }
 }

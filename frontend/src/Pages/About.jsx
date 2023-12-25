@@ -25,13 +25,7 @@ function About() {
             </div>
             <div>
               <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Voluptate vero explicabo ullam ea cumque natus voluptates
-                temporibus reprehenderit cum mollitia, dolor omnis neque fugit
-                id doloribus sequi pariatur minima dolores sapiente vel odio?
-                Quam reiciendis doloremque ipsum sed ducimus, dolor tenetur,
-                quis fugiat quae cupiditate recusandae animi quisquam, officiis
-                architecto?
+              Machine learning algorithms are computational models that enable computers to learn from data and make predictions or decisions without being explicitly programmed. These algorithms play a central role in the field of machine learning, a subfield of artificial intelligence. Here is an overview of some common machine learning algorithms.
               </p>
             </div>
             <div className="blog-child-right-review">
@@ -56,13 +50,7 @@ function About() {
             </div>
             <div>
               <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Voluptate vero explicabo ullam ea cumque natus voluptates
-                temporibus reprehenderit cum mollitia, dolor omnis neque fugit
-                id doloribus sequi pariatur minima dolores sapiente vel odio?
-                Quam reiciendis doloremque ipsum sed ducimus, dolor tenetur,
-                quis fugiat quae cupiditate recusandae animi quisquam, officiis
-                architecto?
+              Managing a business on a low budget requires strategic planning, resourcefulness, and a focus on efficiency. Here are some key aspects to consider for effective business management on a limited budget.Focus on essential tools, services, and resources that directly contribute to revenue generation.Leverage cost-effective technology solutions to streamline processes and improve efficiency.
               </p>
             </div>
             <div className="blog-child-right-review">
@@ -82,23 +70,17 @@ function About() {
         {/*  */}
         <div className="blog-child">
           <div className="blog-child-left">
-            <img src={post1} />
+            <img src="https://image.freepik.com/free-vector/communication-infographic-circle-concept-smart-ui-elements-internet-message-discussion-announcement_159242-6787.jpg" />
           </div>
           <div className="blog-child-right">
             <div>
               <h1>
-                Machine Learning <br /> Algorithms
+                Effective Communication <br /> Skill
               </h1>
             </div>
             <div>
               <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Voluptate vero explicabo ullam ea cumque natus voluptates
-                temporibus reprehenderit cum mollitia, dolor omnis neque fugit
-                id doloribus sequi pariatur minima dolores sapiente vel odio?
-                Quam reiciendis doloremque ipsum sed ducimus, dolor tenetur,
-                quis fugiat quae cupiditate recusandae animi quisquam, officiis
-                architecto?
+              ffective communication refers to the clear, concise, and impactful exchange of information between individuals or groups, where the message is not only transmitted but also understood as intended. It involves the use of verbal and non-verbal cues to convey ideas, thoughts, or instructions in a manner that minimizes misunderstandings and maximizes the likelihood of the desired response or outcome.
               </p>
             </div>
             <div className="blog-child-right-review">
@@ -106,7 +88,7 @@ function About() {
                 <img src="https://image.made-in-china.com/202f0j00QSREgyLUmbzT/Professional-Manufacturers-New-Model-Custom-Mens-Slim-Fit-Formal-Dress-Shirt.jpg" />
               </div>
               <div>
-                <h3>John Doe</h3>
+                <h3>Avinash Dangi</h3>
                 <p>A Few Hours ago | 5 min read</p>
               </div>
             </div>
@@ -155,6 +137,7 @@ const DIV = Styled.div`
         width : 250px;
         height : 250px;
         overflow : hidden;
+        /* border : 2px solid red; */
     }
     .blog-child-left img{
         width : 100%;

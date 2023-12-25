@@ -42,7 +42,7 @@ const [showPaymentError, setShowPaymentError] = useState(false);
   const dispatch=useDispatch();
 
 const discountPercentage = Math.round(((originalPrice - discountPrice) / originalPrice) * 100);
-console.log(productId,"idss");
+// console.log(productId,"idss");
 
 const handleFinalCheckout=()=>{
   if (!credit && !paytm && !netbanking && !mobileWallet) {
@@ -67,11 +67,11 @@ const handleFinalCheckout=()=>{
   }
 }
 
-console.log("flag",flag);
+// console.log("flag",flag);
 
 if(flag){
   alert("Purchased Successfully\nGo to my learning section to view the course");
-  nav("/")
+  nav("/mylearning")
 }
 
 
@@ -256,10 +256,10 @@ if(flag){
         <div className="content-width">
           <h2>Summary</h2>
           <br />
-          <div className="price-div"><p>Original Price:</p><p>₹{originalPrice}</p></div>
+          <div className="price-div"><p>Original Price:</p><p>₹ {originalPrice}</p></div>
           <div className="price-div"><p>Discounts:</p><p>{discountPercentage}%</p></div>
           <hr /><br />
-          <div className="price-div"><h4>Total:</h4><h4>₹{discountPrice}</h4></div>
+          <div className="price-div"><h4>Total:</h4><h4>₹ {discountPrice}</h4></div>
           <p id="termCondition">
             By completing your purchase you agree to these Terms of Service.
           </p>

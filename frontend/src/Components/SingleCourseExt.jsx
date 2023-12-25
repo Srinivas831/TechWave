@@ -198,7 +198,7 @@ const nav=useNavigate();
             <p style={{lineHeight:"1.5"}}>or</p>
             </div>
            
-            <div className="price_adjustment"><h2>₹{discounted_price}</h2> <h3 className="strike_price">₹{original_price}</h3></div>
+            <div className="price_adjustment"><h2>₹ {discounted_price}</h2> <h3 className="strike_price">₹ {original_price}</h3></div>
             <Button className="extra_big_dark_button" onClick={handleAddToCart}>Add to cart</Button>
           </div>
         </div>

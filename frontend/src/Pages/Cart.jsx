@@ -22,12 +22,12 @@ function Cart() {
   let userId = isAuth;
   const nav = useNavigate();
   const dispatch = useDispatch();
-  console.log(userId);
+  // console.log(userId);
   useEffect(() => {
     axios
       .get(`${url}/courses/getfromcart?userId=${userId}`)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setLoading(false);
         setData(res.data.data);
 
@@ -46,10 +46,10 @@ function Cart() {
       })
       .catch((err) => {
         setLoading(false);
-        console.log("qqq",err);
+        // console.log("qqq",err);
       });
   }, [dispatch]);
-  console.log("dataaa",data);
+  // console.log("dataaa",data);
 
   const handlRemoveFromCart = (userId, productId) => {
     axios
@@ -132,8 +132,8 @@ function Cart() {
                     </button>
                   </div>
                   <div className="cart-card-price">
-                    <p> $ {ele.original_price}</p>
-                    <h3>$ {ele.discounted_price}</h3>
+                    <p>₹ {ele.original_price}</p>
+                    <h3>₹ {ele.discounted_price}</h3>
                   </div>
                 </div>
               );
@@ -144,8 +144,8 @@ function Cart() {
               <h3>Total : </h3>
             </div>
             <div className='price'>
-              <h3>$ {originalPrice}</h3>
-              <h1>$ {discountPrice}</h1>
+              <h3>₹ {originalPrice}</h3>
+              <h1>₹ {discountPrice}</h1>
             </div>
             <div>
               <button
