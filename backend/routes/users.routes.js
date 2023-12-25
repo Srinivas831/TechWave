@@ -88,10 +88,10 @@ res.status(400).send({"message":"Error LoggingIn"});
 
 //logout
 userRouter.post("/logout",async(req,res)=>{
+    // console.log(req.body.logoutToken)
     try {
         const token=req.headers.authorization?.split(" ")[1];
-        // const Blacklist=new BlockListModel(token);
-        // await Blacklist.save();
+       
         const LogoutUserModel = new BlacklistUserModel({logoutToken:token});
         await LogoutUserModel.save();
         res.status(200).send({"message":"Logged out Successfully"})

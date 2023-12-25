@@ -28,7 +28,7 @@ function AllRoutes() {
       </PrivateRoutes>} />
       <Route path="/blogs" element={<Blog />} />
       <Route path="/update/:id" element={<Update />} />
-      <Route path="/admin" element={<Admin />} />
+      <Route path="/admin" element={<PrivateRoutes><Admin /></PrivateRoutes>} />
       <Route path="/addCourses" element={<AddCourses />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/login" element={<Login />} />

@@ -37,9 +37,9 @@ function Home() {
           </div>
           <div className="hero-left-paragraph">
             <p>
-              Lorem ipsum dolor sit amet consectetur .<br />
-              adipisicing elit. Voluptatum quisquam <br />
-              Aperiam, debitis magnam.
+              Education is the key that unlocks the doors<br />
+              of opportunity, empowering minds to<br />
+              illuminate the path of lifelong learning.
             </p>
           </div>
           <div className="hero-left-enrole">
@@ -75,10 +75,10 @@ function Home() {
           </div>
           <div className="learning-right-paragraph">
             <p>
-              Lorem ipsum dolor sit amet consectetur. adipisicing elit.
-              <br /> Voluptatum quisquam Aperiam, debitis magnam hibru
+             Unleash the potential of remote education with us,
+              <br /> where 'anywhere' becomes the classroom for 
               <br />
-              dolor sit amet consectetur.
+              boundless knowledge enrichment.
             </p>
           </div>
 
@@ -90,7 +90,7 @@ function Home() {
                   style={{ color: "ffffff", fontSize: "20px" }}
                 />
               </div>
-              <p>Expert Traineer</p>
+              <p>Expert Trainer</p>
             </div>
 
             <div className="ticks-cover ">

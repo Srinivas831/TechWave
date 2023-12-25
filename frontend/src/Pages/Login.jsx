@@ -45,17 +45,16 @@ export default function Login() {
   
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log({
-      email,
-      password,
-    });
+    // console.log({
+    //   email,
+    //   password,
+    // });
     const data={
         email,
         password
     }
     axios.post(`${url}/users/login`,data)
     .then((res) => {
-      console.log(res)
       if (res.data.message === "Logged Successfully") {
         Cookies.set("token",res.data.token, { expires: 365 });
         Cookies.set("user",res.data.user.userName, { expires: 365 });

@@ -14,6 +14,7 @@ export const RegisterUser = ({user,update,updateBlockusers}) => {
   
     const [registerUsersData,setRegisterUsersData] = useState([]);
     const [popup, setPopup] = useState(false);
+    const [object, setObject] = useState({})
 
     const getUsers = async() => {
         try {
@@ -28,10 +29,11 @@ export const RegisterUser = ({user,update,updateBlockusers}) => {
         getUsers()
     },[])
 
-    const showPopup = ({userName,email},i) => {
+    const showPopup = (item,i) => {
+      setObject(item)
       // showCourses(id)
       setPopup(!popup);
-      console.log(userName,i)
+      console.log(item,i)
     }
     const blockUser = async(email) => {
       let obj = {
@@ -39,7 +41,7 @@ export const RegisterUser = ({user,update,updateBlockusers}) => {
       }
       // console.log(obj)
       try {
-        let res = await axios.post("http://localhost:8080/users/userBlock",obj)
+        let res = await axios.post(`${url}/users/userBlock`,obj)
         update(user-1)
         getUsers()
         updateBlockusers()
@@ -51,6 +53,7 @@ export const RegisterUser = ({user,update,updateBlockusers}) => {
 
   return (
     <ShowData>
+
             <table>
               <thead>
                 <tr>
@@ -69,16 +72,9 @@ export const RegisterUser = ({user,update,updateBlockusers}) => {
       <tr key={item._id}>
         <td className="common">{`${i + 1} )`}</td>
         <td>
-          {popup ? (
-            <Popup show={popup} handleClose={showPopup}>
-              <p>Name : {item.userName}</p>
-              <p>Email : {item.email}</p>
-            </Popup>
-          ) : (
             <div className="userDetailBtn" onClick={() => showPopup(item, i)}>
               <BiUserCircle id="user-detail-btn" />
             </div>
-          )}
         </td>
         <td>
           <div className="blockBtn">
@@ -97,6 +93,9 @@ export const RegisterUser = ({user,update,updateBlockusers}) => {
 
               </tbody>
             </table>
+            {popup ? <div>
+              <Popup value={popup} fuc={setPopup} obj={object}/>
+            </div> : ""}
         </ShowData>
   )
 }

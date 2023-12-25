@@ -117,7 +117,7 @@ export const PurchaseCourses = () => {
 
   const fetchCoursesCount = async () => {
     try {
-      let res = await axios.get("http://localhost:8080/courses/getfrompurchased");
+      let res = await axios.get(`${url}/courses/getfrompurchased`);
       setPurchasedData(res.data);
     } catch (error) {
       console.log(error);

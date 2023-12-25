@@ -55,7 +55,7 @@ export const Admin = () => {
   }
   const getBlockUsers = async() => {
     try {
-      let res = await axios.get("http://localhost:8080/users/blockUsers");
+      let res = await axios.get(`${url}/users/blockUsers`);
       setBlocklistUsers(res.data.length)
     } catch (error) {
       console.log({"msg":error.message})

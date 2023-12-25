@@ -33,7 +33,7 @@ function Navbar() {
 
  function handlLogout(){
 
-  axios.post(`${url}/users/logout`,{
+  axios.post(`${url}/users/logout`,null,{
     headers:{
       Authorization:`Bearer ${isAuth}`
     }
@@ -71,7 +71,7 @@ function Navbar() {
     axios
       .get(`${url}/courses/getfromcart?userId=${userId}`)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setData(res.data.data);
       })
       .catch((err) => {
@@ -80,7 +80,7 @@ function Navbar() {
   }, [showAlert]);
   const Admin = Cookies.get("isAdmin")
 
-  console.log(data);
+  // console.log(data);
 
   return (
     <DIV>

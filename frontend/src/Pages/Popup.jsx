@@ -3,15 +3,18 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Popup = ({ handleClose, show, children }) => {
-  const showHideClassName = show ? "modal display-block" : "modal display-none";
+const Popup = ({ value, fuc, obj }) => {
+  // const showHideClassName = show ? "modal display-block" : "modal display-none";
+  console.log("item", obj);
 
   return (
     <DIV>
-        <div className={showHideClassName}>
+        <div className="modal display-block">
       <section className="modal-main">
-        {children}
-        <button onClick={handleClose}>Close</button>
+        {/* {children} */}
+        <p>User : {obj.userName}</p>
+        <p>Email : {obj.email}</p>
+        <button onClick={()=>fuc(!value)}>Close</button>
       </section>
     </div>
     </DIV>

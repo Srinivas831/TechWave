@@ -24,11 +24,11 @@ function Footer() {
             {/* <img src={logo} alt="" /> */}
             <h1>TechWave</h1>
           </div>
-          <div>
+          {/* <div>
             <p>
-              3/2 Bangaluru <br /> Courser from us
+              3/2 Bangaluru <br /> Courses from us
             </p>
-          </div>
+          </div> */}
           <div className="social-media-icons">
             <FontAwesomeIcon icon={faFacebook} style={{ fontSize: "1.5rem" }} />
             <FontAwesomeIcon icon={faLinkedin} style={{ fontSize: "1.5rem" }} />
@@ -44,7 +44,7 @@ function Footer() {
             <Link to="#">Gallery</Link>
             <Link to="#">News & Articles</Link>
             <Link to="#">FAQ'S</Link>
-            <Link to="#">Cooming Soon</Link>
+            <Link to="#">Coming Soon</Link>
             <Link to="#">Contacts</Link>
           </div>
         </div>
@@ -71,7 +71,7 @@ function Footer() {
                 style={{ fontSize: "20px" }}
               />
               <p>
-                Bangaluru 74 ave,sute <br />
+                Bangalore 74 ave,sute <br />
                 Karnataka, 500055
               </p>
             </div>
@@ -84,7 +84,7 @@ function Footer() {
                 icon={faPhoneVolume}
                 style={{ fontSize: "20px" }}
               />
-              <p>+91 9900 0099</p>
+              <p>+91 99005 50099</p>
             </div>
           </div>
         </div>
